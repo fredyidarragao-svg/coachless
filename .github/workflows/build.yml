@@ -5,6 +5,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   android:
     name: Android (APK y AAB)
@@ -38,6 +41,22 @@ jobs:
           path: |
             build/app/outputs/flutter-apk/app-release.apk
             build/app/outputs/bundle/release/app-release.aab
+      - name: Preparar archivos de la versión
+        run: |
+          cp build/app/outputs/flutter-apk/app-release.apk Coachless.apk
+          cp build/app/outputs/bundle/release/app-release.aab Coachless-GooglePlay.aab
+      - name: Publicar en Releases para instalar desde el celular
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: build-${{ github.run_number }}
+          name: Coachless (compilación ${{ github.run_number }})
+          prerelease: true
+          body: |
+            Descarga **Coachless.apk** desde el celular Android e instálalo.
+            El archivo .aab es el que se sube a Google Play.
+          files: |
+            Coachless.apk
+            Coachless-GooglePlay.aab
 
   ios:
     name: iPhone (sin firma)
