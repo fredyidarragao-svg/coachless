@@ -1,0 +1,27 @@
+{
+  "watches": [
+    {"brand": "Xiaomi", "color": "#FF6900", "app": "Mi Fitness", "routes": ["hc", "hk"], "models": ["Redmi Watch 5 Active", "Redmi Watch 4", "Redmi Watch 3 Active", "Xiaomi Smart Band 9", "Xiaomi Smart Band 8", "Xiaomi Watch S4", "Xiaomi Watch 2", "Xiaomi Smart Watch 5 Active"]},
+    {"brand": "Amazfit", "color": "#2B2B2B", "app": "Zepp", "routes": ["hc", "hk", "api"], "models": ["Amazfit Active 2", "Amazfit Balance", "Amazfit Bip 5", "Amazfit GTR 4", "Amazfit GTS 4", "Amazfit T-Rex 3", "Amazfit Band 7"]},
+    {"brand": "Samsung", "color": "#1428A0", "app": "Samsung Health", "routes": ["hc"], "models": ["Galaxy Watch Ultra", "Galaxy Watch7", "Galaxy Watch6", "Galaxy Watch FE", "Galaxy Fit3"]},
+    {"brand": "Apple", "color": "#3A3A3C", "app": "Salud", "routes": ["hk"], "models": ["Apple Watch Ultra 2", "Apple Watch Series 10", "Apple Watch Series 9", "Apple Watch SE"]},
+    {"brand": "Huawei", "color": "#C7000B", "app": "Huawei Salud", "routes": ["api"], "models": ["Huawei Watch GT 5", "Huawei Watch GT 4", "Huawei Watch Fit 3", "Huawei Band 9"]},
+    {"brand": "Honor", "color": "#0A3A8C", "app": "Honor Health", "routes": ["api"], "models": ["Honor Watch 5", "Honor Watch 4", "Honor Band 9", "Honor Choice Watch"]},
+    {"brand": "Garmin", "color": "#007CC3", "app": "Garmin Connect", "routes": ["api", "hc", "hk"], "models": ["Forerunner 965", "Forerunner 265", "Forerunner 165", "Venu 3", "vívoactive 5", "fēnix 8", "Instinct 2"]},
+    {"brand": "Google / Fitbit", "color": "#1A73E8", "app": "Fitbit", "routes": ["hc", "api"], "models": ["Pixel Watch 3", "Pixel Watch 2", "Fitbit Charge 6", "Fitbit Versa 4", "Fitbit Sense 2", "Fitbit Inspire 3"]},
+    {"brand": "Polar", "color": "#D10027", "app": "Polar Flow", "routes": ["api"], "models": ["Polar Vantage V3", "Polar Pacer Pro", "Polar Ignite 3", "Polar Grit X2 Pro"]},
+    {"brand": "COROS", "color": "#3B3B3B", "app": "COROS", "routes": ["api"], "models": ["COROS PACE 3", "COROS APEX 2", "COROS VERTIX 2S"]},
+    {"brand": "Suunto", "color": "#1E1E1E", "app": "Suunto", "routes": ["api"], "models": ["Suunto Race", "Suunto Race S", "Suunto 9 Peak Pro"]},
+    {"brand": "WHOOP", "color": "#111111", "app": "WHOOP", "routes": ["api"], "models": ["WHOOP 4.0", "WHOOP MG"]},
+    {"brand": "Oura", "color": "#5A4E3C", "app": "Oura", "routes": ["api", "hc", "hk"], "models": ["Oura Ring 4", "Oura Ring Gen3"]},
+    {"brand": "Otra marca", "color": "#555B6E", "app": "", "routes": ["hc", "hk"], "models": ["Otro modelo"]}
+  ],
+  "locations": {
+    "mzl": {"city": "Manizales", "country": "Colombia", "currency": "COP", "rate": 1, "lat": 5.0703, "lng": -75.5138, "stores": [["D1", 0.82, 0.6, "#D7262E"], ["Ara", 0.86, 1.1, "#E8541B"], ["Olímpica", 0.95, 1.8, "#D6001C"], ["Éxito", 1, 2.3, "#E8B400"], ["Jumbo", 1.03, 4.2, "#1F9A3E"]]},
+    "bog": {"city": "Bogotá", "country": "Colombia", "currency": "COP", "rate": 1.04, "lat": 4.711, "lng": -74.0721, "stores": [["D1", 0.82, 0.4, "#D7262E"], ["Ara", 0.86, 0.9, "#E8541B"], ["Carulla", 1.12, 1.5, "#0A7A3B"], ["Éxito", 1, 2.0, "#E8B400"], ["Jumbo", 1.03, 3.1, "#1F9A3E"]]},
+    "med": {"city": "Medellín", "country": "Colombia", "currency": "COP", "rate": 1.02, "lat": 6.2442, "lng": -75.5812, "stores": [["D1", 0.82, 0.5, "#D7262E"], ["Ara", 0.86, 0.8, "#E8541B"], ["Éxito", 1, 1.2, "#E8B400"], ["Euro", 1.08, 2.4, "#14417A"], ["Carulla", 1.12, 3.0, "#0A7A3B"]]},
+    "cdmx": {"city": "Ciudad de México", "country": "México", "currency": "MXN", "rate": 0.005116, "lat": 19.4326, "lng": -99.1332, "stores": [["Bodega Aurrera", 0.85, 0.7, "#1F7A35"], ["Chedraui", 0.93, 1.4, "#E2231A"], ["Soriana", 0.95, 1.9, "#D1121A"], ["Walmart", 1, 2.6, "#0071CE"], ["La Comer", 1.1, 3.4, "#E36F1E"]]},
+    "mad": {"city": "Madrid", "country": "España", "currency": "EUR", "rate": 0.000378, "lat": 40.4168, "lng": -3.7038, "stores": [["Lidl", 0.85, 0.5, "#0050AA"], ["Dia", 0.88, 0.8, "#E2001A"], ["Mercadona", 0.92, 1.3, "#00843D"], ["Carrefour", 1, 2.2, "#1E5BC6"], ["El Corte Inglés", 1.25, 3.6, "#1F7A3A"]]},
+    "mia": {"city": "Miami", "country": "Estados Unidos", "currency": "USD", "rate": 0.000575, "lat": 25.7617, "lng": -80.1918, "stores": [["Aldi", 0.8, 1.2, "#00005F"], ["Walmart", 0.88, 2.0, "#0071CE"], ["Target", 0.97, 2.8, "#CC0000"], ["Publix", 1.05, 1.6, "#3E8E2F"], ["Whole Foods", 1.3, 4.5, "#00674B"]]},
+    "sao": {"city": "São Paulo", "country": "Brasil", "currency": "BRL", "rate": 0.001644, "lat": -23.5505, "lng": -46.6333, "stores": [["Atacadão", 0.82, 1.0, "#F28C00"], ["Assaí", 0.85, 1.7, "#00539F"], ["Carrefour", 1, 2.3, "#1E5BC6"], ["Pão de Açúcar", 1.15, 0.9, "#0B7A3E"], ["St Marche", 1.3, 3.8, "#2B2B2B"]]}
+  }
+}
