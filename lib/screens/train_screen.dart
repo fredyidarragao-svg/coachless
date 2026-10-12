@@ -296,9 +296,9 @@ class _WatchStats extends StatelessWidget {
     return vgap([
       SectionTitle(t('Tu día'), trailing: Btn('${w.linked ? (w.model ?? '') : t('Manual')} · ${t('Editar')}', kind: BtnKind.ghost, onTap: () => showSheet(context, (_) => const ManualDataSheet()))),
       statRow([
-        StatTile(I18n.num(d.steps), t('Pasos'), icon: Icons.directions_walk_rounded, iconColor: p.acc),
+        StatTile(I18n.fmt(d.steps), t('Pasos'), icon: Icons.directions_walk_rounded, iconColor: p.acc),
         StatTile('${d.restingHr}', t('Pulso reposo'), icon: Icons.favorite_rounded, iconColor: const Color(0xFFFF6B8A)),
-        StatTile(I18n.num(d.activeKcal), t('kcal activas'), icon: Icons.local_fire_department_rounded, iconColor: p.acc2),
+        StatTile(I18n.fmt(d.activeKcal), t('kcal activas'), icon: Icons.local_fire_department_rounded, iconColor: p.acc2),
         StatTile('${d.sleepHours} h', t('Sueño'), icon: Icons.nightlight_round, iconColor: const Color(0xFF9B8CFF)),
       ]),
     ], 8);

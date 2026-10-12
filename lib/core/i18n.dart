@@ -32,7 +32,7 @@ class I18n {
     return out;
   }
 
-  static String num(num n) => NumberFormat.decimalPattern(locale).format(n);
+  static String fmt(num n) => NumberFormat.decimalPattern(locale).format(n);
 
   /// Nombre del día: 0 = lunes … 6 = domingo.
   static String dayName(int i, {bool short = false}) {

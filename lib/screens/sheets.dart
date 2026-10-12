@@ -97,7 +97,7 @@ class FoodSheet extends StatelessWidget {
       Text('${t('Costo por porción cerca de ti')} · ${pl.city}', style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
       ...pl.byDistance.map((s) => Row(children: [
             Expanded(child: Text(s.name)),
-            Text('${I18n.num(s.km)} km', style: TextStyle(color: p.muted)),
+            Text('${I18n.fmt(s.km)} km', style: TextStyle(color: p.muted)),
             const SizedBox(width: 16),
             SizedBox(width: 110, child: Text(money(f.costCop * s.priceFactor, prof), textAlign: TextAlign.right, style: const TextStyle(fontWeight: FontWeight.w700))),
           ])),

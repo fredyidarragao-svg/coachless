@@ -34,7 +34,7 @@ class DietScreen extends StatelessWidget {
           Expanded(
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text(t('Meta diaria'), style: const TextStyle(color: Colors.white70, fontSize: 12)),
-              Text('${I18n.num(m.targets.kcal)} KCAL', style: display(context, 28, color: Colors.white)),
+              Text('${I18n.fmt(m.targets.kcal)} KCAL', style: display(context, 28, color: Colors.white)),
               const SizedBox(height: 6),
               _legend(context, p.acc, '${t('Proteína')} ${m.protein} g'),
               _legend(context, p.acc2, '${t('Carbohidratos')} ${m.carbs} g'),
@@ -73,7 +73,7 @@ class DietScreen extends StatelessWidget {
                     const SizedBox(width: 10),
                     Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.center, children: [
                       Row(children: [Flexible(child: Text(s.name, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w700))), if (s.name == cheapest) ...[const SizedBox(width: 4), Pill(t('Más barato'), color: p.ok)]]),
-                      Text('${I18n.num(s.km)} km · ${t('día')} ${money(base * s.priceFactor, pr)}', style: TextStyle(color: p.muted, fontSize: 11.5)),
+                      Text('${I18n.fmt(s.km)} km · ${t('día')} ${money(base * s.priceFactor, pr)}', style: TextStyle(color: p.muted, fontSize: 11.5)),
                       const SizedBox(height: 4),
                       ClipRRect(borderRadius: BorderRadius.circular(4), child: LinearProgressIndicator(value: 1 - s.km / maxKm * .8, minHeight: 4, color: p.acc2, backgroundColor: p.line)),
                     ])),
@@ -144,7 +144,7 @@ class _MacroDonut extends StatelessWidget {
         painter: _DonutPainter([m.protein * 4.0, m.carbs * 4.0, m.fat * 9.0], [p.acc, p.acc2, p.ok]),
         child: Center(
           child: Column(mainAxisSize: MainAxisSize.min, children: [
-            Text(I18n.num(m.kcal), style: display(context, 26, color: Colors.white)),
+            Text(I18n.fmt(m.kcal), style: display(context, 26, color: Colors.white)),
             const Text('kcal', style: TextStyle(color: Colors.white70, fontSize: 12, fontWeight: FontWeight.w700)),
           ]),
         ),

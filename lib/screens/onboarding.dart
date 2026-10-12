@@ -267,7 +267,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           Box(child: vgap([
             Text(t('Rutina de {m} min los días {d}.', {'m': d.routineMinutes, 'd': d.routineDays.map(I18n.dayName).join(', ')})),
             Text(t('{a} deporte(s) y {b} equipo(s) registrados.', {'a': d.sports.length, 'b': d.equipment.length})),
-            Text(t('Meta diaria estimada: {k} kcal y {p} g de proteína.', {'k': I18n.num(tg.kcal), 'p': tg.protein})),
+            Text(t('Meta diaria estimada: {k} kcal y {p} g de proteína.', {'k': I18n.fmt(tg.kcal), 'p': tg.protein})),
             Text('📍 ${placeOf(d).city}'),
           ], 8)),
         ]);

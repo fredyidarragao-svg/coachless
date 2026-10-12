@@ -260,7 +260,7 @@ class _CurrencyFmt {
   _CurrencyFmt(this.cur, this.digits);
   String format(double v) {
     final sym = {'COP': '\$', 'MXN': '\$', 'USD': 'US\$', 'EUR': '€', 'BRL': 'R\$'}[cur] ?? cur;
-    final s = I18n.num(double.parse(v.toStringAsFixed(digits)));
+    final s = I18n.fmt(double.parse(v.toStringAsFixed(digits)));
     return cur == 'EUR' ? '$s $sym' : '$sym $s';
   }
 }
