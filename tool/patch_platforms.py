@@ -126,7 +126,9 @@ def podfile(txt: str) -> str:
 patch_file(ROOT / "ios/Runner/Info.plist", info_plist)
 patch_file(ROOT / "ios/Runner.xcodeproj/project.pbxproj", pbxproj)
 pf = ROOT / "ios/Podfile"
-if pf.exists():
+if not (ROOT / "ios").exists():
+    pass
+elif pf.exists():
     patch_file(pf, podfile)
 else:
     pf.write_text(
