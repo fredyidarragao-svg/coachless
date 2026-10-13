@@ -52,11 +52,39 @@ jobs:
           name: Coachless (compilación ${{ github.run_number }})
           prerelease: true
           body: |
-            Descarga **Coachless.apk** desde el celular Android e instálalo.
+            **Android:** descarga **Coachless.apk** desde el celular e instálalo.
+            **iPhone y computador:** abre https://fredyidarragao-svg.github.io/coachless/ en Safari o Chrome y agrégala a la pantalla de inicio.
             El archivo .aab es el que se sube a Google Play.
           files: |
             Coachless.apk
             Coachless-GooglePlay.aab
+
+  web:
+    name: Versión web (iPhone y computador)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - name: Generar carpetas de plataforma
+        run: flutter create . --org app.coachless --project-name coachless --platforms web
+      - name: Aplicar ajustes de plataforma
+        run: python3 tool/patch_platforms.py
+      - run: bash tool/ci_run.sh flutter pub get
+      - name: Ícono de la app
+        run: dart run flutter_launcher_icons
+      - name: Compilar versión web
+        run: bash tool/ci_run.sh flutter build web --release --base-href /coachless/
+      - name: Publicar en GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/web
+          publish_branch: gh-pages
+          force_orphan: true
+          commit_message: Versión web de Coachless
 
   ios:
     name: iPhone (sin firma)

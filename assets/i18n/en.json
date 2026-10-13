@@ -476,5 +476,8 @@
 "Todos": "All",
 "Mismo equipo": "Same equipment",
 "Con equipo": "With equipment",
-"No hay otros ejercicios para esta zona con tu equipo. Agrega equipos en tu perfil para ver más opciones.": "No other exercises for this area with your equipment. Add equipment in your profile to see more options."
+"No hay otros ejercicios para esta zona con tu equipo. Agrega equipos en tu perfil para ver más opciones.": "No other exercises for this area with your equipment. Add equipment in your profile to see more options.",
+"En la versión web no se puede leer el reloj automáticamente. Ingresa tus datos a mano o instala la app en tu celular.": "The web version can't read your watch automatically. Enter your data manually or install the app on your phone.",
+"Instálala en tu iPhone: en Safari toca Compartir y luego \"Agregar a pantalla de inicio\".": "Install it on your iPhone: in Safari tap Share, then \"Add to Home Screen\".",
+"Instálala en tu celular: en el menú del navegador toca \"Agregar a pantalla principal\" o \"Instalar app\".": "Install it on your phone: in the browser menu tap \"Add to Home screen\" or \"Install app\"."
 }

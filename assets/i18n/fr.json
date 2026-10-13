@@ -476,5 +476,8 @@
 "Todos": "Tous",
 "Mismo equipo": "Même matériel",
 "Con equipo": "Avec matériel",
-"No hay otros ejercicios para esta zona con tu equipo. Agrega equipos en tu perfil para ver más opciones.": "Aucun autre exercice pour cette zone avec ton matériel. Ajoute du matériel dans ton profil pour plus d'options."
+"No hay otros ejercicios para esta zona con tu equipo. Agrega equipos en tu perfil para ver más opciones.": "Aucun autre exercice pour cette zone avec ton matériel. Ajoute du matériel dans ton profil pour plus d'options.",
+"En la versión web no se puede leer el reloj automáticamente. Ingresa tus datos a mano o instala la app en tu celular.": "La version web ne peut pas lire la montre automatiquement. Saisis tes données à la main ou installe l'app sur ton téléphone.",
+"Instálala en tu iPhone: en Safari toca Compartir y luego \"Agregar a pantalla de inicio\".": "Installe-la sur ton iPhone : dans Safari, touche Partager puis « Sur l'écran d'accueil ».",
+"Instálala en tu celular: en el menú del navegador toca \"Agregar a pantalla principal\" o \"Instalar app\".": "Installe-la sur ton téléphone : dans le menu du navigateur, touche « Ajouter à l'écran d'accueil » ou « Installer l'app »."
 }

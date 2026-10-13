@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'dart:io' show Platform;
 
+import 'package:flutter/foundation.dart' show TargetPlatform, defaultTargetPlatform, kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -184,7 +184,7 @@ class WatchPicker extends StatefulWidget {
 }
 
 class _WatchPickerState extends State<WatchPicker> {
-  final String os = Platform.isIOS ? 'ios' : 'android';
+  final String os = defaultTargetPlatform == TargetPlatform.iOS ? 'ios' : 'android';
   String? brand, model;
   bool busy = false;
   String? error;
@@ -196,6 +196,17 @@ class _WatchPickerState extends State<WatchPicker> {
     });
     final tg = widget.target;
     WatchData? data;
+    if (kIsWeb && (route == 'hc' || route == 'hk')) {
+      // En el navegador no hay acceso a Health Connect ni a Apple Salud: se registra el reloj
+      // y los datos se ingresan a mano hasta instalar la app.
+      tg.watch = WatchLink(route: null, brand: w.brand, model: model, os: os, data: tg.watch.data);
+      setState(() {
+        busy = false;
+        error = t('En la versión web no se puede leer el reloj automáticamente. Ingresa tus datos a mano o instala la app en tu celular.');
+      });
+      widget.onLinked();
+      return;
+    }
     if (route == 'hc' || route == 'hk') {
       if (route == 'hc' && !await HealthService.available()) {
         await HealthService.installHealthConnect();
@@ -223,7 +234,9 @@ class _WatchPickerState extends State<WatchPicker> {
   Widget build(BuildContext context) {
     final p = Palette.of(context);
     // El sistema del celular (Android o iPhone) se detecta solo; aquí únicamente se elige el reloj.
-    final children = <Widget>[];
+    final children = <Widget>[
+      if (kIsWeb) Box(color: p.acc2.withValues(alpha: .12), child: Text(t('En la versión web no se puede leer el reloj automáticamente. Ingresa tus datos a mano o instala la app en tu celular.'))),
+    ];
     if (brand == null) {
       children.addAll([
         Text(t('Elige la marca de tu reloj o banda.'), style: TextStyle(color: p.muted)),

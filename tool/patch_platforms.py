@@ -162,4 +162,33 @@ else:
     )
     print(f"creado: {pf}")
 
+# ---------------- Web ----------------
+import json as _json
+
+
+def web_index(html: str) -> str:
+    html = re.sub(r"<title>.*?</title>", "<title>Coachless</title>", html, flags=re.S)
+    html = re.sub(r'<meta name="description" content="[^"]*">', '<meta name="description" content="Coachless - tu propio entrenador: rutinas, dieta sana y seguimiento con tu reloj.">', html)
+    html = re.sub(r'<meta name="apple-mobile-web-app-title" content="[^"]*">', '<meta name="apple-mobile-web-app-title" content="Coachless">', html)
+    html = html.replace('content="black"', 'content="black-translucent"')
+    extra = ('<meta name="theme-color" content="#080D19">\n'
+             '  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
+             '  <style>html,body{background:#080D19;margin:0}</style>\n')
+    if 'name="theme-color"' not in html:
+        html = html.replace("</head>", "  " + extra + "</head>", 1)
+    if 'apple-mobile-web-app-capable' not in html:
+        html = html.replace("</head>", '  <meta name="apple-mobile-web-app-capable" content="yes">\n</head>', 1)
+    return html
+
+
+def web_manifest(txt: str) -> str:
+    m = _json.loads(txt)
+    m.update({"name": "Coachless", "short_name": "Coachless", "description": "Tu propio entrenador: rutinas, dieta sana y seguimiento con tu reloj.",
+              "background_color": "#080D19", "theme_color": "#080D19", "display": "standalone", "orientation": "portrait", "start_url": "."})
+    return _json.dumps(m, ensure_ascii=False, indent=2)
+
+
+patch_file(ROOT / "web/index.html", web_index)
+patch_file(ROOT / "web/manifest.json", web_manifest)
+
 print("Plataformas listas para Coachless.")

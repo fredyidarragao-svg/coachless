@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show TargetPlatform, defaultTargetPlatform, kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -133,6 +134,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             Text('Coach', style: display(tc, 18, color: Colors.white70)).wrapWith(Text('less', style: display(tc, 18, color: p.acc2))),
             Text(up(tc, t('Tu propio entrenador, sin pagar uno')), style: display(tc, 34, color: Colors.white)),
           ]),
+          if (kIsWeb)
+            Box(
+              color: p.acc2.withValues(alpha: .12),
+              child: Text(defaultTargetPlatform == TargetPlatform.iOS
+                  ? t('Instálala en tu iPhone: en Safari toca Compartir y luego "Agregar a pantalla de inicio".')
+                  : t('Instálala en tu celular: en el menú del navegador toca "Agregar a pantalla principal" o "Instalar app".')),
+            ),
           label(t('Idioma')),
           Segmented(options: [for (final e in I18n.langs.entries) (e.key, e.value.$1)], value: d.lang, onChanged: (v) {
             d.lang = v;
