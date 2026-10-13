@@ -2,17 +2,23 @@ import 'package:geolocator/geolocator.dart';
 
 import '../core/catalog.dart';
 
-/// Ubica al usuario y elige la ciudad del catálogo más cercana (con sus supermercados y moneda).
-/// En la fase con servidor, los supermercados vendrán de un servicio de mapas según las coordenadas exactas.
+class GeoResult {
+  final String place;
+  final double lat, lng;
+  GeoResult(this.place, this.lat, this.lng);
+}
+
+/// Ubica al usuario: devuelve sus coordenadas y la ciudad del catálogo más cercana
+/// (para moneda y precios de referencia). Los supermercados reales se buscan con StoresService.
 class LocationService {
-  static Future<String?> nearestPlace() async {
+  static Future<GeoResult?> locate() async {
     try {
       if (!await Geolocator.isLocationServiceEnabled()) return null;
       var perm = await Geolocator.checkPermission();
       if (perm == LocationPermission.denied) perm = await Geolocator.requestPermission();
       if (perm == LocationPermission.denied || perm == LocationPermission.deniedForever) return null;
-      final pos = await Geolocator.getCurrentPosition(locationSettings: const LocationSettings(accuracy: LocationAccuracy.low));
-      String? best;
+      final pos = await Geolocator.getCurrentPosition(locationSettings: const LocationSettings(accuracy: LocationAccuracy.medium));
+      String best = 'mzl';
       var bestD = double.infinity;
       Catalog.places.forEach((k, pl) {
         final d = Geolocator.distanceBetween(pos.latitude, pos.longitude, pl.lat, pl.lng);
@@ -21,7 +27,7 @@ class LocationService {
           best = k;
         }
       });
-      return best;
+      return GeoResult(best, pos.latitude, pos.longitude);
     } catch (_) {
       return null;
     }

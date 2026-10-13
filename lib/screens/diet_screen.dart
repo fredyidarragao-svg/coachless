@@ -8,6 +8,7 @@ import '../core/i18n.dart';
 import '../core/theme.dart';
 import '../widgets/ui.dart';
 import 'sheets.dart';
+import 'shopping_list_screen.dart';
 import 'train_screen.dart';
 
 class DietScreen extends StatelessWidget {
@@ -20,9 +21,10 @@ class DietScreen extends StatelessWidget {
     final m = dayMenu(pr, st.selected, st.log(st.selected).meals);
     final over = m.costCop > pr.budgetCop;
     final pl = placeOf(pr);
-    final cheapest = pl.cheapest.name;
+    final stores = storesFor(pr);
+    final cheapest = cheapestOf(pr).name;
     final base = m.costCop / m.mult;
-    final maxKm = pl.stores.map((s) => s.km).reduce((a, b) => a > b ? a : b);
+    final maxKm = stores.map((s) => s.km).fold<double>(0.1, (a, b) => a > b ? a : b);
 
     final w = <Widget>[
       const WeekStrip(),
@@ -46,6 +48,21 @@ class DietScreen extends StatelessWidget {
         ]),
         Text(t('Porciones ajustadas ×{f} para llegar a tu meta. Proteína objetivo: {g} g.', {'f': m.factor.toStringAsFixed(2), 'g': m.targets.protein}), style: const TextStyle(color: Colors.white70, fontSize: 12)),
       ]),
+      InkWell(
+        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ShoppingListScreen())),
+        child: Box(
+          border: p.acc,
+          child: Row(children: [
+            Container(width: 46, height: 46, decoration: BoxDecoration(color: p.acc, borderRadius: BorderRadius.circular(13)), child: const Icon(Icons.shopping_cart_rounded, color: Colors.white)),
+            const SizedBox(width: 12),
+            Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(t('Lista de mercado de la semana'), style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
+              Text(t('Una sola compra con todo lo que necesitas para los menús de la semana.'), style: TextStyle(color: p.muted, fontSize: 12.5)),
+            ])),
+            Icon(Icons.chevron_right_rounded, color: p.muted),
+          ]),
+        ),
+      ),
       if (pr.isKid) Box(color: p.acc2.withValues(alpha: .12), child: Text(t('En menores de 15 años la app no aplica dietas para bajar de peso: arma un plan balanceado para crecer y rendir en el deporte. Recomendamos validarlo con el pediatra.'))),
       Box(child: vgap([
         Row(children: [
@@ -53,14 +70,14 @@ class DietScreen extends StatelessWidget {
           const SizedBox(width: 8),
           Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(t('Supermercados cerca de ti'), style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
-            Text('${pl.city}, ${t(pl.country)} · ${pr.located ? t('ubicación activa') : t('ubicación manual')}', style: TextStyle(color: p.muted, fontSize: 12)),
+            Text('${pl.city}, ${t(pl.country)} · ${pr.nearby.isNotEmpty ? t('{n} supermercados reales cerca', {'n': pr.nearby.length}) : pr.located ? t('ubicación activa') : t('precios de referencia')}', style: TextStyle(color: p.muted, fontSize: 12)),
           ])),
           Btn(t('Cambiar'), kind: BtnKind.ghost, onTap: () => showSheet(context, (_) => const LocationSheet())),
         ]),
         SizedBox(
           height: 86,
           child: ListView(scrollDirection: Axis.horizontal, children: [
-            for (final s in pl.byDistance)
+            for (final s in stores)
               GestureDetector(
                 onTap: () => st.update(() => pr.store = s.name),
                 child: Container(

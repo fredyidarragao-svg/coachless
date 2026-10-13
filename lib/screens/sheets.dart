@@ -13,6 +13,7 @@ import '../core/models.dart';
 import '../core/theme.dart';
 import '../services/health_service.dart';
 import '../services/location_service.dart';
+import '../services/stores_service.dart';
 import '../widgets/ui.dart';
 
 Future<void> openYoutube(String q) => launchUrl(Uri.parse('https://www.youtube.com/results?search_query=${Uri.encodeComponent(q)}'), mode: LaunchMode.externalApplication);
@@ -73,7 +74,6 @@ class FoodSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final prof = context.read<AppState>().profile!;
-    final pl = placeOf(prof);
     final p = Palette.of(context);
     final slot = {'desayuno': 'Desayuno', 'snack': 'Media mañana o merienda', 'almuerzo': 'Almuerzo', 'cena': 'Cena'}[f.slot]!;
     return vgap([
@@ -91,17 +91,23 @@ class FoodSheet extends StatelessWidget {
       ]),
       if (I18n.lang != 'es') Text(t('Los ingredientes y pasos se traducirán en la versión final.'), style: TextStyle(color: p.muted, fontSize: 12)),
       Text(t('Ingredientes (1 porción)'), style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
-      ...f.ingredients.map((i) => Text('•  $i')),
+      ...f.ingredients.map((i) => InkWell(
+            onTap: () => launchUrl(StoresService.priceSearch(i, NearbyStore(name: storeOf(prof).name, km: 0, website: storeOf(prof).website)), mode: LaunchMode.externalApplication),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 3),
+              child: Row(children: [Expanded(child: Text('•  $i')), Icon(Icons.sell_outlined, size: 16, color: p.acc2)]),
+            ),
+          )),
       Text(t('Preparación'), style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
       ...f.steps.asMap().entries.map((s) => Text('${s.key + 1}. ${s.value}')),
-      Text('${t('Costo por porción cerca de ti')} · ${pl.city}', style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
-      ...pl.byDistance.map((s) => Row(children: [
+      Text(t('Costo por porción cerca de ti'), style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
+      ...storesFor(prof).map((s) => Row(children: [
             Expanded(child: Text(s.name)),
             Text('${I18n.fmt(s.km)} km', style: TextStyle(color: p.muted)),
-            const SizedBox(width: 16),
-            SizedBox(width: 110, child: Text(money(f.costCop * s.priceFactor, prof), textAlign: TextAlign.right, style: const TextStyle(fontWeight: FontWeight.w700))),
+            const SizedBox(width: 12),
+            SizedBox(width: 96, child: Text(money(f.costCop * s.priceFactor, prof), textAlign: TextAlign.right, style: const TextStyle(fontWeight: FontWeight.w700))),
           ])),
-      Text(t('Precios estimados para validar el diseño.'), style: TextStyle(color: p.muted, fontSize: 12)),
+      Text(t('Valores estimados. Toca un ingrediente para ver su precio real en la web del supermercado.'), style: TextStyle(color: p.muted, fontSize: 12)),
       Btn(t('Ver preparación en YouTube'), icon: Icons.play_arrow_rounded, expand: true, onTap: () => openYoutube('${f.en} recipe')),
     ], 12);
   }
@@ -353,7 +359,10 @@ class _ManualDataSheetState extends State<ManualDataSheet> {
       Btn(t('Guardar'), kind: BtnKind.primary, expand: true, onTap: () {
         final w = st.profile!.watch;
         d.source = w.linked ? (w.model ?? '') : 'Ingreso manual';
-        st.update(() => w.data = d);
+        st.update(() {
+          w.data = d;
+          st.log(todayKey()).samples.add(WatchSample(at: DateTime.now(), steps: d.steps, restingHr: d.restingHr, activeKcal: d.activeKcal, sleepHours: d.sleepHours, source: d.source));
+        });
         Navigator.pop(context);
       }),
     ], 14);
@@ -583,25 +592,54 @@ class _LocationPickerState extends State<LocationPicker> {
     final tg = widget.target;
     return vgap([
       Text(t('Usamos tu ubicación para mostrar los supermercados más cercanos, la moneda local y el costo de cada receta.'), style: TextStyle(color: p.muted)),
-      Btn(busy ? t('Buscando…') : t('Usar mi ubicación'), kind: BtnKind.primary, icon: Icons.place_rounded, expand: true, onTap: busy
+      Btn(busy ? t('Buscando supermercados cerca…') : t('Usar mi ubicación'), kind: BtnKind.primary, icon: Icons.place_rounded, expand: true, onTap: busy
           ? null
           : () async {
-              setState(() => busy = true);
-              final k = await LocationService.nearestPlace();
               setState(() {
-                busy = false;
-                if (k != null) {
-                  tg.place = k;
-                  tg.located = true;
-                  tg.store = '';
-                  msg = t('Ubicación detectada: {c}.', {'c': Catalog.places[k]!.city});
-                } else {
-                  msg = t('No pudimos obtener tu ubicación. Elige tu ciudad en la lista.');
-                }
+                busy = true;
+                msg = null;
               });
+              final g = await LocationService.locate();
+              if (g == null) {
+                setState(() {
+                  busy = false;
+                  msg = t('No pudimos obtener tu ubicación. Elige tu ciudad en la lista.');
+                });
+                return;
+              }
+              tg.place = g.place;
+              tg.located = true;
+              tg.store = '';
+              try {
+                tg.nearby = await StoresService.nearby(g.lat, g.lng);
+                tg.nearbyDate = todayKey();
+                msg = tg.nearby.isEmpty
+                    ? t('No encontramos supermercados a menos de 5 km. Usaremos precios de referencia de {c}.', {'c': Catalog.places[g.place]!.city})
+                    : t('Encontramos {n} supermercados cerca de ti.', {'n': tg.nearby.length});
+              } catch (_) {
+                tg.nearby = [];
+                msg = t('Sin conexión para buscar supermercados. Usaremos precios de referencia de {c}.', {'c': Catalog.places[g.place]!.city});
+              }
+              setState(() => busy = false);
               widget.onChanged();
             }),
       if (msg != null) Text(msg!),
+      if (tg.nearby.isNotEmpty) ...[
+        Text(t('Supermercados cerca de ti'), style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
+        for (final n in tg.nearby)
+          Box(
+            padding: const EdgeInsets.all(10),
+            child: Row(children: [
+              Icon(Icons.storefront_rounded, color: p.acc2),
+              const SizedBox(width: 12),
+              Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text(n.name, style: const TextStyle(fontWeight: FontWeight.w700)),
+                Text('${I18n.fmt(n.km)} km${n.website.isNotEmpty ? ' · ${n.website}' : ''}', style: TextStyle(color: p.muted, fontSize: 12)),
+              ])),
+              if (n.website.isNotEmpty) Pill(t('Precios en línea'), color: p.ok),
+            ]),
+          ),
+      ],
       Text(t('O elige tu ciudad'), style: TextStyle(color: p.muted)),
       for (final pl in Catalog.places.values)
         InkWell(
@@ -610,6 +648,8 @@ class _LocationPickerState extends State<LocationPicker> {
               tg.place = pl.key;
               tg.located = false;
               tg.store = '';
+              tg.nearby = [];
+              msg = null;
             });
             widget.onChanged();
           },

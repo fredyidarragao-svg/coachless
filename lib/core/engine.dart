@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:flutter/painting.dart' show Color;
+
 import 'catalog.dart';
 import 'i18n.dart';
 import 'models.dart';
@@ -201,10 +203,24 @@ List<Food> foodCandidates(Profile p, String slot, {bool all = false}) {
 }
 
 Place placeOf(Profile p) => Catalog.places[p.place] ?? Catalog.places['mzl']!;
-Store storeOf(Profile p) {
-  final pl = placeOf(p);
-  return pl.stores.where((s) => s.name == p.store).firstOrNull ?? pl.byDistance.first;
+
+const _storePalette = [Color(0xFFD7262E), Color(0xFFE8541B), Color(0xFF1E5BC6), Color(0xFF1F9A3E), Color(0xFFE8B400), Color(0xFF7E4FD0), Color(0xFF0E9F93), Color(0xFFC93E80)];
+
+/// Supermercados para precios: los reales encontrados cerca (si hay) o los de la ciudad del catálogo.
+List<Store> storesFor(Profile p) {
+  if (p.nearby.isNotEmpty) {
+    return p.nearby.map((n) => Store(n.name, n.priceFactor, n.km, _storePalette[strHash(n.name) % _storePalette.length], n.website)).toList()
+      ..sort((a, b) => a.km.compareTo(b.km));
+  }
+  return placeOf(p).byDistance;
 }
+
+Store storeOf(Profile p) {
+  final all = storesFor(p);
+  return all.where((s) => s.name == p.store).firstOrNull ?? all.first;
+}
+
+Store cheapestOf(Profile p) => (List<Store>.from(storesFor(p))..sort((a, b) => a.priceFactor.compareTo(b.priceFactor))).first;
 
 class MenuItem {
   final String slot;
@@ -284,4 +300,125 @@ List<OtherActivity> simulatedWorkouts(Profile p, String day) {
 String? routeFor(WatchBrand w, String os) {
   if (w.brand == 'Apple' && os != 'ios') return null;
   return w.routes.where((r) => r == 'api' || (os == 'ios' ? r == 'hk' : r == 'hc')).firstOrNull;
+}
+
+// ------------------------------------------------------------------
+// Lista de mercado semanal
+// ------------------------------------------------------------------
+class ShopLine {
+  final String product, unit, aisle;
+  double? qty;
+  int uses = 0;
+  ShopLine(this.product, this.unit, this.aisle, this.qty);
+  String get key => '$product|$unit';
+
+  String get amount {
+    if (qty == null) return t('al gusto');
+    final q = qty!;
+    String n(double v, [int d = 1]) => I18n.fmt(double.parse(v.toStringAsFixed(d)));
+    switch (unit) {
+      case 'g':
+        return q >= 1000 ? '${n(q / 1000)} kg' : '${(q / 10).ceil() * 10} g';
+      case 'ml':
+        return q >= 1000 ? '${n(q / 1000)} l' : '${(q / 10).ceil() * 10} ml';
+      case 'u':
+        return '${q.ceil()}';
+      case 'taza':
+        return '${n(q)} ${t(q > 1 ? 'tazas' : 'taza')}';
+      case 'cda':
+      case 'cdta':
+        return '${n((q * 2).ceil() / 2)} ${t(unit)}';
+      default:
+        return '${q.ceil()} ${t(unit)}';
+    }
+  }
+}
+
+class WeekShopping {
+  final String start, end;
+  final Map<String, List<ShopLine>> byAisle;
+  final double costCop; // costo estimado de la semana en el supermercado elegido
+  final int meals;
+  WeekShopping(this.start, this.end, this.byAisle, this.costCop, this.meals);
+  int get count => byAisle.values.fold(0, (a, l) => a + l.length);
+}
+
+const aisleOrder = ['Frutas y verduras', 'Carnes y pescados', 'Lácteos y huevos', 'Panadería', 'Granos y despensa', 'Condimentos'];
+
+/// Suma los ingredientes de todos los menús de la semana (lunes a domingo) en una sola lista.
+WeekShopping weeklyShopping(Profile p, String anyDay, Map<String, String> Function(String day) chosen) {
+  final start = addDays(anyDay, -weekdayOf(anyDay));
+  final lines = <String, ShopLine>{};
+  double base = 0;
+  var meals = 0;
+  for (var i = 0; i < 7; i++) {
+    final day = addDays(start, i);
+    final m = dayMenu(p, day, chosen(day));
+    base += m.costCop / m.mult;
+    for (final it in m.items) {
+      meals++;
+      for (final s in it.food.shop) {
+        final l = lines.putIfAbsent('${s.product}|${s.unit}', () => ShopLine(s.product, s.unit, s.aisle, s.qty == null ? null : 0));
+        if (s.qty != null) l.qty = (l.qty ?? 0) + s.qty! * m.factor;
+        l.uses++;
+      }
+    }
+  }
+  final by = <String, List<ShopLine>>{};
+  for (final l in lines.values) {
+    by.putIfAbsent(l.aisle, () => []).add(l);
+  }
+  for (final v in by.values) {
+    v.sort((a, b) => a.product.compareTo(b.product));
+  }
+  final ordered = {for (final a in aisleOrder) if (by.containsKey(a)) a: by[a]!};
+  return WeekShopping(start, addDays(start, 6), ordered, base * storeOf(p).priceFactor, meals);
+}
+
+// ------------------------------------------------------------------
+// Resumen mensual (perfil)
+// ------------------------------------------------------------------
+class MonthStats {
+  final DateTime month;
+  final double? weight, weightDelta, restingHr;
+  final int activeKcal, sampleDays;
+  MonthStats(this.month, this.weight, this.weightDelta, this.restingHr, this.activeKcal, this.sampleDays);
+}
+
+/// Últimos [n] meses: peso al cierre del mes y su cambio, pulso en reposo promedio y calorías activas
+/// sumadas (por día se toma la última muestra del reloj, porque el reloj acumula durante el día).
+List<MonthStats> monthlyStats(Profile p, Map<String, DayLog> logs, {int n = 6}) {
+  final now = DateTime.now();
+  final out = <MonthStats>[];
+  final weights = [...p.weights]..sort((a, b) => a.date.compareTo(b.date));
+  double? lastWeightBefore(DateTime m) {
+    final w = weights.where((e) => dparse(e.date).isBefore(m)).toList();
+    return w.isEmpty ? null : w.last.kg;
+  }
+
+  for (var i = n - 1; i >= 0; i--) {
+    final m = DateTime(now.year, now.month - i);
+    final next = DateTime(m.year, m.month + 1);
+    final inMonth = weights.where((e) {
+      final d = dparse(e.date);
+      return !d.isBefore(m) && d.isBefore(next);
+    }).toList();
+    final endW = inMonth.isNotEmpty ? inMonth.last.kg : null;
+    final prev = lastWeightBefore(m) ?? (inMonth.isNotEmpty ? inMonth.first.kg : null);
+    double hrSum = 0;
+    var hrN = 0, kcal = 0, days = 0;
+    logs.forEach((k, l) {
+      final d = dparse(k);
+      if (d.isBefore(m) || !d.isBefore(next) || l.samples.isEmpty) return;
+      days++;
+      final last = l.samples.reduce((a, b) => a.at.isAfter(b.at) ? a : b);
+      kcal += l.samples.map((s) => s.activeKcal).reduce(max);
+      if (last.restingHr > 0) {
+        hrSum += last.restingHr;
+        hrN++;
+      }
+    });
+    out.add(MonthStats(m, endW, endW != null && prev != null ? endW - prev : null, hrN > 0 ? hrSum / hrN : null, kcal, days));
+  }
+  return out;
 }

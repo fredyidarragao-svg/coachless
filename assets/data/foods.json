@@ -23,6 +23,38 @@
 "Sofríe tomate y cebolla en el aceite 2 minutos.",
 "Agrega los huevos batidos y revuelve a fuego bajo.",
 "Asa la arepa y sirve."
+],
+"shop": [
+[
+"Arepas",
+1.0,
+"u",
+"Panadería"
+],
+[
+"Huevos",
+2.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Tomate",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla larga",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Aceite",
+1.0,
+"cdta",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -47,6 +79,32 @@
 "steps": [
 "Cocina la avena en la leche 5 minutos revolviendo.",
 "Agrega la canela y el banano en rodajas."
+],
+"shop": [
+[
+"Avena en hojuelas",
+50.0,
+"g",
+"Granos y despensa"
+],
+[
+"Leche",
+250.0,
+"ml",
+"Lácteos y huevos"
+],
+[
+"Banano",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Canela",
+null,
+"u",
+"Condimentos"
+]
 ]
 },
 {
@@ -72,6 +130,32 @@
 "Bate claras y huevo.",
 "Saltea la espinaca 1 minuto, agrega el huevo y el queso, y dobla.",
 "Acompaña con el pan tostado."
+],
+"shop": [
+[
+"Huevos",
+5.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Espinaca",
+1.0,
+"taza",
+"Frutas y verduras"
+],
+[
+"Queso campesino",
+30.0,
+"g",
+"Lácteos y huevos"
+],
+[
+"Pan integral",
+1.0,
+"tajada",
+"Panadería"
+]
 ]
 },
 {
@@ -98,6 +182,38 @@
 "Calienta arroz y fríjol juntos en sartén sin aceite extra.",
 "Cocina el huevo.",
 "Sirve con aguacate y arepa."
+],
+"shop": [
+[
+"Arroz",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Fríjoles",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Huevos",
+1.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Aguacate",
+0.25,
+"u",
+"Frutas y verduras"
+],
+[
+"Arepas",
+1.0,
+"u",
+"Panadería"
+]
 ]
 },
 {
@@ -121,6 +237,26 @@
 "steps": [
 "Sirve el yogur.",
 "Agrega las fresas picadas y la granola al final."
+],
+"shop": [
+[
+"Yogur griego natural",
+170.0,
+"g",
+"Lácteos y huevos"
+],
+[
+"Granola sin azúcar",
+30.0,
+"g",
+"Granos y despensa"
+],
+[
+"Fresas",
+6.0,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -146,6 +282,32 @@
 "Licúa avena, banano y huevos.",
 "Cocina porciones en sartén antiadherente 2 minutos por lado.",
 "Sirve con la mantequilla de maní."
+],
+"shop": [
+[
+"Avena en hojuelas",
+50.0,
+"g",
+"Granos y despensa"
+],
+[
+"Banano",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Huevos",
+2.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Mantequilla de maní",
+1.0,
+"cda",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -172,6 +334,38 @@
 "Hierve leche, agua y cebolla.",
 "Agrega los huevos sin revolver y cocina 3 minutos.",
 "Sirve con cilantro y el pan."
+],
+"shop": [
+[
+"Leche",
+200.0,
+"ml",
+"Lácteos y huevos"
+],
+[
+"Huevos",
+2.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Cebolla larga",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cilantro",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Pan integral",
+1.0,
+"tajada",
+"Panadería"
+]
 ]
 },
 {
@@ -197,6 +391,44 @@
 "Tuesta el pan.",
 "Machaca el aguacate con limón y sal.",
 "Cubre con los huevos cocidos."
+],
+"shop": [
+[
+"Pan integral",
+2.0,
+"tajada",
+"Panadería"
+],
+[
+"Aguacate",
+0.333,
+"u",
+"Frutas y verduras"
+],
+[
+"Huevos",
+2.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Limones",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Sal",
+null,
+"u",
+"Condimentos"
+],
+[
+"Pimienta",
+null,
+"u",
+"Condimentos"
+]
 ]
 },
 {
@@ -222,6 +454,32 @@
 "Calienta las tortillas en comal.",
 "Cocina los huevos estrellados con poco aceite.",
 "Sirve sobre las tortillas con fríjoles y salsa."
+],
+"shop": [
+[
+"Tortillas de maíz",
+2.0,
+"u",
+"Panadería"
+],
+[
+"Huevos",
+2.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Salsa de tomate natural",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Fríjoles refritos",
+0.25,
+"taza",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -248,6 +506,44 @@
 "Hornea los triángulos de tortilla 10 minutos hasta dorar.",
 "Calienta la salsa con el pollo.",
 "Mezcla con los totopos y sirve con crema, cebolla y cilantro."
+],
+"shop": [
+[
+"Tortillas de maíz",
+3.0,
+"u",
+"Panadería"
+],
+[
+"Salsa verde",
+1.0,
+"taza",
+"Granos y despensa"
+],
+[
+"Pechuga de pollo",
+80.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Crema de leche ligera",
+2.0,
+"cda",
+"Lácteos y huevos"
+],
+[
+"Cebolla",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cilantro",
+1,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -273,6 +569,32 @@
 "Tuesta el pan.",
 "Unta el tomate rallado con aceite y sal.",
 "Coloca el jamón encima."
+],
+"shop": [
+[
+"Pan rústico",
+2.0,
+"tajada",
+"Panadería"
+],
+[
+"Tomate",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Jamón serrano",
+30.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Aceite de oliva",
+1.0,
+"cdta",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -297,6 +619,26 @@
 "Esparce la tapioca en sartén caliente hasta que se pegue.",
 "Rellena con huevo y queso.",
 "Dobla y sirve."
+],
+"shop": [
+[
+"Goma de tapioca",
+60.0,
+"g",
+"Granos y despensa"
+],
+[
+"Huevos",
+1.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Queso mozzarella",
+30.0,
+"g",
+"Lácteos y huevos"
+]
 ]
 },
 {
@@ -322,6 +664,32 @@
 "Licúa el açaí con medio banano.",
 "Sirve en un bowl.",
 "Decora con el resto del banano, fresas y granola."
+],
+"shop": [
+[
+"Pulpa de açaí",
+100.0,
+"g",
+"Frutas y verduras"
+],
+[
+"Banano",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Granola sin azúcar",
+30.0,
+"g",
+"Granos y despensa"
+],
+[
+"Fresas",
+1,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -346,6 +714,32 @@
 "steps": [
 "Licúa todo 40 segundos.",
 "Toma de inmediato."
+],
+"shop": [
+[
+"Proteína en polvo",
+1.0,
+"medida",
+"Granos y despensa"
+],
+[
+"Espinaca",
+1.0,
+"taza",
+"Frutas y verduras"
+],
+[
+"Manzana",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Leche de almendras",
+250.0,
+"ml",
+"Lácteos y huevos"
+]
 ]
 },
 {
@@ -370,6 +764,32 @@
 "steps": [
 "Licúa frutos rojos y yogur hasta que quede espeso.",
 "Sirve y agrega chía y granola."
+],
+"shop": [
+[
+"Frutos rojos congelados",
+1.0,
+"taza",
+"Frutas y verduras"
+],
+[
+"Yogur natural",
+150.0,
+"g",
+"Lácteos y huevos"
+],
+[
+"Semillas de chía",
+1.0,
+"cda",
+"Granos y despensa"
+],
+[
+"Granola sin azúcar",
+20.0,
+"g",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -394,6 +814,32 @@
 "steps": [
 "Calienta la quinua en la leche 8 minutos.",
 "Agrega canela y la manzana."
+],
+"shop": [
+[
+"Quinua",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Leche",
+250.0,
+"ml",
+"Lácteos y huevos"
+],
+[
+"Manzana",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Canela",
+null,
+"u",
+"Condimentos"
+]
 ]
 },
 {
@@ -419,6 +865,50 @@
 "Revuelve los huevos.",
 "Calienta la tortilla.",
 "Rellena con huevo, fríjol y pico de gallo y enrolla."
+],
+"shop": [
+[
+"Tortillas integrales",
+1.0,
+"u",
+"Panadería"
+],
+[
+"Huevos",
+2.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Fríjoles",
+0.25,
+"taza",
+"Granos y despensa"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Cilantro",
+1,
+"atado",
+"Frutas y verduras"
+],
+[
+"Limones",
+1,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -442,6 +932,26 @@
 "steps": [
 "Asa la arepa por ambos lados.",
 "Sirve con el quesito encima."
+],
+"shop": [
+[
+"Arepa de chócolo",
+1.0,
+"u",
+"Panadería"
+],
+[
+"Quesito fresco",
+40.0,
+"g",
+"Lácteos y huevos"
+],
+[
+"Leche",
+1.0,
+"taza",
+"Lácteos y huevos"
+]
 ]
 },
 {
@@ -468,6 +978,38 @@
 "Mezcla avena, leche, yogur y chía en un frasco.",
 "Refrigera toda la noche.",
 "Agrega el mango en cubos al servir."
+],
+"shop": [
+[
+"Avena en hojuelas",
+50.0,
+"g",
+"Granos y despensa"
+],
+[
+"Leche",
+150.0,
+"ml",
+"Lácteos y huevos"
+],
+[
+"Yogur natural",
+80.0,
+"g",
+"Lácteos y huevos"
+],
+[
+"Semillas de chía",
+1.0,
+"cda",
+"Granos y despensa"
+],
+[
+"Mango",
+0.5,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -494,6 +1036,44 @@
 "Sofríe cebolla y pimentón 5 minutos.",
 "Agrega el tomate y las especias, cocina 5 minutos.",
 "Abre huecos, agrega los huevos y tapa 6 minutos."
+],
+"shop": [
+[
+"Huevos",
+3.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Tomate triturado",
+1.0,
+"taza",
+"Granos y despensa"
+],
+[
+"Pimentón",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Comino",
+null,
+"u",
+"Condimentos"
+],
+[
+"Paprika",
+null,
+"u",
+"Condimentos"
+]
 ]
 },
 {
@@ -520,6 +1100,38 @@
 "Licúa avena, huevos y leche.",
 "Cocina crepes delgados en sartén antiadherente.",
 "Rellena con cottage y fresas."
+],
+"shop": [
+[
+"Avena en hojuelas",
+40.0,
+"g",
+"Granos y despensa"
+],
+[
+"Huevos",
+2.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Leche",
+100.0,
+"ml",
+"Lácteos y huevos"
+],
+[
+"Queso cottage",
+100.0,
+"g",
+"Lácteos y huevos"
+],
+[
+"Fresas",
+1,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -544,6 +1156,26 @@
 "Tuesta el pan.",
 "Unta la mantequilla de maní.",
 "Cubre con rodajas de banano."
+],
+"shop": [
+[
+"Pan integral",
+2.0,
+"tajada",
+"Panadería"
+],
+[
+"Mantequilla de maní",
+1.0,
+"u",
+"Granos y despensa"
+],
+[
+"Banano",
+1.0,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -566,6 +1198,20 @@
 "steps": [
 "Pica la fruta.",
 "Acompaña con el queso."
+],
+"shop": [
+[
+"Papaya o piña",
+1.0,
+"taza",
+"Frutas y verduras"
+],
+[
+"Queso campesino",
+40.0,
+"g",
+"Lácteos y huevos"
+]
 ]
 },
 {
@@ -590,6 +1236,32 @@
 "steps": [
 "Licúa todo 30 segundos.",
 "Tómalo después de entrenar."
+],
+"shop": [
+[
+"Proteína en polvo",
+1.0,
+"medida",
+"Granos y despensa"
+],
+[
+"Banano",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Avena en hojuelas",
+30.0,
+"g",
+"Granos y despensa"
+],
+[
+"Leche",
+250.0,
+"ml",
+"Lácteos y huevos"
+]
 ]
 },
 {
@@ -611,6 +1283,20 @@
 ],
 "steps": [
 "Mezcla y lleva en un recipiente."
+],
+"shop": [
+[
+"Maní sin sal",
+30.0,
+"g",
+"Granos y despensa"
+],
+[
+"Uvas pasas",
+20.0,
+"g",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -633,6 +1319,20 @@
 "steps": [
 "Mezcla.",
 "Deja reposar 10 minutos para que la chía se hidrate."
+],
+"shop": [
+[
+"Yogur natural",
+150.0,
+"g",
+"Lácteos y huevos"
+],
+[
+"Semillas de chía",
+1.0,
+"cda",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -654,6 +1354,20 @@
 ],
 "steps": [
 "Listo para llevar."
+],
+"shop": [
+[
+"Mandarinas",
+2.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Almendras",
+15.0,
+"u",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -676,6 +1390,20 @@
 "steps": [
 "Cocina el huevo 10 minutos.",
 "Enfría, pela y acompaña con las galletas."
+],
+"shop": [
+[
+"Huevos",
+1.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Galletas integrales",
+4.0,
+"u",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -700,6 +1428,38 @@
 "steps": [
 "Arma el sándwich.",
 "Tuéstalo 2 minutos si quieres."
+],
+"shop": [
+[
+"Pan integral",
+2.0,
+"tajada",
+"Panadería"
+],
+[
+"Pechuga de pollo",
+70.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Lechuga",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Mostaza",
+1.0,
+"cdta",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -721,6 +1481,20 @@
 ],
 "steps": [
 "Sirve juntos."
+],
+"shop": [
+[
+"Bocadillo de guayaba",
+1.0,
+"lonja",
+"Granos y despensa"
+],
+[
+"Queso blanco",
+40.0,
+"g",
+"Lácteos y huevos"
+]
 ]
 },
 {
@@ -744,6 +1518,26 @@
 "steps": [
 "Corta las verduras en bastones.",
 "Sirve con el hummus."
+],
+"shop": [
+[
+"Hummus",
+4.0,
+"cda",
+"Granos y despensa"
+],
+[
+"Zanahoria",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Pepino",
+0.5,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -766,6 +1560,20 @@
 "steps": [
 "Cocina al vapor 5 minutos.",
 "Espolvorea sal."
+],
+"shop": [
+[
+"Edamame",
+1.0,
+"taza",
+"Frutas y verduras"
+],
+[
+"Sal",
+null,
+"u",
+"Condimentos"
+]
 ]
 },
 {
@@ -787,6 +1595,20 @@
 ],
 "steps": [
 "Sirve el cottage con la piña encima."
+],
+"shop": [
+[
+"Queso cottage",
+150.0,
+"g",
+"Lácteos y huevos"
+],
+[
+"Piña",
+0.5,
+"taza",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -812,6 +1634,32 @@
 "Mezcla todo.",
 "Presiona en un molde y hornea 15 minutos a 180 °C.",
 "Deja enfriar y corta."
+],
+"shop": [
+[
+"Avena en hojuelas",
+60.0,
+"g",
+"Granos y despensa"
+],
+[
+"Mantequilla de maní",
+1.0,
+"cda",
+"Granos y despensa"
+],
+[
+"Miel",
+1.0,
+"cda",
+"Granos y despensa"
+],
+[
+"Maní sin sal",
+1.0,
+"cda",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -834,6 +1682,20 @@
 "steps": [
 "Corta la manzana en gajos.",
 "Úntalos con la mantequilla de maní."
+],
+"shop": [
+[
+"Manzana",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Mantequilla de maní",
+1.0,
+"cda",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -857,6 +1719,26 @@
 "steps": [
 "Coloca queso y lechuga sobre cada lonja.",
 "Enrolla y fija con un palillo."
+],
+"shop": [
+[
+"Pechuga de pavo en lonjas",
+4.0,
+"lonja",
+"Carnes y pescados"
+],
+[
+"Queso",
+2.0,
+"lonja",
+"Lácteos y huevos"
+],
+[
+"Lechuga",
+1,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -881,6 +1763,26 @@
 "Calienta el maíz en olla tapada con el aceite.",
 "Mueve hasta que deje de reventar.",
 "Agrega sal."
+],
+"shop": [
+[
+"Maíz pira",
+40.0,
+"g",
+"Granos y despensa"
+],
+[
+"Aceite",
+1.0,
+"cdta",
+"Granos y despensa"
+],
+[
+"Sal",
+null,
+"u",
+"Condimentos"
+]
 ]
 },
 {
@@ -906,6 +1808,44 @@
 "Machaca el aguacate con limón.",
 "Agrega tomate, cebolla y cilantro picados.",
 "Sirve con los totopos horneados."
+],
+"shop": [
+[
+"Aguacate",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cilantro",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Limones",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Tortillas de maíz",
+1.0,
+"u",
+"Panadería"
+]
 ]
 },
 {
@@ -927,6 +1867,20 @@
 ],
 "steps": [
 "Sirve el kéfir con la fruta."
+],
+"shop": [
+[
+"Kéfir o kumis",
+200.0,
+"ml",
+"Lácteos y huevos"
+],
+[
+"Fruta picada",
+0.5,
+"taza",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -949,6 +1903,26 @@
 ],
 "steps": [
 "Licúa y sirve frío."
+],
+"shop": [
+[
+"Banano",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Leche",
+250.0,
+"ml",
+"Lácteos y huevos"
+],
+[
+"Canela",
+null,
+"u",
+"Condimentos"
+]
 ]
 },
 {
@@ -971,6 +1945,26 @@
 "steps": [
 "Cocina 4 minutos.",
 "Pela y sazona."
+],
+"shop": [
+[
+"Huevos de codorniz",
+8.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Sal",
+null,
+"u",
+"Condimentos"
+],
+[
+"Pimienta",
+null,
+"u",
+"Condimentos"
+]
 ]
 },
 {
@@ -994,6 +1988,32 @@
 "steps": [
 "Mezcla el atún con limón y tomate picado.",
 "Sirve sobre las galletas."
+],
+"shop": [
+[
+"Galletas de arroz",
+2.0,
+"u",
+"Granos y despensa"
+],
+[
+"Atún en agua (lata)",
+0.5,
+"lata",
+"Carnes y pescados"
+],
+[
+"Limones",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -1016,6 +2036,26 @@
 ],
 "steps": [
 "Mezcla y porciona."
+],
+"shop": [
+[
+"Almendras",
+15.0,
+"g",
+"Granos y despensa"
+],
+[
+"Nueces",
+15.0,
+"g",
+"Granos y despensa"
+],
+[
+"Arándanos deshidratados",
+15.0,
+"g",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -1038,6 +2078,20 @@
 "steps": [
 "Sirve la gelatina en un vaso.",
 "Cubre con el yogur."
+],
+"shop": [
+[
+"Gelatina sin azúcar",
+1.0,
+"u",
+"Granos y despensa"
+],
+[
+"Yogur natural",
+100.0,
+"g",
+"Lácteos y huevos"
+]
 ]
 },
 {
@@ -1063,6 +2117,44 @@
 "Adoba la pechuga con ajo, sal y limón.",
 "Cocina a la plancha 5–6 minutos por lado.",
 "Sirve con arroz y la ensalada aliñada."
+],
+"shop": [
+[
+"Pechuga de pollo",
+150.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Arroz integral",
+0.75,
+"taza",
+"Granos y despensa"
+],
+[
+"Lechuga",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Pepino",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Aceite de oliva",
+1.0,
+"cdta",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -1089,6 +2181,44 @@
 "Agrega pollo, papa y 1 taza de agua.",
 "tapa y cocina 25 minutos.",
 "Sirve con el arroz."
+],
+"shop": [
+[
+"Pechuga de pollo",
+1.0,
+"presa",
+"Carnes y pescados"
+],
+[
+"Papa",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Arroz",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Ajo",
+1,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -1114,6 +2244,38 @@
 "Cocina las lentejas con hogao 20 minutos.",
 "Asa el maduro en horno o sartén sin aceite.",
 "Sirve con el arroz."
+],
+"shop": [
+[
+"Lentejas",
+1.0,
+"taza",
+"Granos y despensa"
+],
+[
+"Arroz",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Plátano maduro",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla larga",
+1,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -1140,6 +2302,38 @@
 "hornea 15 minutos a 200 °C.",
 "Aplasta el plátano y ásalo en horno 15 minutos.",
 "Sirve con la ensalada."
+],
+"shop": [
+[
+"Filete de tilapia",
+1.0,
+"filete",
+"Carnes y pescados"
+],
+[
+"Plátano verde",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Lechuga",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Limones",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Ajo",
+1,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -1164,6 +2358,38 @@
 "Cocina la quinua 15 minutos.",
 "Sofríe la carne y agrega las verduras picadas 5 minutos.",
 "Sirve junto."
+],
+"shop": [
+[
+"Carne molida magra",
+120.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Quinua",
+0.75,
+"taza",
+"Granos y despensa"
+],
+[
+"Zanahoria",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Habichuela",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Pimentón",
+1,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -1190,6 +2416,38 @@
 "Cocina pollo, papas y mazorca en 1 litro de agua con guascas 35 minutos.",
 "Desmecha el pollo y regrésalo a la sopa.",
 "Sirve con alcaparras, sin crema en la versión ligera."
+],
+"shop": [
+[
+"Pechuga de pollo",
+120.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Papa sabanera",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Mazorca",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Guascas",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Alcaparras",
+1.0,
+"cdta",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -1216,6 +2474,44 @@
 "Calienta los fríjoles con hogao.",
 "Cocina el huevo.",
 "Sirve con arroz y aguacate."
+],
+"shop": [
+[
+"Fríjoles",
+1.0,
+"taza",
+"Granos y despensa"
+],
+[
+"Arroz",
+0.75,
+"taza",
+"Granos y despensa"
+],
+[
+"Huevos",
+1.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Aguacate",
+0.25,
+"u",
+"Frutas y verduras"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla larga",
+1,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -1242,6 +2538,44 @@
 "Escurre el atún.",
 "Arma el bowl con arroz en la base y vegetales encima.",
 "Aliña con limón y una cdta de aceite."
+],
+"shop": [
+[
+"Atún en agua (lata)",
+1.0,
+"lata",
+"Carnes y pescados"
+],
+[
+"Arroz",
+0.75,
+"taza",
+"Granos y despensa"
+],
+[
+"Pepino",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Zanahoria",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Maíz tierno",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Limones",
+1,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -1267,6 +2601,32 @@
 "Cocina la pasta al dente.",
 "Saltea el pollo 6 minutos y agrega la salsa.",
 "Mezcla con la pasta."
+],
+"shop": [
+[
+"Pasta integral",
+90.0,
+"g",
+"Granos y despensa"
+],
+[
+"Pechuga de pollo",
+130.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Salsa de tomate natural",
+1.0,
+"taza",
+"Granos y despensa"
+],
+[
+"Albahaca",
+1,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -1292,6 +2652,32 @@
 "Sella el hígado 3 minutos por lado.",
 "Agrega la cebolla y cocina 5 minutos.",
 "Sirve con arroz y ensalada."
+],
+"shop": [
+[
+"Hígado de res",
+150.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Cebolla",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Arroz",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Lechuga",
+1,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -1319,6 +2705,44 @@
 "Cocina los fríjoles con hogao.",
 "Sofríe la carne sin aceite extra.",
 "Sirve con arroz, huevo, aguacate y maduro asado."
+],
+"shop": [
+[
+"Carne molida magra",
+100.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Fríjoles",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Arroz",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Huevos",
+1.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Aguacate",
+0.25,
+"u",
+"Frutas y verduras"
+],
+[
+"Plátano maduro",
+0.5,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -1346,6 +2770,44 @@
 "Agrega el pollo y dora 5 minutos.",
 "Añade la leche de coco y cocina 10 minutos.",
 "sirve con arroz."
+],
+"shop": [
+[
+"Pechuga de pollo",
+150.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Leche de coco ligera",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Curry en polvo",
+1.0,
+"cda",
+"Condimentos"
+],
+[
+"Arroz basmati",
+0.75,
+"taza",
+"Granos y despensa"
+],
+[
+"Cebolla",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Ajo",
+1,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -1371,6 +2833,44 @@
 "Saltea la carne a fuego alto 3 minutos.",
 "Agrega las verduras y la soya 4 minutos.",
 "Sirve sobre el arroz."
+],
+"shop": [
+[
+"Lomo de res",
+140.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Brócoli",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Pimentón",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Zanahoria",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Salsa de soya baja en sodio",
+1.0,
+"cda",
+"Granos y despensa"
+],
+[
+"Arroz",
+0.5,
+"taza",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -1396,6 +2896,38 @@
 "Sazona y cocina el pescado a la plancha 3 minutos por lado.",
 "Mezcla el repollo con limón y yogur.",
 "Arma los tacos."
+],
+"shop": [
+[
+"Pescado blanco",
+150.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Tortillas de maíz",
+3.0,
+"u",
+"Panadería"
+],
+[
+"Pechuga de pollo",
+1,
+"u",
+"Carnes y pescados"
+],
+[
+"Limones",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Yogur natural",
+1,
+"u",
+"Lácteos y huevos"
+]
 ]
 },
 {
@@ -1421,6 +2953,62 @@
 "Cocina y corta el pollo.",
 "Arma el bowl con arroz y fríjol.",
 "Agrega pollo, maíz, pico de gallo y aguacate."
+],
+"shop": [
+[
+"Pechuga de pollo",
+130.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Arroz",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Fríjol negro",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Maíz tierno",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Cilantro",
+1,
+"atado",
+"Frutas y verduras"
+],
+[
+"Limones",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Aguacate",
+0.25,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -1447,6 +3035,50 @@
 "Sofríe el pimentón y agrega el arroz.",
 "Añade el caldo con azafrán y cocina 15 minutos.",
 "Agrega los mariscos y la arveja 5 minutos más."
+],
+"shop": [
+[
+"Arroz",
+0.75,
+"taza",
+"Granos y despensa"
+],
+[
+"Mariscos mixtos",
+150.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Pimentón",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Arveja",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Azafrán o color",
+null,
+"u",
+"Condimentos"
+],
+[
+"Azafrán o color",
+null,
+"u",
+"Condimentos"
+],
+[
+"Caldo de pescado",
+1,
+"u",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -1473,6 +3105,38 @@
 "Dora el cerdo y el chorizo.",
 "Agrega el fríjol y cocina 30 minutos.",
 "Sirve con arroz y naranja."
+],
+"shop": [
+[
+"Fríjol negro",
+1.0,
+"taza",
+"Granos y despensa"
+],
+[
+"Lomo de cerdo",
+100.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Chorizo bajo en grasa",
+50.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Arroz",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Naranja",
+1,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -1498,6 +3162,38 @@
 "Marina el pescado en limón 15 minutos.",
 "Agrega cebolla y cilantro.",
 "Sirve con los chips de plátano horneados."
+],
+"shop": [
+[
+"Pescado blanco",
+150.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Limones",
+4.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla morada",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cilantro",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Plátano verde",
+0.5,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -1524,6 +3220,38 @@
 "Saltea la carne a fuego alto.",
 "Agrega cebolla, tomate y soya 2 minutos.",
 "Sirve con la papa al horno y el arroz."
+],
+"shop": [
+[
+"Lomo de res",
+140.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Tomate",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Papa",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Arroz",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Salsa de soya baja en sodio",
+1,
+"u",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -1549,6 +3277,32 @@
 "Asa las láminas de berenjena.",
 "Alterna capas de berenjena, carne en salsa y queso.",
 "Hornea 20 minutos a 190 °C."
+],
+"shop": [
+[
+"Berenjena",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Carne molida magra",
+120.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Salsa de tomate natural",
+1.0,
+"taza",
+"Granos y despensa"
+],
+[
+"Queso mozzarella",
+40.0,
+"g",
+"Lácteos y huevos"
+]
 ]
 },
 {
@@ -1575,6 +3329,50 @@
 "Marina el salmón en soya 5 minutos.",
 "Arma el bowl con arroz y vegetales.",
 "Agrega el salmón y el ajonjolí."
+],
+"shop": [
+[
+"Salmón",
+120.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Arroz",
+0.75,
+"taza",
+"Granos y despensa"
+],
+[
+"Edamame",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Pepino",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Zanahoria",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Ajonjolí",
+1.0,
+"cdta",
+"Granos y despensa"
+],
+[
+"Salsa de soya baja en sodio",
+1,
+"u",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -1600,6 +3398,44 @@
 "Sofríe cebolla y tomate con comino.",
 "Agrega garbanzos y ½ taza de agua 10 minutos.",
 "Incorpora la espinaca y sirve con arroz."
+],
+"shop": [
+[
+"Garbanzos",
+1.0,
+"taza",
+"Granos y despensa"
+],
+[
+"Espinaca",
+2.0,
+"taza",
+"Frutas y verduras"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Comino",
+null,
+"u",
+"Condimentos"
+],
+[
+"Arroz",
+0.5,
+"taza",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -1626,6 +3462,44 @@
 "Cocina plátano y yuca 20 minutos con cebolla.",
 "Agrega el pescado 10 minutos.",
 "Sirve con cilantro y arroz."
+],
+"shop": [
+[
+"Pescado en postas",
+180.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Plátano verde",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Yuca",
+1.0,
+"trozo",
+"Frutas y verduras"
+],
+[
+"Cilantro",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Arroz",
+0.5,
+"taza",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -1651,6 +3525,32 @@
 "Mezcla pavo y huevo y forma albóndigas.",
 "Dóralas y cocina en la salsa 15 minutos.",
 "Sirve con arroz o pasta."
+],
+"shop": [
+[
+"Pavo molido",
+150.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Huevos",
+1.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Salsa de tomate natural",
+1.0,
+"taza",
+"Granos y despensa"
+],
+[
+"Arroz",
+0.5,
+"taza",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -1676,6 +3576,32 @@
 "Cocina la ahuyama con la cebolla en el caldo 15 minutos.",
 "Licúa.",
 "Sirve con el pollo encima."
+],
+"shop": [
+[
+"Ahuyama",
+300.0,
+"g",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Pechuga de pollo",
+100.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Caldo (pollo o verduras)",
+200.0,
+"ml",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -1701,6 +3627,38 @@
 "steps": [
 "Corta todo en trozos.",
 "Aliña con aceite, limón y sal."
+],
+"shop": [
+[
+"Pechuga de pollo",
+120.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Lechuga",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Aguacate",
+0.25,
+"u",
+"Frutas y verduras"
+],
+[
+"Tomates cherry",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Aceite de oliva",
+1.0,
+"cdta",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -1725,6 +3683,38 @@
 "steps": [
 "Saltea el pollo y los vegetales.",
 "Rellena la tortilla, agrega el yogur y enrolla."
+],
+"shop": [
+[
+"Tortillas integrales",
+1.0,
+"u",
+"Panadería"
+],
+[
+"Pechuga de pollo",
+100.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Pimentón",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Yogur natural",
+2.0,
+"cda",
+"Lácteos y huevos"
+]
 ]
 },
 {
@@ -1749,6 +3739,26 @@
 "Saltea las verduras 2 minutos.",
 "Agrega los huevos y revuelve.",
 "Sirve con la arepa asada."
+],
+"shop": [
+[
+"Huevos",
+2.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Tomate",
+0.5,
+"taza",
+"Frutas y verduras"
+],
+[
+"Arepas",
+1.0,
+"u",
+"Panadería"
+]
 ]
 },
 {
@@ -1773,6 +3783,44 @@
 "Cocina la trucha 4 minutos por lado.",
 "Saltea las verduras 5 minutos.",
 "Sirve con limón."
+],
+"shop": [
+[
+"Filete de trucha",
+1.0,
+"filete",
+"Carnes y pescados"
+],
+[
+"Brócoli",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Zanahoria",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Calabacín",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Limones",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Ajo",
+1,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -1798,6 +3846,44 @@
 "Sofríe las verduras, agrega el arroz y el caldo.",
 "Cocina 18 minutos a fuego bajo.",
 "Incorpora el pollo al final."
+],
+"shop": [
+[
+"Arroz",
+0.75,
+"taza",
+"Granos y despensa"
+],
+[
+"Pechuga de pollo",
+120.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Arveja",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Zanahoria",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Pimentón",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Pechuga de pollo",
+1,
+"u",
+"Carnes y pescados"
+]
 ]
 },
 {
@@ -1823,6 +3909,38 @@
 "Cocina la papa en láminas 10 minutos en sartén tapada.",
 "Agrega verduras y huevo batido.",
 "Voltea y dora 3 minutos."
+],
+"shop": [
+[
+"Huevos",
+3.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Papa",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Espinaca",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Aceite",
+1.0,
+"cdta",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -1846,6 +3964,44 @@
 "steps": [
 "Cocina las verduras en el caldo 15 minutos.",
 "Agrega los garbanzos y cocina 5 minutos más."
+],
+"shop": [
+[
+"Garbanzos",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Zanahoria",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Ahuyama",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Habichuela",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Apio",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Caldo (pollo o verduras)",
+1,
+"u",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -1871,6 +4027,44 @@
 "Coloca salmón y espárragos en una bandeja con aceite y ajo.",
 "Hornea 15 minutos a 200 °C.",
 "Termina con limón y eneldo."
+],
+"shop": [
+[
+"Salmón",
+150.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Espárragos",
+1.0,
+"atado",
+"Frutas y verduras"
+],
+[
+"Limones",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Ajo",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Eneldo",
+null,
+"u",
+"Condimentos"
+],
+[
+"Aceite de oliva",
+1.0,
+"cdta",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -1897,6 +4091,38 @@
 "Vacía los pimentones.",
 "Rellena con carne sofrita, arroz y salsa.",
 "Cubre con queso y hornea 25 minutos."
+],
+"shop": [
+[
+"Pimentón",
+2.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Carne molida magra",
+100.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Arroz",
+0.333,
+"taza",
+"Granos y despensa"
+],
+[
+"Salsa de tomate natural",
+1,
+"u",
+"Granos y despensa"
+],
+[
+"Queso",
+20.0,
+"g",
+"Lácteos y huevos"
+]
 ]
 },
 {
@@ -1922,6 +4148,50 @@
 "Rellena las tortillas con pollo y queso.",
 "Dora en sartén 2 minutos por lado.",
 "Sirve con pico de gallo."
+],
+"shop": [
+[
+"Tortillas integrales",
+2.0,
+"u",
+"Panadería"
+],
+[
+"Pechuga de pollo",
+90.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Queso mozzarella",
+30.0,
+"g",
+"Lácteos y huevos"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Cilantro",
+1,
+"atado",
+"Frutas y verduras"
+],
+[
+"Limones",
+1,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -1947,6 +4217,38 @@
 "Sofríe cebolla y zanahoria.",
 "Agrega lentejas, comino y caldo y cocina 18 minutos.",
 "Licúa a medias y sirve."
+],
+"shop": [
+[
+"Lentejas rojas",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Zanahoria",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Comino",
+null,
+"u",
+"Condimentos"
+],
+[
+"Caldo (pollo o verduras)",
+1,
+"u",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -1973,6 +4275,50 @@
 "Corta las verduras en cubos.",
 "Mezcla con garbanzos, feta y aceitunas.",
 "Aliña con aceite, limón y orégano."
+],
+"shop": [
+[
+"Garbanzos",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Pepino",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla morada",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Queso feta",
+30.0,
+"g",
+"Lácteos y huevos"
+],
+[
+"Aceitunas",
+1,
+"u",
+"Granos y despensa"
+],
+[
+"Aceite de oliva",
+1.0,
+"cdta",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -1998,6 +4344,32 @@
 "Dora el pollo 6 minutos por lado.",
 "Agrega la salsa y reduce 2 minutos.",
 "Sirve con el brócoli al vapor y ajonjolí."
+],
+"shop": [
+[
+"Muslo de pollo",
+150.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Brócoli",
+1.0,
+"taza",
+"Frutas y verduras"
+],
+[
+"Salsa teriyaki ligera",
+2.0,
+"cda",
+"Granos y despensa"
+],
+[
+"Ajonjolí",
+1,
+"u",
+"Granos y despensa"
+]
 ]
 },
 {
@@ -2023,6 +4395,38 @@
 "Parte los calabacines a lo largo y vacía.",
 "Rellena con atún sofrito con tomate y cebolla.",
 "Cubre con queso y hornea 15 minutos."
+],
+"shop": [
+[
+"Calabacín",
+2.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Atún en agua (lata)",
+1.0,
+"lata",
+"Carnes y pescados"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Queso rallado",
+20.0,
+"g",
+"Lácteos y huevos"
+]
 ]
 },
 {
@@ -2048,6 +4452,38 @@
 "Asa la arepa y ábrela.",
 "Mezcla el pollo con el aguacate, limón y cilantro.",
 "Rellena y sirve."
+],
+"shop": [
+[
+"Arepas",
+1.0,
+"u",
+"Panadería"
+],
+[
+"Pechuga de pollo",
+80.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Aguacate",
+0.25,
+"u",
+"Frutas y verduras"
+],
+[
+"Limones",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cilantro",
+1,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -2072,6 +4508,32 @@
 "Cocina la costilla en agua 40 minutos retirando la grasa.",
 "Agrega la papa 15 minutos.",
 "Sirve con cilantro."
+],
+"shop": [
+[
+"Costilla de res",
+150.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Papa",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla larga",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cilantro",
+1,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -2097,6 +4559,38 @@
 "Tritura las lentejas con la avena y condimentos.",
 "Forma la torta y dórala 4 minutos por lado.",
 "Arma la hamburguesa."
+],
+"shop": [
+[
+"Lentejas",
+1.0,
+"taza",
+"Granos y despensa"
+],
+[
+"Avena en hojuelas",
+3.0,
+"cda",
+"Granos y despensa"
+],
+[
+"Pan integral",
+1.0,
+"u",
+"Panadería"
+],
+[
+"Lechuga",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -2121,6 +4615,26 @@
 "Saltea los champiñones 4 minutos.",
 "Agrega los huevos batidos y el queso.",
 "Dobla y sirve."
+],
+"shop": [
+[
+"Huevos",
+3.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Champiñones",
+1.0,
+"taza",
+"Frutas y verduras"
+],
+[
+"Queso mozzarella",
+30.0,
+"g",
+"Lácteos y huevos"
+]
 ]
 },
 {
@@ -2146,6 +4660,44 @@
 "Dora el tofu en cubos.",
 "Agrega los vegetales y el jengibre 4 minutos.",
 "Termina con la soya."
+],
+"shop": [
+[
+"Tofu firme",
+150.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Brócoli",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Pimentón",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Zanahoria",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Salsa de soya baja en sodio",
+1.0,
+"cda",
+"Granos y despensa"
+],
+[
+"Jengibre",
+1,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -2171,6 +4723,38 @@
 "Unta la salsa sobre la base.",
 "Agrega pollo, vegetales y queso.",
 "Hornea 12 minutos a 220 °C."
+],
+"shop": [
+[
+"Base de pizza integral",
+1.0,
+"base",
+"Panadería"
+],
+[
+"Pechuga de pollo",
+80.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Queso mozzarella",
+40.0,
+"g",
+"Lácteos y huevos"
+],
+[
+"Salsa de tomate natural",
+1,
+"u",
+"Granos y despensa"
+],
+[
+"Verduras surtidas",
+1,
+"u",
+"Frutas y verduras"
+]
 ]
 },
 {
@@ -2196,6 +4780,32 @@
 "Cocina brócoli, cebolla y papa en caldo 12 minutos.",
 "Licúa.",
 "Sirve con el huevo picado."
+],
+"shop": [
+[
+"Brócoli",
+2.0,
+"taza",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Papa",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Huevos",
+1.0,
+"u",
+"Lácteos y huevos"
+]
 ]
 }
 ]

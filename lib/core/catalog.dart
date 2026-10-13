@@ -17,15 +17,23 @@ class Exercise {
   String frame(int i) => 'assets/exercises/${img}_$i.jpg';
 }
 
+class ShopItem {
+  final String product, unit, aisle;
+  final double? qty; // null = al gusto
+  const ShopItem(this.product, this.qty, this.unit, this.aisle);
+}
+
 class Food {
   final String id, slot, emoji, es, en, tags;
   final int kcal, protein, carbs, fat, costCop, minutes;
   final List<String> ingredients, steps;
-  const Food({required this.id, required this.slot, required this.emoji, required this.es, required this.en, required this.kcal, required this.protein, required this.carbs, required this.fat, required this.costCop, required this.tags, required this.minutes, required this.ingredients, required this.steps});
+  final List<ShopItem> shop;
+  const Food({required this.id, required this.slot, required this.emoji, required this.es, required this.en, required this.kcal, required this.protein, required this.carbs, required this.fat, required this.costCop, required this.tags, required this.minutes, required this.ingredients, required this.steps, this.shop = const []});
   factory Food.fromJson(Map<String, dynamic> j) => Food(
       id: j['id'], slot: j['slot'], emoji: j['emoji'], es: j['es'], en: j['en'], kcal: j['kcal'], protein: j['protein'],
       carbs: j['carbs'], fat: j['fat'], costCop: j['costCop'], tags: j['tags'], minutes: j['minutes'],
-      ingredients: List<String>.from(j['ingredients']), steps: List<String>.from(j['steps']));
+      ingredients: List<String>.from(j['ingredients']), steps: List<String>.from(j['steps']),
+      shop: ((j['shop'] ?? []) as List).map((x) => ShopItem(x[0], (x[1] as num?)?.toDouble(), x[2], x[3])).toList());
   String get name => I18n.lang == 'es' ? es : en;
   bool has(String tag) => tags.contains(tag);
 }
@@ -38,10 +46,10 @@ class WatchBrand {
 }
 
 class Store {
-  final String name;
+  final String name, website;
   final double priceFactor, km;
   final Color color;
-  const Store(this.name, this.priceFactor, this.km, this.color);
+  const Store(this.name, this.priceFactor, this.km, this.color, [this.website = '']);
 }
 
 class Place {

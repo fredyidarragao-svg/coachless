@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../core/app_state.dart';
@@ -9,6 +12,7 @@ import '../core/models.dart';
 import '../core/theme.dart';
 import '../services/auth_service.dart';
 import '../widgets/ui.dart';
+import 'calendar_screen.dart';
 import 'onboarding.dart';
 import 'sheets.dart';
 import 'train_screen.dart';
@@ -59,6 +63,21 @@ class ProfileScreen extends StatelessWidget {
           Btn(t('Actualizar peso'), onTap: () => showSheet(context, (_) => const MonthlySheet())),
         ]),
       ]),
+      _MonthlySummary(pr, st),
+      InkWell(
+        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const CalendarScreen())),
+        child: Box(
+          child: Row(children: [
+            Container(width: 46, height: 46, decoration: BoxDecoration(color: p.acc, borderRadius: BorderRadius.circular(13)), child: const Icon(Icons.calendar_month_rounded, color: Colors.white)),
+            const SizedBox(width: 12),
+            Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(t('Calendario y evidencias'), style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
+              Text(t('Cada día entrenado y cada muestra del reloj, con fecha y hora.'), style: TextStyle(color: p.muted, fontSize: 12.5)),
+            ])),
+            Icon(Icons.chevron_right_rounded, color: p.muted),
+          ]),
+        ),
+      ),
       Box(child: vgap([
         Text(t('Idioma y ubicación'), style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
         Row(children: [
@@ -132,4 +151,64 @@ class _WeightPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _WeightPainter o) => true;
+}
+
+class _MonthlySummary extends StatelessWidget {
+  final Profile pr;
+  final AppState st;
+  const _MonthlySummary(this.pr, this.st);
+
+  @override
+  Widget build(BuildContext context) {
+    final p = Palette.of(context);
+    final ms = monthlyStats(pr, st.logs);
+    String mName(DateTime d) {
+      final s = DateFormat('MMM', I18n.locale).format(d).replaceAll('.', '');
+      return s[0].toUpperCase() + s.substring(1);
+    }
+
+    Widget chart(String title, String unit, List<double?> values, Color c, String Function(double) fmt, {bool signed = false}) {
+      final vals = values.whereType<double>().map((v) => v.abs()).toList();
+      final mx = vals.isEmpty ? 1.0 : vals.reduce(max).clamp(0.0001, double.infinity);
+      final lastV = values.lastWhere((v) => v != null, orElse: () => null);
+      return Box(
+        child: vgap([
+          Row(children: [
+            Expanded(child: Text(title, style: const TextStyle(fontWeight: FontWeight.w700))),
+            Text(lastV == null ? '—' : '${signed && lastV > 0 ? '+' : ''}${fmt(lastV)} $unit', style: display(context, 20, color: c)),
+          ]),
+          SizedBox(
+            height: 92,
+            child: Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
+              for (var i = 0; i < ms.length; i++)
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                    child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+                      Text(values[i] == null ? '' : '${signed && values[i]! > 0 ? '+' : ''}${fmt(values[i]!)}', style: TextStyle(fontSize: 10, color: p.muted, fontWeight: FontWeight.w700)),
+                      const SizedBox(height: 3),
+                      Container(
+                        height: values[i] == null ? 3 : max(4.0, 56 * values[i]!.abs() / mx),
+                        decoration: BoxDecoration(color: values[i] == null ? p.line : (signed && values[i]! < 0 ? p.ok : c), borderRadius: BorderRadius.circular(5)),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(mName(ms[i].month), style: TextStyle(fontSize: 10.5, color: p.muted)),
+                    ]),
+                  ),
+                ),
+            ]),
+          ),
+        ], 6),
+      );
+    }
+
+    final noSamples = ms.every((m) => m.sampleDays == 0);
+    return vgap([
+      SectionTitle(t('Resumen mensual')),
+      chart(t('Cambio de peso por mes'), 'kg', ms.map((m) => m.weightDelta).toList(), p.acc2, (v) => v.toStringAsFixed(1), signed: true),
+      chart(t('Pulso en reposo promedio'), t('lpm'), ms.map((m) => m.restingHr).toList(), const Color(0xFFFF6B8A), (v) => v.round().toString()),
+      chart(t('Calorías activas por mes'), 'kcal', ms.map((m) => m.sampleDays == 0 ? null : m.activeKcal.toDouble()).toList(), p.acc, (v) => I18n.fmt(v.round())),
+      if (noSamples) Text(t('El pulso y las calorías se calculan con las muestras que tomes del reloj. Toma una muestra cada día para ver tu evolución.'), style: TextStyle(color: p.muted, fontSize: 12)),
+    ], 10);
+  }
 }

@@ -17,6 +17,7 @@ dependencies:
   geolocator: ^13.0.1
   health: ^11.1.0
   google_sign_in: ^6.2.1
+  http: ^1.2.2
 
 dev_dependencies:
   flutter_test:

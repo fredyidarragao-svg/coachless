@@ -199,10 +199,13 @@ class TrainScreen extends StatelessWidget {
       ]));
     } else {
       out.add(vgap([
-        Btn(kid ? t('¡Terminé mi misión!') : t('Terminé mi rutina'), kind: BtnKind.primary, expand: true, onTap: () => st.update(() {
-              l.complete = true;
-              l.skip = null;
-            })),
+        Btn(kid ? t('¡Terminé mi misión!') : t('Terminé mi rutina'), kind: BtnKind.primary, expand: true, onTap: () {
+          st.update(() {
+            l.complete = true;
+            l.skip = null;
+          });
+          if (dk == todayKey() && st.profile!.watch.linked) st.takeSample();
+        }),
         Row(children: [
           Expanded(child: Btn(t('No hice la rutina'), onTap: () => showSheet(context, (_) => const SkipSheet()))),
           const SizedBox(width: 10),
@@ -275,14 +278,37 @@ String _eqName(String k) => const {
     }[k] ??
     k;
 
-class _WatchStats extends StatelessWidget {
+class _WatchStats extends StatefulWidget {
   const _WatchStats();
   @override
+  State<_WatchStats> createState() => _WatchStatsState();
+}
+
+class _WatchStatsState extends State<_WatchStats> {
+  bool busy = false;
+
+  Future<void> sample() async {
+    final st = context.read<AppState>();
+    setState(() => busy = true);
+    final s = await st.takeSample();
+    if (!mounted) return;
+    setState(() => busy = false);
+    final msg = s != null
+        ? t('Muestra guardada a las {h}.', {'h': TimeOfDay.fromDateTime(s.at).format(context)})
+        : st.profile!.watch.linked
+            ? t('No se pudo leer el reloj. Abre la app de tu reloj, sincroniza y vuelve a intentarlo.')
+            : t('Primero ingresa tus datos a mano o vincula tu reloj.');
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final pr = context.watch<AppState>().profile!;
+    final st = context.watch<AppState>();
+    final pr = st.profile!;
     final p = Palette.of(context);
     final w = pr.watch, d = w.data;
-    if (d == null) {
+    final samples = st.peek(todayKey())?.samples ?? const [];
+    if (d == null && !w.linked) {
       return Box(child: vgap([
         Text(t('Conecta tu reloj o banda'), style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
         Text(t('Pasos, pulso, calorías y sueño ajustan tu rutina del día.'), style: TextStyle(color: p.muted)),
@@ -293,14 +319,33 @@ class _WatchStats extends StatelessWidget {
         ]),
       ], 8));
     }
+    final last = samples.isEmpty ? null : samples.last;
     return vgap([
-      SectionTitle(t('Tu día'), trailing: Btn('${w.linked ? (w.model ?? '') : t('Manual')} · ${t('Editar')}', kind: BtnKind.ghost, onTap: () => showSheet(context, (_) => const ManualDataSheet()))),
-      statRow([
-        StatTile(I18n.fmt(d.steps), t('Pasos'), icon: Icons.directions_walk_rounded, iconColor: p.acc),
-        StatTile('${d.restingHr}', t('Pulso reposo'), icon: Icons.favorite_rounded, iconColor: const Color(0xFFFF6B8A)),
-        StatTile(I18n.fmt(d.activeKcal), t('kcal activas'), icon: Icons.local_fire_department_rounded, iconColor: p.acc2),
-        StatTile('${d.sleepHours} h', t('Sueño'), icon: Icons.nightlight_round, iconColor: const Color(0xFF9B8CFF)),
-      ]),
+      SectionTitle(t('Tu día'), trailing: Btn(t('Editar'), kind: BtnKind.ghost, onTap: () => showSheet(context, (_) => const ManualDataSheet()))),
+      if (d != null)
+        statRow([
+          StatTile(I18n.fmt(d.steps), t('Pasos'), icon: Icons.directions_walk_rounded, iconColor: p.acc),
+          StatTile('${d.restingHr}', t('Pulso reposo'), icon: Icons.favorite_rounded, iconColor: const Color(0xFFFF6B8A)),
+          StatTile(I18n.fmt(d.activeKcal), t('kcal activas'), icon: Icons.local_fire_department_rounded, iconColor: p.acc2),
+          StatTile('${d.sleepHours} h', t('Sueño'), icon: Icons.nightlight_round, iconColor: const Color(0xFF9B8CFF)),
+        ]),
+      Box(
+        border: p.acc,
+        child: vgap([
+          Row(children: [
+            Icon(Icons.watch_rounded, color: p.acc),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Text(
+                last == null ? t('Aún no has tomado muestras hoy.') : t('{n} muestra(s) hoy · última a las {h}', {'n': samples.length, 'h': TimeOfDay.fromDateTime(last.at).format(context)}),
+                style: const TextStyle(fontWeight: FontWeight.w700),
+              ),
+            ),
+          ]),
+          Btn(busy ? t('Leyendo el reloj…') : t('Tomar muestra del reloj'), kind: BtnKind.primary, icon: Icons.sensors_rounded, expand: true, onTap: busy ? null : sample),
+          Text(t('Tómala cuando termines de entrenar o al final del día, con la app de tu reloj sincronizada. Cada muestra queda guardada con su hora como evidencia en tu calendario.'), style: TextStyle(color: p.muted, fontSize: 12)),
+        ], 8),
+      ),
     ], 8);
   }
 }

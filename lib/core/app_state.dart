@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../services/health_service.dart';
 import 'i18n.dart';
 import 'models.dart';
 
@@ -10,6 +11,8 @@ import 'models.dart';
 class AppState extends ChangeNotifier {
   static const _kProfile = 'coachless.profile';
   static const _kLogs = 'coachless.logs';
+  static const _kShop = 'coachless.shop';
+  final Set<String> shopChecked = {};
 
   SharedPreferences? _prefs;
   Profile? profile;
@@ -30,6 +33,7 @@ class AppState extends ChangeNotifier {
         profile = null;
       }
     }
+    shopChecked.addAll(_prefs!.getStringList(_kShop) ?? []);
     final l = _prefs!.getString(_kLogs);
     if (l != null) {
       try {
@@ -41,6 +45,7 @@ class AppState extends ChangeNotifier {
   Future<void> _save() async {
     if (profile != null) await _prefs?.setString(_kProfile, json.encode(profile!.toJson()));
     await _prefs?.setString(_kLogs, json.encode(_logs.map((k, v) => MapEntry(k, v.toJson()))));
+    await _prefs?.setStringList(_kShop, shopChecked.toList());
   }
 
   void update([VoidCallback? fn]) {
@@ -62,7 +67,29 @@ class AppState extends ChangeNotifier {
   }
 
   DayLog log(String day) => _logs.putIfAbsent(day, () => DayLog());
+  Map<String, DayLog> get logs => _logs;
+
+  void toggleShop(String key) => update(() => shopChecked.contains(key) ? shopChecked.remove(key) : shopChecked.add(key));
   DayLog? peek(String day) => _logs[day];
+
+  /// Toma una muestra del reloj en este momento y la guarda como evidencia del día.
+  /// Lee Health Connect / Apple Salud; si el reloj no está conectado por esa vía, guarda los datos ingresados a mano.
+  /// Devuelve null si no se pudo leer.
+  Future<WatchSample?> takeSample() async {
+    final p = profile;
+    if (p == null) return null;
+    final w = p.watch;
+    WatchData? d;
+    if (w.route == 'hc' || w.route == 'hk') d = await HealthService.today(w.model ?? '');
+    d ??= (w.data != null && w.data!.date == todayKey()) ? w.data : null;
+    if (d == null) return null;
+    final sample = WatchSample(at: DateTime.now(), steps: d.steps, restingHr: d.restingHr, activeKcal: d.activeKcal, sleepHours: d.sleepHours, source: d.source.isNotEmpty ? d.source : (w.model ?? 'Ingreso manual'));
+    update(() {
+      w.data = d;
+      log(todayKey()).samples.add(sample);
+    });
+    return sample;
+  }
 
   void select(String day) {
     selected = day;

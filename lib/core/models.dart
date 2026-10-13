@@ -33,6 +33,27 @@ class WatchData {
   Map<String, dynamic> toJson() => {'steps': steps, 'hr': restingHr, 'kcal': activeKcal, 'sleep': sleepHours, 'src': source, 'd': date};
 }
 
+/// Muestra tomada del reloj con su hora exacta: es la evidencia del día.
+class WatchSample {
+  final DateTime at;
+  final int steps, restingHr, activeKcal;
+  final double sleepHours;
+  final String source;
+  WatchSample({required this.at, required this.steps, required this.restingHr, required this.activeKcal, required this.sleepHours, required this.source});
+  factory WatchSample.fromJson(Map j) => WatchSample(
+      at: DateTime.parse(j['at']), steps: j['steps'] ?? 0, restingHr: j['hr'] ?? 0, activeKcal: j['kcal'] ?? 0, sleepHours: (j['sleep'] ?? 0).toDouble(), source: j['src'] ?? '');
+  Map<String, dynamic> toJson() => {'at': at.toIso8601String(), 'steps': steps, 'hr': restingHr, 'kcal': activeKcal, 'sleep': sleepHours, 'src': source};
+}
+
+/// Supermercado real encontrado cerca del usuario (OpenStreetMap).
+class NearbyStore {
+  final String name, website;
+  final double km, priceFactor;
+  NearbyStore({required this.name, required this.km, this.website = '', this.priceFactor = 1});
+  factory NearbyStore.fromJson(Map j) => NearbyStore(name: j['n'], km: (j['km'] as num).toDouble(), website: j['web'] ?? '', priceFactor: (j['f'] as num?)?.toDouble() ?? 1);
+  Map<String, dynamic> toJson() => {'n': name, 'km': km, 'web': website, 'f': priceFactor};
+}
+
 class WatchLink {
   String? route; // hc, hk, api o null si no está vinculado
   String? brand, model;
@@ -73,16 +94,18 @@ class Profile {
   WatchLink watch;
   List<WeightEntry> weights;
   String lastCheck;
+  List<NearbyStore> nearby;
+  String nearbyDate;
 
   Profile({
     this.email = '', this.firstName = '', this.lastName = '', this.sex = '', this.age = 0, this.weight = 0, this.height = 0,
     this.lang = 'es', this.place = 'mzl', this.store = '', this.budgetCop = 30000, this.located = false,
     this.sleep = '7', this.water = '6', this.mealsPerDay = 5, List<String>? habits, List<Sport>? sports,
     this.routineMinutes = 45, List<int>? routineDays, Map<String, String>? parts, this.dietGoal = 'mantener',
-    List<String>? equipment, WatchLink? watch, List<WeightEntry>? weights, String? lastCheck,
+    List<String>? equipment, WatchLink? watch, List<WeightEntry>? weights, String? lastCheck, List<NearbyStore>? nearby, this.nearbyDate = '',
   })  : habits = habits ?? [], sports = sports ?? [], routineDays = routineDays ?? [0, 2, 4],
         parts = parts ?? {for (final p in ['Pecho', 'Espalda', 'Hombros', 'Brazos', 'Abdomen', 'Piernas', 'Glúteos', 'Pantorrillas']) p: 'no'},
-        equipment = equipment ?? [], watch = watch ?? WatchLink(), weights = weights ?? [], lastCheck = lastCheck ?? todayKey();
+        equipment = equipment ?? [], watch = watch ?? WatchLink(), weights = weights ?? [], lastCheck = lastCheck ?? todayKey(), nearby = nearby ?? [];
 
   bool get isKid => age > 0 && age < 15;
   String get theme => isKid ? 'k' : (sex == 'f' ? 'f' : 'm');
@@ -99,6 +122,8 @@ class Profile {
         equipment: List<String>.from(j['equipment'] ?? []), watch: WatchLink.fromJson(j['watch']),
         weights: ((j['weights'] ?? []) as List).map((w) => WeightEntry(w['d'], (w['w'] as num).toDouble())).toList(),
         lastCheck: j['lastCheck'],
+        nearby: ((j['nearby'] ?? []) as List).map((e) => NearbyStore.fromJson(e)).toList(),
+        nearbyDate: j['nearbyDate'] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
@@ -107,6 +132,7 @@ class Profile {
         'meals': mealsPerDay, 'habits': habits, 'sports': sports.map((s) => s.toJson()).toList(), 'rMin': routineMinutes,
         'rDays': routineDays, 'parts': parts, 'diet': dietGoal, 'equipment': equipment, 'watch': watch.toJson(),
         'weights': weights.map((w) => w.toJson()).toList(), 'lastCheck': lastCheck,
+        'nearby': nearby.map((e) => e.toJson()).toList(), 'nearbyDate': nearbyDate,
       };
 
   Profile copy() => Profile.fromJson(toJson());
@@ -128,14 +154,18 @@ class DayLog {
   String? skip; // motivo
   OtherActivity? other;
   Map<String, String> meals; // franja → id de receta elegida
-  DayLog({Set<String>? done, this.complete = false, this.extra = false, this.sport, this.skip, this.other, Map<String, String>? meals})
-      : done = done ?? {}, meals = meals ?? {};
+  List<WatchSample> samples; // muestras del reloj tomadas ese día
+  DayLog({Set<String>? done, this.complete = false, this.extra = false, this.sport, this.skip, this.other, Map<String, String>? meals, List<WatchSample>? samples})
+      : done = done ?? {}, meals = meals ?? {}, samples = samples ?? [];
+  WatchSample? get lastSample => samples.isEmpty ? null : samples.last;
   bool get isDone => complete || sport == 'si' || other != null;
   int get stars => done.length + (complete ? 3 : 0) + (sport == 'si' ? 3 : 0) + (other != null ? 2 : 0);
   factory DayLog.fromJson(Map j) => DayLog(
       done: Set<String>.from(j['done'] ?? []), complete: j['complete'] ?? false, extra: j['extra'] ?? false, sport: j['sport'], skip: j['skip'],
-      other: j['other'] == null ? null : OtherActivity.fromJson(j['other']), meals: Map<String, String>.from(j['meals'] ?? {}));
+      other: j['other'] == null ? null : OtherActivity.fromJson(j['other']), meals: Map<String, String>.from(j['meals'] ?? {}),
+      samples: ((j['samples'] ?? []) as List).map((e) => WatchSample.fromJson(e)).toList());
   Map<String, dynamic> toJson() => {
         'done': done.toList(), 'complete': complete, 'extra': extra, 'sport': sport, 'skip': skip, 'other': other?.toJson(), 'meals': meals,
+        'samples': samples.map((e) => e.toJson()).toList(),
       };
 }

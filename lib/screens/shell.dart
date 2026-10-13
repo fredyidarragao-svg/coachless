@@ -5,6 +5,7 @@ import '../core/app_state.dart';
 import '../core/i18n.dart';
 import '../core/theme.dart';
 import '../services/health_service.dart';
+import 'calendar_screen.dart';
 import 'diet_screen.dart';
 import 'library_screen.dart';
 import 'profile_screen.dart';
@@ -82,6 +83,15 @@ class _ShellState extends State<Shell> with WidgetsBindingObserver {
                   decoration: BoxDecoration(color: p.surface, borderRadius: BorderRadius.circular(12), border: Border.all(color: p.line)),
                   child: Row(children: [Icon(Icons.local_fire_department_rounded, size: 16, color: p.acc2), const SizedBox(width: 4), Text('${st.streak}', style: TextStyle(color: p.acc2, fontWeight: FontWeight.w800))]),
                 ),
+              const SizedBox(width: 8),
+              InkWell(
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const CalendarScreen())),
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(color: p.surface, borderRadius: BorderRadius.circular(12), border: Border.all(color: p.line)),
+                  child: Icon(Icons.calendar_month_rounded, size: 18, color: p.fg),
+                ),
+              ),
               const SizedBox(width: 8),
               InkWell(
                 onTap: () => showSheet(context, (_) => LanguageSheet(onPick: st.setLang)),
