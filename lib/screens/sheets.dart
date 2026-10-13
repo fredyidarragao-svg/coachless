@@ -184,7 +184,7 @@ class WatchPicker extends StatefulWidget {
 }
 
 class _WatchPickerState extends State<WatchPicker> {
-  late String os = Platform.isIOS ? 'ios' : 'android';
+  final String os = Platform.isIOS ? 'ios' : 'android';
   String? brand, model;
   bool busy = false;
   String? error;
@@ -222,9 +222,8 @@ class _WatchPickerState extends State<WatchPicker> {
   @override
   Widget build(BuildContext context) {
     final p = Palette.of(context);
-    final children = <Widget>[
-      Segmented(options: [('android', '${t('Celular')} Android'), ('ios', '${t('Celular')} iPhone')], value: os, onChanged: (v) => setState(() => os = v)),
-    ];
+    // El sistema del celular (Android o iPhone) se detecta solo; aquí únicamente se elige el reloj.
+    final children = <Widget>[];
     if (brand == null) {
       children.addAll([
         Text(t('Elige la marca de tu reloj o banda.'), style: TextStyle(color: p.muted)),
@@ -286,7 +285,7 @@ class _WatchPickerState extends State<WatchPicker> {
           ),
         ]);
         if (route == null) {
-          children.add(Box(color: p.acc2.withValues(alpha: .12), child: Text(t('Este reloj solo funciona con iPhone. Cambia a "Celular iPhone" o ingresa tus datos a mano.'))));
+          children.add(Box(color: p.acc2.withValues(alpha: .12), child: Text(t('El Apple Watch solo funciona con iPhone. Si tu celular es Android, ingresa tus datos a mano.'))));
         } else {
           final step2 = {
             'hc': t('En {a}, activa la sincronización con Health Connect.', {'a': app}),
