@@ -21,7 +21,10 @@ int strHash(String s) {
 class RoutineItem {
   final Exercise ex;
   final String rx;
-  RoutineItem(this.ex, this.rx);
+  final String? goal;
+  final String kind; // warm, main, fin, cool
+  final String slot; // id del ejercicio original de esa posición (para guardar cambios)
+  RoutineItem(this.ex, this.rx, {this.goal, this.kind = 'main', String? slot}) : slot = slot ?? ex.id;
 }
 
 class RoutineBlock {
@@ -126,7 +129,7 @@ Routine generateRoutine(Profile p, String day) {
 
   final wpool = Catalog.exercises.where((e) => e.lib == 'cardio' && e.flag == 'w' && ok(e)).toList();
   final warm = [..._pick(wpool, 1, rng, used, (e) => e.eq != 'ninguno'), ..._pick(wpool, 1, rng, used, (e) => e.eq == 'ninguno')];
-  blocks.add(RoutineBlock('Calentamiento', warmM, warm.map((e) => RoutineItem(e, prescription(e, null, kid, low, 'warm'))).toList()));
+  blocks.add(RoutineBlock('Calentamiento', warmM, warm.map((e) => RoutineItem(e, prescription(e, null, kid, low, 'warm'), goal: null, kind: 'warm')).toList()));
 
   final main = <RoutineItem>[];
   final cnt = <String, int>{};
@@ -146,22 +149,22 @@ Routine generateRoutine(Profile p, String day) {
     }
     var got = _pick(pool, 1, rng, used, (e) => (pref == null || pref(e)) && e.hasImage);
     if (got.isEmpty) got = _pick(pool, 1, rng, used, pref);
-    if (got.isNotEmpty) main.add(RoutineItem(got.first, prescription(got.first, g, kid, low, 'main')));
+    if (got.isNotEmpty) main.add(RoutineItem(got.first, prescription(got.first, g, kid, low, 'main'), goal: g, kind: 'main'));
   }
   blocks.add(RoutineBlock(kid ? 'Misión principal' : 'Bloque principal', mainM, main, dayParts.map(t).join(' · ')));
 
   if (doAbs) {
     final ap = Catalog.exercises.where((e) => (e.lib == 'abd' || e.part == 'Abdomen') && ok(e)).toList();
     final ai = _pick(ap, m >= 45 ? 3 : 2, rng, used, (e) => e.eq != 'ninguno');
-    blocks.add(RoutineBlock('Abdomen', absM, ai.map((e) => RoutineItem(e, prescription(e, abd, kid, low, 'main'))).toList()));
+    blocks.add(RoutineBlock('Abdomen', absM, ai.map((e) => RoutineItem(e, prescription(e, abd, kid, low, 'main'), goal: abd, kind: 'main')).toList()));
   }
   if (finM > 0) {
     final fp = Catalog.exercises.where((e) => e.lib == 'cardio' && e.flag == 'q' && ok(e) && (!kid || e.level < 2)).toList();
     final fi = _pick(fp, 1, rng, used, (e) => e.eq != 'ninguno');
-    blocks.add(RoutineBlock(kid ? 'Juego de energía' : 'Quema de grasa', finM, fi.map((e) => RoutineItem(e, prescription(e, null, kid, low, 'fin'))).toList()));
+    blocks.add(RoutineBlock(kid ? 'Juego de energía' : 'Quema de grasa', finM, fi.map((e) => RoutineItem(e, prescription(e, null, kid, low, 'fin'), goal: null, kind: 'fin')).toList()));
   }
   final cp = Catalog.exercises.where((e) => e.part == 'Estiramiento').toList();
-  blocks.add(RoutineBlock('Estiramiento', coolM, _pick(cp, 3, rng, used).map((e) => RoutineItem(e, prescription(e, null, kid, low, 'cool'))).toList()));
+  blocks.add(RoutineBlock('Estiramiento', coolM, _pick(cp, 3, rng, used).map((e) => RoutineItem(e, prescription(e, null, kid, low, 'cool'), goal: null, kind: 'cool')).toList()));
   return Routine(blocks, dayParts, m, low);
 }
 
@@ -422,3 +425,47 @@ List<MonthStats> monthlyStats(Profile p, Map<String, DayLog> logs, {int n = 6}) 
   }
   return out;
 }
+
+// ------------------------------------------------------------------
+// Cambiar un ejercicio por otro de la misma zona del cuerpo
+// ------------------------------------------------------------------
+bool exerciseAllowed(Profile p, Exercise e) => {'ninguno', ...p.equipment}.contains(e.eq) && (!p.isKid || _kidOk(e));
+
+/// Alternativas para una posición de la rutina: misma zona del cuerpo (o mismo tipo de calentamiento,
+/// quema o estiramiento), con el equipo que tiene el usuario. Primero las que tienen foto.
+List<Exercise> swapOptions(Profile p, RoutineItem it, Set<String> inUse) {
+  final e = it.ex;
+  bool same(Exercise x) {
+    if (it.kind == 'warm') return x.lib == 'cardio' && x.flag == 'w';
+    if (it.kind == 'fin') return x.lib == 'cardio' && x.flag == 'q';
+    if (it.kind == 'cool') return x.part == 'Estiramiento';
+    if (e.lib == 'abd' || e.part == 'Abdomen') return x.lib == 'abd' || x.part == 'Abdomen';
+    return x.part == e.part && x.lib != 'cardio';
+  }
+
+  final l = Catalog.exercises.where((x) => x.id != e.id && !inUse.contains(x.id) && same(x) && exerciseAllowed(p, x)).toList();
+  l.sort((a, b) {
+    if (a.hasImage != b.hasImage) return a.hasImage ? -1 : 1;
+    return a.level.compareTo(b.level);
+  });
+  return l;
+}
+
+Routine applySwaps(Profile p, Routine r, Map<String, String> swaps) {
+  if (swaps.isEmpty) return r;
+  final blocks = r.blocks
+      .map((b) => RoutineBlock(
+          b.title,
+          b.minutes,
+          b.items.map((it) {
+            final ne = swaps[it.slot] == null ? null : Catalog.exById[swaps[it.slot]];
+            if (ne == null) return it;
+            return RoutineItem(ne, prescription(ne, it.goal, p.isKid, r.lowSleep, it.kind), goal: it.goal, kind: it.kind, slot: it.slot);
+          }).toList(),
+          b.sub))
+      .toList();
+  return Routine(blocks, r.parts, r.minutes, r.lowSleep);
+}
+
+/// Rutina del día con los cambios de ejercicio que haya hecho el usuario.
+Routine routineFor(Profile p, String day, DayLog? log) => applySwaps(p, generateRoutine(p, day), log?.swaps ?? const {});

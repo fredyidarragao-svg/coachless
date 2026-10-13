@@ -142,8 +142,8 @@ class TrainScreen extends StatelessWidget {
     final pr = st.profile!;
     final p = Palette.of(context);
     final kid = pr.isKid;
-    final r = generateRoutine(pr, dk);
     final l = st.log(dk);
+    final r = routineFor(pr, dk, l);
     final all = r.all;
     final done = all.where((i) => l.done.contains(i.ex.id)).length;
     final pct = all.isEmpty ? 0.0 : done / all.length;
@@ -186,7 +186,7 @@ class TrainScreen extends StatelessWidget {
           Expanded(child: Text(t(blk.title), style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16))),
           Text('${blk.minutes} min${blk.sub.isNotEmpty ? ' · ${blk.sub}' : ''}', style: TextStyle(color: p.muted, fontSize: 12)),
         ]),
-        for (final it in blk.items) _ExerciseCard(it, dk, editable),
+        for (final it in blk.items) _ExerciseCard(it, dk, editable, r.all.map((x) => x.ex.id).toSet()),
       ], 10));
     }
     if (!editable) return out;
@@ -223,7 +223,8 @@ class _ExerciseCard extends StatelessWidget {
   final RoutineItem it;
   final String day;
   final bool editable;
-  const _ExerciseCard(this.it, this.day, this.editable);
+  final Set<String> inUse;
+  const _ExerciseCard(this.it, this.day, this.editable, this.inUse);
   @override
   Widget build(BuildContext context) {
     final st = context.watch<AppState>();
@@ -252,6 +253,14 @@ class _ExerciseCard extends StatelessWidget {
               ]),
             ),
           ),
+          Column(mainAxisSize: MainAxisSize.min, children: [
+            IconButton(
+              tooltip: t('Cambiar ejercicio'),
+              visualDensity: VisualDensity.compact,
+              onPressed: () => showSheet(context, (_) => SwapExerciseSheet(it, day, inUse)),
+              icon: Icon(Icons.swap_horiz_rounded, color: l.swaps.containsKey(it.slot) ? p.acc2 : p.muted),
+            ),
+          ]),
           GestureDetector(
             onTap: editable ? () => st.update(() => on ? l.done.remove(it.ex.id) : l.done.add(it.ex.id)) : null,
             child: Opacity(

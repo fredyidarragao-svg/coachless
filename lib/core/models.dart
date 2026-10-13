@@ -155,17 +155,20 @@ class DayLog {
   OtherActivity? other;
   Map<String, String> meals; // franja → id de receta elegida
   List<WatchSample> samples; // muestras del reloj tomadas ese día
-  DayLog({Set<String>? done, this.complete = false, this.extra = false, this.sport, this.skip, this.other, Map<String, String>? meals, List<WatchSample>? samples})
-      : done = done ?? {}, meals = meals ?? {}, samples = samples ?? [];
+  Map<String, String> swaps; // ejercicio original → ejercicio elegido para reemplazarlo
+  DayLog({Set<String>? done, this.complete = false, this.extra = false, this.sport, this.skip, this.other, Map<String, String>? meals, List<WatchSample>? samples, Map<String, String>? swaps})
+      : done = done ?? {}, meals = meals ?? {}, samples = samples ?? [], swaps = swaps ?? {};
   WatchSample? get lastSample => samples.isEmpty ? null : samples.last;
   bool get isDone => complete || sport == 'si' || other != null;
   int get stars => done.length + (complete ? 3 : 0) + (sport == 'si' ? 3 : 0) + (other != null ? 2 : 0);
   factory DayLog.fromJson(Map j) => DayLog(
       done: Set<String>.from(j['done'] ?? []), complete: j['complete'] ?? false, extra: j['extra'] ?? false, sport: j['sport'], skip: j['skip'],
       other: j['other'] == null ? null : OtherActivity.fromJson(j['other']), meals: Map<String, String>.from(j['meals'] ?? {}),
-      samples: ((j['samples'] ?? []) as List).map((e) => WatchSample.fromJson(e)).toList());
+      samples: ((j['samples'] ?? []) as List).map((e) => WatchSample.fromJson(e)).toList(),
+      swaps: Map<String, String>.from(j['swaps'] ?? {}));
   Map<String, dynamic> toJson() => {
         'done': done.toList(), 'complete': complete, 'extra': extra, 'sport': sport, 'skip': skip, 'other': other?.toJson(), 'meals': meals,
         'samples': samples.map((e) => e.toJson()).toList(),
+        'swaps': swaps,
       };
 }

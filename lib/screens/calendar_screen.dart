@@ -132,7 +132,7 @@ class _DayDetail extends StatelessWidget {
       lines.add(Text(t('Sin registros este día.'), style: TextStyle(color: p.muted)));
     } else {
       if (l.complete) {
-        final r = generateRoutine(pr, day);
+        final r = routineFor(pr, day, l);
         lines.add(_row(context, Icons.check_circle_rounded, p.ok, t('Rutina completada'), '${r.parts.map(t).join(' + ')} · ${l.done.length}/${r.all.length} ${t('ejercicios')}'));
       } else if (l.done.isNotEmpty) {
         lines.add(_row(context, Icons.timelapse_rounded, p.acc2, t('Rutina parcial'), '${l.done.length} ${t('ejercicios')}'));

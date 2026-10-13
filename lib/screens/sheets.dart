@@ -680,3 +680,89 @@ class LocationSheet extends StatelessWidget {
     ]);
   }
 }
+
+// ---------------------------------------------------------------- cambiar ejercicio
+class SwapExerciseSheet extends StatefulWidget {
+  final RoutineItem item;
+  final String day;
+  final Set<String> inUse;
+  const SwapExerciseSheet(this.item, this.day, this.inUse, {super.key});
+  @override
+  State<SwapExerciseSheet> createState() => _SwapExerciseSheetState();
+}
+
+class _SwapExerciseSheetState extends State<SwapExerciseSheet> {
+  String filter = 'todos';
+
+  void choose(AppState st, Exercise e) {
+    st.update(() {
+      final l = st.log(widget.day);
+      final wasDone = l.done.remove(widget.item.ex.id);
+      if (e.id == widget.item.slot) {
+        l.swaps.remove(widget.item.slot);
+      } else {
+        l.swaps[widget.item.slot] = e.id;
+      }
+      if (wasDone) l.done.add(e.id);
+    });
+    Navigator.pop(context);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final st = context.read<AppState>();
+    final pr = st.profile!;
+    final p = Palette.of(context);
+    final it = widget.item;
+    var opts = swapOptions(pr, it, widget.inUse);
+    if (filter == 'sin') opts = opts.where((e) => e.eq == 'ninguno').toList();
+    if (filter == 'con') opts = opts.where((e) => e.eq != 'ninguno').toList();
+    if (filter == 'mismo') opts = opts.where((e) => e.eq == it.ex.eq).toList();
+    final original = it.slot != it.ex.id ? Catalog.exById[it.slot] : null;
+    final zone = it.kind == 'warm'
+        ? t('Calentamiento')
+        : it.kind == 'fin'
+            ? t('Quema de grasa')
+            : it.kind == 'cool'
+                ? t('Estiramiento')
+                : t(it.ex.part);
+    return vgap([
+      Eyebrow('${t('Misma zona')}: $zone'),
+      Text(up(context, t('Cambiar ejercicio')), style: display(context, 28)),
+      Box(
+        padding: const EdgeInsets.all(10),
+        border: p.acc,
+        child: Row(children: [
+          ExerciseImage(it.ex, width: 72, height: 56, radius: 10),
+          const SizedBox(width: 12),
+          Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text(t('Actual'), style: TextStyle(color: p.muted, fontSize: 12)),
+            Text(it.ex.name, style: const TextStyle(fontWeight: FontWeight.w700)),
+            Text(it.rx, style: TextStyle(color: p.acc2, fontWeight: FontWeight.w700, fontSize: 12.5)),
+          ])),
+        ]),
+      ),
+      if (original != null) Btn('${t('Volver al original')}: ${original.name}', icon: Icons.undo_rounded, expand: true, onTap: () => choose(st, original)),
+      Segmented(options: [('todos', t('Todos')), ('mismo', t('Mismo equipo')), ('sin', t('Sin equipo')), ('con', t('Con equipo'))], value: filter, onChanged: (v) => setState(() => filter = v)),
+      if (opts.isEmpty) Text(t('No hay otros ejercicios para esta zona con tu equipo. Agrega equipos en tu perfil para ver más opciones.'), style: TextStyle(color: p.muted)),
+      ...opts.map((e) => Box(
+            padding: const EdgeInsets.all(8),
+            child: Row(children: [
+              GestureDetector(onTap: () => showSheet(context, (_) => ExerciseSheet(e)), child: ExerciseImage(e, width: 88, height: 68, radius: 11)),
+              const SizedBox(width: 12),
+              Expanded(
+                child: GestureDetector(
+                  onTap: () => showSheet(context, (_) => ExerciseSheet(e)),
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    Text(e.name, style: const TextStyle(fontWeight: FontWeight.w700)),
+                    const SizedBox(height: 3),
+                    Text('${t(equipment[e.eq]!)} · ${t(levels[e.level])}', style: TextStyle(color: p.muted, fontSize: 12)),
+                  ]),
+                ),
+              ),
+              Btn(t('Elegir'), kind: BtnKind.primary, onTap: () => choose(st, e)),
+            ]),
+          )),
+    ], 10);
+  }
+}
