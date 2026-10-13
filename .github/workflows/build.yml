@@ -28,7 +28,7 @@ jobs:
         run: python3 tool/patch_platforms.py
       - run: bash tool/ci_run.sh flutter pub get
       - name: Ícono de la app
-        run: dart run flutter_launcher_icons
+        run: bash tool/ci_run.sh dart run flutter_launcher_icons
       - name: Analizar código
         run: bash tool/ci_run.sh flutter analyze --no-fatal-infos --no-fatal-warnings
       - name: Compilar APK
@@ -69,12 +69,12 @@ jobs:
           channel: stable
           cache: true
       - name: Generar carpetas de plataforma
-        run: flutter create . --org app.coachless --project-name coachless --platforms web
+        run: flutter create . --org app.coachless --project-name coachless --platforms android,ios,web
       - name: Aplicar ajustes de plataforma
         run: python3 tool/patch_platforms.py
       - run: bash tool/ci_run.sh flutter pub get
       - name: Ícono de la app
-        run: dart run flutter_launcher_icons
+        run: bash tool/ci_run.sh dart run flutter_launcher_icons
       - name: Compilar versión web
         run: bash tool/ci_run.sh flutter build web --release --base-href /coachless/
       - name: Publicar en GitHub Pages
@@ -101,7 +101,7 @@ jobs:
         run: python3 tool/patch_platforms.py
       - run: bash tool/ci_run.sh flutter pub get
       - name: Ícono de la app
-        run: dart run flutter_launcher_icons
+        run: bash tool/ci_run.sh dart run flutter_launcher_icons
       - name: Compilar iOS sin firma
         run: bash tool/ci_run.sh flutter build ios --release --no-codesign
       - name: Empaquetar
