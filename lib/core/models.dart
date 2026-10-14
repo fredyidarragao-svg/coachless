@@ -54,6 +54,28 @@ class NearbyStore {
   Map<String, dynamic> toJson() => {'n': name, 'km': km, 'web': website, 'f': priceFactor};
 }
 
+/// Medición corporal: cinta métrica (cuello, cintura, cadera…) y, si la hay, lectura de báscula de bioimpedancia.
+class BodyScan {
+  final String date;
+  final double weight;
+  final int height;
+  final double? neck, waist, hip, chest, arm, thigh;
+  // Datos de báscula de bioimpedancia (opcionales)
+  final double? fatPct, muscleKg, waterPct, boneKg, visceral;
+  final int? bmr, metabolicAge;
+  final String source; // 'medidas' o nombre de la báscula
+  BodyScan({required this.date, required this.weight, required this.height, this.neck, this.waist, this.hip, this.chest, this.arm, this.thigh, this.fatPct, this.muscleKg, this.waterPct, this.boneKg, this.visceral, this.bmr, this.metabolicAge, this.source = 'medidas'});
+  bool get fromScale => fatPct != null;
+  static double? _d(Object? v) => (v as num?)?.toDouble();
+  factory BodyScan.fromJson(Map j) => BodyScan(
+      date: j['d'], weight: _d(j['w'])!, height: j['h'], neck: _d(j['neck']), waist: _d(j['waist']), hip: _d(j['hip']), chest: _d(j['chest']), arm: _d(j['arm']), thigh: _d(j['thigh']),
+      fatPct: _d(j['fat']), muscleKg: _d(j['muscle']), waterPct: _d(j['water']), boneKg: _d(j['bone']), visceral: _d(j['visc']), bmr: j['bmr'], metabolicAge: j['mage'], source: j['src'] ?? 'medidas');
+  Map<String, dynamic> toJson() => {
+        'd': date, 'w': weight, 'h': height, 'neck': neck, 'waist': waist, 'hip': hip, 'chest': chest, 'arm': arm, 'thigh': thigh,
+        'fat': fatPct, 'muscle': muscleKg, 'water': waterPct, 'bone': boneKg, 'visc': visceral, 'bmr': bmr, 'mage': metabolicAge, 'src': source,
+      };
+}
+
 class WatchLink {
   String? route; // hc, hk, api o null si no está vinculado
   String? brand, model;
@@ -96,16 +118,17 @@ class Profile {
   String lastCheck;
   List<NearbyStore> nearby;
   String nearbyDate;
+  List<BodyScan> scans;
 
   Profile({
     this.email = '', this.firstName = '', this.lastName = '', this.sex = '', this.age = 0, this.weight = 0, this.height = 0,
     this.lang = 'es', this.place = 'mzl', this.store = '', this.budgetCop = 30000, this.located = false,
     this.sleep = '7', this.water = '6', this.mealsPerDay = 5, List<String>? habits, List<Sport>? sports,
     this.routineMinutes = 45, List<int>? routineDays, Map<String, String>? parts, this.dietGoal = 'mantener',
-    List<String>? equipment, WatchLink? watch, List<WeightEntry>? weights, String? lastCheck, List<NearbyStore>? nearby, this.nearbyDate = '',
+    List<String>? equipment, WatchLink? watch, List<WeightEntry>? weights, String? lastCheck, List<NearbyStore>? nearby, this.nearbyDate = '', List<BodyScan>? scans,
   })  : habits = habits ?? [], sports = sports ?? [], routineDays = routineDays ?? [0, 2, 4],
         parts = parts ?? {for (final p in ['Pecho', 'Espalda', 'Hombros', 'Brazos', 'Abdomen', 'Piernas', 'Glúteos', 'Pantorrillas']) p: 'no'},
-        equipment = equipment ?? [], watch = watch ?? WatchLink(), weights = weights ?? [], lastCheck = lastCheck ?? todayKey(), nearby = nearby ?? [];
+        equipment = equipment ?? [], watch = watch ?? WatchLink(), weights = weights ?? [], lastCheck = lastCheck ?? todayKey(), nearby = nearby ?? [], scans = scans ?? [];
 
   bool get isKid => age > 0 && age < 15;
   String get theme => isKid ? 'k' : (sex == 'f' ? 'f' : 'm');
@@ -124,6 +147,7 @@ class Profile {
         lastCheck: j['lastCheck'],
         nearby: ((j['nearby'] ?? []) as List).map((e) => NearbyStore.fromJson(e)).toList(),
         nearbyDate: j['nearbyDate'] ?? '',
+        scans: ((j['scans'] ?? []) as List).map((e) => BodyScan.fromJson(e)).toList(),
       );
 
   Map<String, dynamic> toJson() => {
@@ -133,6 +157,7 @@ class Profile {
         'rDays': routineDays, 'parts': parts, 'diet': dietGoal, 'equipment': equipment, 'watch': watch.toJson(),
         'weights': weights.map((w) => w.toJson()).toList(), 'lastCheck': lastCheck,
         'nearby': nearby.map((e) => e.toJson()).toList(), 'nearbyDate': nearbyDate,
+        'scans': scans.map((e) => e.toJson()).toList(),
       };
 
   Profile copy() => Profile.fromJson(toJson());

@@ -18,6 +18,8 @@ class HealthService {
         HealthDataType.ACTIVE_ENERGY_BURNED,
         (defaultTargetPlatform == TargetPlatform.iOS) ? HealthDataType.SLEEP_ASLEEP : HealthDataType.SLEEP_SESSION,
         HealthDataType.WORKOUT,
+        HealthDataType.WEIGHT,
+        HealthDataType.BODY_FAT_PERCENTAGE,
       ];
 
   static Future<void> _ensure() async {
@@ -113,6 +115,37 @@ class HealthService {
       }).toList();
     } catch (_) {
       return [];
+    }
+  }
+
+  /// Última lectura de báscula (peso y % de grasa) guardada en Health Connect / Apple Salud en los últimos 30 días.
+  static Future<(double?, double?)> latestBodyComposition() async {
+    try {
+      await _ensure();
+      final now = DateTime.now();
+      final pts = await _health.getHealthDataFromTypes(
+        types: [HealthDataType.WEIGHT, HealthDataType.BODY_FAT_PERCENTAGE],
+        startTime: now.subtract(const Duration(days: 30)),
+        endTime: now,
+      );
+      double? w, f;
+      DateTime? tw, tf;
+      for (final p in pts) {
+        final v = p.value;
+        if (v is! NumericHealthValue) continue;
+        final n = v.numericValue.toDouble();
+        if (p.type == HealthDataType.WEIGHT && (tw == null || p.dateFrom.isAfter(tw))) {
+          w = n;
+          tw = p.dateFrom;
+        }
+        if (p.type == HealthDataType.BODY_FAT_PERCENTAGE && (tf == null || p.dateFrom.isAfter(tf))) {
+          f = n <= 1 ? n * 100 : n;
+          tf = p.dateFrom;
+        }
+      }
+      return (w, f);
+    } catch (_) {
+      return (null, null);
     }
   }
 

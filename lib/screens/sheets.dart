@@ -15,6 +15,7 @@ import '../services/health_service.dart';
 import '../services/location_service.dart';
 import '../services/stores_service.dart';
 import '../widgets/ui.dart';
+import 'body_screen.dart';
 
 Future<void> openYoutube(String q) => launchUrl(Uri.parse('https://www.youtube.com/results?search_query=${Uri.encodeComponent(q)}'), mode: LaunchMode.externalApplication);
 
@@ -554,6 +555,10 @@ class _MonthlySheetState extends State<MonthlySheet> {
       Wrap(spacing: 8, runSpacing: 8, children: [for (var d = 0; d < 7; d++) ChoiceChipX(I18n.dayName(d, short: true), days.contains(d), () => setState(() => days.contains(d) ? days.remove(d) : days.add(d)))]),
       Text(t('¿Compraste equipos nuevos?'), style: TextStyle(color: p.muted)),
       Wrap(spacing: 8, runSpacing: 8, children: equipment.entries.where((e) => e.key != 'ninguno').map((e) => ChoiceChipX(t(e.value), eq.contains(e.key), () => setState(() => eq.contains(e.key) ? eq.remove(e.key) : eq.add(e.key)))).toList()),
+      Btn(t('Nueva medición corporal'), icon: Icons.straighten_rounded, expand: true, onTap: () {
+        Navigator.pop(context);
+        showSheet(context, (_) => const BodyScanSheet());
+      }),
       Btn(t('Guardar y ajustar mi plan'), kind: BtnKind.primary, expand: true, onTap: () {
         st.update(() {
           final pr = st.profile!;

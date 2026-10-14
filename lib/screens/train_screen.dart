@@ -147,7 +147,9 @@ class TrainScreen extends StatelessWidget {
     final all = r.all;
     final done = all.where((i) => l.done.contains(i.ex.id)).length;
     final pct = all.isEmpty ? 0.0 : done / all.length;
-    final title = r.parts.map(t).join(' + ') + (r.blocks.any((b) => b.title == 'Abdomen') ? ' + ${t('Abdomen')}' : '');
+    final title = r.parts.isEmpty && !r.blocks.any((b) => b.title == 'Abdomen')
+        ? t('Cardio y movilidad')
+        : [...r.parts.map(t), if (r.blocks.any((b) => b.title == 'Abdomen')) t('Abdomen')].join(' + ');
     final out = <Widget>[];
     if (kid) {
       final phrase = pr.sports.any((s) => s.name == 'Patinaje') ? '¡A patinar más rápido que el viento!' : _kidPhrases[strHash(dk) % _kidPhrases.length];
@@ -173,6 +175,18 @@ class TrainScreen extends StatelessWidget {
           ProgressRing(pct, label: '${(pct * 100).round()}%'),
         ]),
         statRow([StatTile('${r.minutes}', t('minutos'), onHero: true), StatTile('${all.length}', t('ejercicios'), onHero: true), StatTile('~${(r.minutes * 7.5).round()}', 'kcal', onHero: true), StatTile('$done', t('hechos'), onHero: true)]),
+        Container(
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(color: Colors.white.withValues(alpha: .1), borderRadius: BorderRadius.circular(12)),
+          child: Row(children: [
+            const Icon(Icons.trending_up_rounded, color: Colors.white, size: 20),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Text('${t('Semana {a} de 4', {'a': r.phase + 1})} · ${t(phaseNames[r.phase])}\n${t(phaseTips[r.phase])}', style: const TextStyle(fontSize: 12.5, color: Colors.white)),
+            ),
+          ]),
+        ),
+        if (r.skipped.isNotEmpty) Text('${t('Sin trabajar')}: ${r.skipped.map(t).join(', ')}', style: const TextStyle(color: Colors.white70, fontSize: 12.5)),
       ]));
     }
     if (r.lowSleep) out.add(Box(color: p.acc2.withValues(alpha: .12), child: Text('${t('Dormiste menos de 6 horas.')} ${t('Hoy la rutina tiene una serie menos por ejercicio para que recuperes.')}')));

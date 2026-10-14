@@ -40,6 +40,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   bool googleOk = false, signingIn = false;
   String? error;
   final emailCtrl = TextEditingController();
+  double? neck, waist, hip;
 
   bool get editing => widget.editStep != null;
   String get stepId => editing ? widget.editStep! : onboardingSteps[step].$1;
@@ -78,6 +79,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     }
     final old = st.profile;
     if (old == null || old.weight != d.weight) d.weights.add(WeightEntry(todayKey(), d.weight));
+    if (!editing && !d.isKid && neck != null && waist != null && (d.sex != 'f' || hip != null)) {
+      d.scans.add(BodyScan(date: todayKey(), weight: d.weight, height: d.height, neck: neck, waist: waist, hip: hip));
+    }
     if (!editing) d.lastCheck = todayKey();
     st.setProfile(d);
     if (editing) Navigator.pop(context);
@@ -193,6 +197,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             Expanded(child: numField('${t('Estatura')} (cm)', d.height, (v) => d.height = int.tryParse(v) ?? 0)),
           ]),
           if (imc > 0 && !kid) Box(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(t('Índice de masa corporal'), style: TextStyle(color: p.muted)), Text(imc.toStringAsFixed(1), style: display(tc, 40))])),
+          if (!kid && !editing) ...[
+            Text(t('Medidas para tu análisis de composición corporal'), style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
+            Text(d.sex == 'f'
+                ? t('Con cinta métrica: cuello debajo de la nuez, cintura en la parte más estrecha y cadera en la parte más ancha. Puedes completarlo después en tu perfil.')
+                : t('Con cinta métrica: cuello debajo de la nuez y cintura a la altura del ombligo. Puedes completarlo después en tu perfil.'), style: TextStyle(color: p.muted)),
+            Row(children: [
+              Expanded(child: numField('${t('Cuello')} (cm)', neck ?? 0, (v) => neck = double.tryParse(v), decimal: true)),
+              const SizedBox(width: 10),
+              Expanded(child: numField('${t('Cintura')} (cm)', waist ?? 0, (v) => waist = double.tryParse(v), decimal: true)),
+            ]),
+            numField('${t('Cadera')} (cm)', hip ?? 0, (v) => hip = double.tryParse(v), decimal: true),
+          ],
         ], 14);
       case 'habitos':
         return vgap([

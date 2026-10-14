@@ -101,8 +101,8 @@ const equipment = {
   'trx': 'TRX / suspensión', 'paralelas': 'Paralelas', 'gym': 'Gimnasio (poleas y máquinas)', 'ninguno': 'Sin equipo',
 };
 const bodyParts = ['Pecho', 'Espalda', 'Hombros', 'Brazos', 'Abdomen', 'Piernas', 'Glúteos', 'Pantorrillas'];
-const goals = {'no': 'No', 'masa': 'Ganar masa', 'tonificar': 'Tonificar', 'disminuir': 'Disminuir'};
-const kidGoals = {'no': 'No', 'masa': 'Fuerza', 'tonificar': 'Agilidad', 'disminuir': 'Resistencia'};
+const goals = {'no': 'No trabajar', 'masa': 'Ganar masa', 'tonificar': 'Tonificar', 'disminuir': 'Disminuir'};
+const kidGoals = {'no': 'No trabajar', 'masa': 'Fuerza', 'tonificar': 'Agilidad', 'disminuir': 'Resistencia'};
 const dietGoals = {'perder': 'Bajar de peso', 'mantener': 'Mantener peso', 'ganar': 'Subir de peso', 'masa': 'Ganar masa muscular'};
 const sports = ['Fútbol', 'Patinaje', 'Natación', 'Ciclismo', 'Running', 'Baloncesto', 'Tenis', 'Voleibol', 'Baile', 'Yoga', 'Artes marciales', 'Caminata', 'Gimnasio', 'Otro'];
 const habits = ['Trabajo sentado', 'Trabajo de pie o activo', 'Desayuno todos los días', 'Como fuera de casa seguido', 'Tomo bebidas azucaradas', 'Consumo alcohol los fines de semana', 'Fumo', 'Me acuesto tarde', 'Estrés alto', 'Picoteo entre comidas'];

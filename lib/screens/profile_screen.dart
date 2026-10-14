@@ -12,6 +12,7 @@ import '../core/models.dart';
 import '../core/theme.dart';
 import '../services/auth_service.dart';
 import '../widgets/ui.dart';
+import 'body_screen.dart';
 import 'calendar_screen.dart';
 import 'onboarding.dart';
 import 'sheets.dart';
@@ -63,6 +64,7 @@ class ProfileScreen extends StatelessWidget {
           Btn(t('Actualizar peso'), onTap: () => showSheet(context, (_) => const MonthlySheet())),
         ]),
       ]),
+      const BodyCompositionCard(),
       _MonthlySummary(pr, st),
       InkWell(
         onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const CalendarScreen())),

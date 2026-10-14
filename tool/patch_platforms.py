@@ -33,6 +33,7 @@ ANDROID_PERMS = [
     "android.permission.health.READ_SLEEP",
     "android.permission.health.READ_EXERCISE",
     "android.permission.health.READ_WEIGHT",
+    "android.permission.health.READ_BODY_FAT",
 ]
 
 

@@ -40,16 +40,41 @@ class Routine {
   final List<String> parts;
   final int minutes;
   final bool lowSleep;
-  Routine(this.blocks, this.parts, this.minutes, this.lowSleep);
+  final int phase; // 0 base, 1 volumen, 2 intensidad, 3 descarga (ciclo de 4 semanas)
+  final List<String> skipped; // partes que el usuario eligió no trabajar
+  Routine(this.blocks, this.parts, this.minutes, this.lowSleep, {this.phase = 0, this.skipped = const []});
   List<RoutineItem> get all => blocks.expand((b) => b.items).toList();
 }
+
+/// Fases del ciclo de 4 semanas para que la rutina progrese semana a semana.
+const phaseNames = ['Adaptación', 'Volumen', 'Intensidad', 'Descarga'];
+const phaseTips = [
+  'Técnica y control: series cómodas para asentar el movimiento.',
+  'Una serie más por ejercicio para acumular trabajo.',
+  'Menos repeticiones con más carga y más descanso.',
+  'Semana suave para recuperar y volver más fuerte.',
+];
 
 final _iso = RegExp(r'Plancha|Hollow|isométric|Colgarse|Paseo|Pallof');
 
 bool _kidOk(Exercise e) =>
     e.lib != 'barra' && e.eq != 'gym' && e.eq != 'paralelas' && e.level < 3 && !RegExp(r'Peso muerto|Turkish|Cargada|Molino').hasMatch(e.es);
 
-String prescription(Exercise e, String? goal, bool kid, bool low, String kind) {
+/// Ejercicios de calentamiento/cardio que cargan una parte del cuerpo concreta.
+const _cardioLoads = {
+  'Piernas': r'Sentadilla|Zancada|cajón|Step|Sprint|Skipping|Rodillas al pecho|Saltos|Trote|Escaladora|Talones',
+  'Glúteos': r'Sentadilla|Zancada|cajón|Step|Swing',
+  'Pantorrillas': r'Saltos|cuerda|Sprint|Trote|Skipping',
+  'Brazos': r'Burpee|boxeo|Cuerdas de batalla|Remo',
+  'Hombros': r'Burpee|boxeo|Cuerdas de batalla|Jumping jacks|Círculos',
+  'Pecho': r'Burpee',
+  'Espalda': r'Remo|Swing',
+};
+
+/// Semana absoluta (desde el lunes 1 de enero de 2024) para variar la rutina semana tras semana.
+int weekIndex(String day) => dparse(day).difference(DateTime(2024, 1, 1)).inDays ~/ 7;
+
+String prescription(Exercise e, String? goal, bool kid, bool low, String kind, [int phase = 0]) {
   String s;
   final iso = _iso.hasMatch(e.es);
   if (kind == 'warm') {
@@ -59,113 +84,146 @@ String prescription(Exercise e, String? goal, bool kid, bool low, String kind) {
         ? t('6 min jugando')
         : RegExp(r'zona 2|continu|Caminata|Trote|Escaladora').hasMatch(e.es)
             ? t('12 min a ritmo cómodo')
-            : t('8–10 min · 30 s fuerte / 30 s suave');
+            : phase == 2
+                ? t('10 min · 40 s fuerte / 20 s suave')
+                : t('8–10 min · 30 s fuerte / 30 s suave');
   } else if (kind == 'cool') {
     s = t('30 s por lado');
   } else if (kid) {
     s = iso ? '3 × 20 s' : '3 × 10–12 · ${t('técnica primero')}';
-  } else if (goal == 'masa') {
-    s = iso ? '4 × 40 s' : '4 × 8–10 · ${t('descanso {n} s', {'n': 90})}';
-  } else if (goal == 'disminuir') {
-    s = iso ? '3 × 30 s' : '3 × 15–20 · ${t('circuito')}';
   } else {
-    s = iso ? '3 × 30 s' : '3 × 12–15 · ${t('descanso {n} s', {'n': 60})}';
+    // [series, repeticiones, descanso, segundos isométricos] por objetivo y fase
+    const table = {
+      'masa': [[4, '8–10', 90, 40], [5, '8–10', 90, 45], [4, '6–8', 120, 50], [3, '8–10', 90, 30]],
+      'disminuir': [[3, '15–20', 0, 30], [4, '15–20', 0, 35], [3, '12–15', 0, 40], [2, '15–20', 0, 25]],
+      'tonificar': [[3, '12–15', 60, 30], [4, '12–15', 60, 35], [3, '10–12', 75, 40], [2, '12–15', 60, 25]],
+    };
+    final r = (table[goal] ?? table['tonificar']!)[phase.clamp(0, 3)];
+    final sets = r[0] as int, reps = r[1] as String, rest = r[2] as int, secs = r[3] as int;
+    s = iso ? '$sets × $secs s' : '$sets × $reps · ${rest == 0 ? t('circuito') : t('descanso {n} s', {'n': rest})}';
   }
-  if (low && RegExp(r'^[34] ×').hasMatch(s)) s = '${int.parse(s[0]) - 1}${s.substring(1)}';
+  if (low) {
+    final m = RegExp(r'^(\d+) ×').firstMatch(s);
+    if (m != null && int.parse(m[1]!) > 2) s = '${int.parse(m[1]!) - 1}${s.substring(m[1]!.length)}';
+  }
   return s;
 }
 
-List<Exercise> _pick(List<Exercise> pool, int n, Random rng, Set<String> used, [bool Function(Exercise)? prefer]) {
+/// Elige ejercicios rotando por toda la lista antes de repetir: cada sesión arranca más adelante
+/// en el orden (propio de cada usuario y zona), así la rutina cambia día a día y semana a semana.
+List<Exercise> _rotPick(List<Exercise> pool, int n, int offset, Set<String> used, String seed, [bool Function(Exercise)? prefer]) {
   var pp = pool.where((e) => !used.contains(e.id)).toList();
   if (prefer != null) {
     final pr = pp.where(prefer).toList();
     if (pr.length >= n) pp = pr;
   }
+  if (pp.isEmpty) return [];
+  pp.sort((a, b) => strHash(seed + a.id).compareTo(strHash(seed + b.id)));
   final out = <Exercise>[];
-  for (var i = 0; i < n && pp.isNotEmpty; i++) {
-    final j = rng.nextInt(pp.length);
-    out.add(pp[j]);
-    used.add(pp[j].id);
-    pp.removeAt(j);
+  for (var i = 0; i < n && i < pp.length; i++) {
+    final e = pp[(offset + i) % pp.length];
+    if (used.add(e.id)) out.add(e);
   }
   return out;
 }
 
 Routine generateRoutine(Profile p, String day) {
   final kid = p.isKid;
-  final rng = Random(strHash(day + p.email));
   final have = {'ninguno', ...p.equipment};
+  final skipped = bodyParts.where((x) => (p.parts[x] ?? 'no') == 'no').toList();
+  final cardioBan = skipped.where(_cardioLoads.containsKey).map((x) => _cardioLoads[x]!).join('|');
   bool ok(Exercise e) => have.contains(e.eq) && (!kid || _kidOk(e));
+  bool cardioOk(Exercise e) => ok(e) && (cardioBan.isEmpty || !RegExp(cardioBan, caseSensitive: false).hasMatch(e.es));
+
   final wd = weekdayOf(day);
+  final week = weekIndex(day);
   final days = [...p.routineDays]..sort();
   final n = max(1, days.length);
   var idx = days.indexOf(wd);
   if (idx < 0) idx = wd % n;
+  final session = week * n + idx; // número de sesión desde el inicio: avanza cada día de rutina
+  final phase = kid ? 0 : week % 4;
+  final seed = p.email;
 
-  var targets = bodyParts.where((x) => x != 'Abdomen' && (p.parts[x] ?? 'no') != 'no').toList();
-  if (targets.isEmpty) targets = ['Piernas', 'Pecho', 'Espalda'];
-  List<String> dayParts;
-  if (targets.length <= n) {
-    dayParts = [targets[idx % targets.length]];
-    if (p.routineMinutes >= 45 && targets.length > 1) dayParts.add(targets[(idx + 1) % targets.length]);
-  } else {
-    dayParts = [for (var i = 0; i < targets.length; i++) if (i % n == idx % n) targets[i]];
+  // Partes a trabajar: solo las que no están en "No trabajar". La asignación a cada día rota cada semana.
+  final targets = bodyParts.where((x) => x != 'Abdomen' && !skipped.contains(x)).toList();
+  var dayParts = <String>[];
+  if (targets.isNotEmpty) {
+    if (targets.length <= n) {
+      dayParts = [targets[(idx + week) % targets.length]];
+      if (p.routineMinutes >= 45 && targets.length > 1) dayParts.add(targets[(idx + week + 1) % targets.length]);
+    } else {
+      dayParts = [for (var i = 0; i < targets.length; i++) if ((i + week) % n == idx % n) targets[i]];
+    }
   }
 
   final m = p.routineMinutes;
   final w = p.watch.data;
   final low = w != null && w.sleepHours > 0 && w.sleepHours < 6 && w.date == todayKey() && day == todayKey();
-  final abd = (p.parts['Abdomen'] ?? 'no') != 'no' ? p.parts['Abdomen'] : null;
-  final doAbs = abd != null && (n <= 3 || idx % 2 == 0);
+  final abd = skipped.contains('Abdomen') ? null : p.parts['Abdomen'];
+  final doAbs = abd != null && (n <= 3 || (idx + week) % 2 == 0 || dayParts.isEmpty);
   final lose = !kid && (p.parts.values.contains('disminuir') || p.dietGoal == 'perder');
+  final onlyCardio = dayParts.isEmpty; // el usuario no quiere trabajar ninguna zona con fuerza
   final warmM = m >= 40 ? 7 : 5, coolM = 4, absM = doAbs ? (m >= 45 ? 8 : 6) : 0;
-  final finM = (lose && m >= 35) ? (m >= 60 ? 12 : 8) : (kid ? 4 : 0);
+  final finM = onlyCardio ? 0 : (lose && m >= 35) ? (m >= 60 ? 12 : 8) : (kid ? 4 : 0);
   final mainM = max(8, m - warmM - coolM - absM - finM);
   String gp(String x) => p.parts[x] ?? 'tonificar';
-  final per = kid ? 4.0 : dayParts.map((x) => {'masa': 6.0, 'tonificar': 4.5, 'disminuir': 4.0}[gp(x)] ?? 5.0).reduce((a, b) => a + b) / dayParts.length;
-  final count = (mainM / per).round().clamp(2, 9);
   final used = <String>{};
   final blocks = <RoutineBlock>[];
 
-  final wpool = Catalog.exercises.where((e) => e.lib == 'cardio' && e.flag == 'w' && ok(e)).toList();
-  final warm = [..._pick(wpool, 1, rng, used, (e) => e.eq != 'ninguno'), ..._pick(wpool, 1, rng, used, (e) => e.eq == 'ninguno')];
-  blocks.add(RoutineBlock('Calentamiento', warmM, warm.map((e) => RoutineItem(e, prescription(e, null, kid, low, 'warm'), goal: null, kind: 'warm')).toList()));
+  final wpool = Catalog.exercises.where((e) => e.lib == 'cardio' && e.flag == 'w' && cardioOk(e)).toList();
+  final warm = [
+    ..._rotPick(wpool, 1, session, used, '${seed}w1', (e) => e.eq != 'ninguno'),
+    ..._rotPick(wpool, 1, session, used, '${seed}w2', (e) => e.eq == 'ninguno'),
+  ];
+  blocks.add(RoutineBlock('Calentamiento', warmM, warm.map((e) => RoutineItem(e, prescription(e, null, kid, low, 'warm', phase), kind: 'warm')).toList()));
 
-  final main = <RoutineItem>[];
-  final cnt = <String, int>{};
-  for (var i = 0; i < count; i++) {
-    final part = dayParts[i % dayParts.length];
-    cnt[part] = (cnt[part] ?? 0) + 1;
-    final ps = part == 'Brazos' ? [cnt[part]! % 2 == 1 ? 'Bíceps' : 'Tríceps'] : [part];
-    final g = gp(part);
-    final pool = Catalog.exercises.where((e) => const ['mancuernas', 'barra', 'corporal', 'maquinas'].contains(e.lib) && ps.contains(e.part) && ok(e)).toList();
-    bool Function(Exercise)? pref;
-    if (kid) {
-      pref = (e) => e.lib == 'corporal' || e.lib == 'mancuernas';
-    } else if (g == 'masa') {
-      pref = (e) => e.lib != 'corporal';
-    } else if (g == 'disminuir') {
-      pref = (e) => e.lib == 'corporal' || e.eq == 'kettlebell' || e.eq == 'bandas';
+  if (onlyCardio) {
+    final cp = Catalog.exercises.where((e) => e.lib == 'cardio' && e.flag == 'q' && cardioOk(e) && (!kid || e.level < 2)).toList();
+    final ci = _rotPick(cp, max(1, mainM ~/ 10), session * 2, used, '${seed}c');
+    blocks.add(RoutineBlock(kid ? 'Juego de energía' : 'Cardio', mainM, ci.map((e) => RoutineItem(e, prescription(e, null, kid, low, 'fin', phase), kind: 'fin')).toList()));
+  } else {
+    final per = kid ? 4.0 : dayParts.map((x) => {'masa': 6.0, 'tonificar': 4.5, 'disminuir': 4.0}[gp(x)] ?? 5.0).reduce((a, b) => a + b) / dayParts.length;
+    final count = (mainM / per).round().clamp(2, 9);
+    final main = <RoutineItem>[];
+    final cnt = <String, int>{};
+    for (var i = 0; i < count; i++) {
+      final part = dayParts[i % dayParts.length];
+      cnt[part] = (cnt[part] ?? 0) + 1;
+      final ps = part == 'Brazos' ? [cnt[part]! % 2 == 1 ? 'Bíceps' : 'Tríceps'] : [part];
+      final g = gp(part);
+      final pool = Catalog.exercises.where((e) => const ['mancuernas', 'barra', 'corporal', 'maquinas'].contains(e.lib) && ps.contains(e.part) && ok(e)).toList();
+      bool Function(Exercise)? pref;
+      if (kid) {
+        pref = (e) => e.lib == 'corporal' || e.lib == 'mancuernas';
+      } else if (g == 'masa') {
+        pref = (e) => e.lib != 'corporal';
+      } else if (g == 'disminuir') {
+        pref = (e) => e.lib == 'corporal' || e.eq == 'kettlebell' || e.eq == 'bandas';
+      }
+      // Cada vez que se entrena esta zona se avanza en su lista: no se repiten ejercicios hasta recorrerla.
+      final off = session * 3 + cnt[part]!;
+      var got = _rotPick(pool, 1, off, used, '$seed${ps.first}', (e) => (pref == null || pref(e)) && e.hasImage);
+      if (got.isEmpty) got = _rotPick(pool, 1, off, used, '$seed${ps.first}', pref);
+      if (got.isNotEmpty) main.add(RoutineItem(got.first, prescription(got.first, g, kid, low, 'main', phase), goal: g, kind: 'main'));
     }
-    var got = _pick(pool, 1, rng, used, (e) => (pref == null || pref(e)) && e.hasImage);
-    if (got.isEmpty) got = _pick(pool, 1, rng, used, pref);
-    if (got.isNotEmpty) main.add(RoutineItem(got.first, prescription(got.first, g, kid, low, 'main'), goal: g, kind: 'main'));
+    blocks.add(RoutineBlock(kid ? 'Misión principal' : 'Bloque principal', mainM, main, dayParts.map(t).join(' · ')));
   }
-  blocks.add(RoutineBlock(kid ? 'Misión principal' : 'Bloque principal', mainM, main, dayParts.map(t).join(' · ')));
 
   if (doAbs) {
     final ap = Catalog.exercises.where((e) => (e.lib == 'abd' || e.part == 'Abdomen') && ok(e)).toList();
-    final ai = _pick(ap, m >= 45 ? 3 : 2, rng, used, (e) => e.eq != 'ninguno');
-    blocks.add(RoutineBlock('Abdomen', absM, ai.map((e) => RoutineItem(e, prescription(e, abd, kid, low, 'main'), goal: abd, kind: 'main')).toList()));
+    final k = m >= 45 ? 3 : 2;
+    final ai = _rotPick(ap, k, session * k, used, '${seed}abd', (e) => e.eq != 'ninguno');
+    blocks.add(RoutineBlock('Abdomen', absM, ai.map((e) => RoutineItem(e, prescription(e, abd, kid, low, 'main', phase), goal: abd, kind: 'main')).toList()));
   }
   if (finM > 0) {
-    final fp = Catalog.exercises.where((e) => e.lib == 'cardio' && e.flag == 'q' && ok(e) && (!kid || e.level < 2)).toList();
-    final fi = _pick(fp, 1, rng, used, (e) => e.eq != 'ninguno');
-    blocks.add(RoutineBlock(kid ? 'Juego de energía' : 'Quema de grasa', finM, fi.map((e) => RoutineItem(e, prescription(e, null, kid, low, 'fin'), goal: null, kind: 'fin')).toList()));
+    final fp = Catalog.exercises.where((e) => e.lib == 'cardio' && e.flag == 'q' && cardioOk(e) && (!kid || e.level < 2)).toList();
+    final fi = _rotPick(fp, 1, session, used, '${seed}fin', (e) => e.eq != 'ninguno');
+    blocks.add(RoutineBlock(kid ? 'Juego de energía' : 'Quema de grasa', finM, fi.map((e) => RoutineItem(e, prescription(e, null, kid, low, 'fin', phase), kind: 'fin')).toList()));
   }
   final cp = Catalog.exercises.where((e) => e.part == 'Estiramiento').toList();
-  blocks.add(RoutineBlock('Estiramiento', coolM, _pick(cp, 3, rng, used).map((e) => RoutineItem(e, prescription(e, null, kid, low, 'cool'), goal: null, kind: 'cool')).toList()));
-  return Routine(blocks, dayParts, m, low);
+  blocks.add(RoutineBlock('Estiramiento', coolM, _rotPick(cp, 3, session * 3, used, '${seed}st').map((e) => RoutineItem(e, prescription(e, null, kid, low, 'cool', phase), kind: 'cool')).toList()));
+  return Routine(blocks, dayParts, m, low, phase: phase, skipped: skipped);
 }
 
 List<Sport> sportsOn(Profile p, int wd) => p.sports.where((s) => s.days.contains(wd)).toList();
@@ -443,7 +501,11 @@ List<Exercise> swapOptions(Profile p, RoutineItem it, Set<String> inUse) {
     return x.part == e.part && x.lib != 'cardio';
   }
 
-  final l = Catalog.exercises.where((x) => x.id != e.id && !inUse.contains(x.id) && same(x) && exerciseAllowed(p, x)).toList();
+  final skipped = bodyParts.where((x) => (p.parts[x] ?? 'no') == 'no');
+  final ban = skipped.where(_cardioLoads.containsKey).map((x) => _cardioLoads[x]!).join('|');
+  final l = Catalog.exercises
+      .where((x) => x.id != e.id && !inUse.contains(x.id) && same(x) && exerciseAllowed(p, x) && (x.lib != 'cardio' || ban.isEmpty || !RegExp(ban, caseSensitive: false).hasMatch(x.es)))
+      .toList();
   l.sort((a, b) {
     if (a.hasImage != b.hasImage) return a.hasImage ? -1 : 1;
     return a.level.compareTo(b.level);
@@ -460,12 +522,116 @@ Routine applySwaps(Profile p, Routine r, Map<String, String> swaps) {
           b.items.map((it) {
             final ne = swaps[it.slot] == null ? null : Catalog.exById[swaps[it.slot]];
             if (ne == null) return it;
-            return RoutineItem(ne, prescription(ne, it.goal, p.isKid, r.lowSleep, it.kind), goal: it.goal, kind: it.kind, slot: it.slot);
+            return RoutineItem(ne, prescription(ne, it.goal, p.isKid, r.lowSleep, it.kind, r.phase), goal: it.goal, kind: it.kind, slot: it.slot);
           }).toList(),
           b.sub))
       .toList();
-  return Routine(blocks, r.parts, r.minutes, r.lowSleep);
+  return Routine(blocks, r.parts, r.minutes, r.lowSleep, phase: r.phase, skipped: r.skipped);
 }
 
 /// Rutina del día con los cambios de ejercicio que haya hecho el usuario.
 Routine routineFor(Profile p, String day, DayLog? log) => applySwaps(p, generateRoutine(p, day), log?.swaps ?? const {});
+
+// ------------------------------------------------------------------
+// Composición corporal
+// ------------------------------------------------------------------
+class Rated {
+  final String label; // categoría (texto en español, se traduce al mostrar)
+  final int level; // 0 bajo, 1 bien, 2 atención, 3 alto
+  const Rated(this.label, this.level);
+}
+
+class BodyAnalysis {
+  final BodyScan scan;
+  final bool fromScale;
+  final double bmi;
+  final Rated bmiRate;
+  final double? fatPct, fatKg, leanKg, ffmi, waterPct, whtr, whr, muscleKg, boneKg, visceral;
+  final Rated? fatRate, whtrRate, whrRate, visceralRate;
+  final int? bmr, metabolicAge;
+  final double idealMin, idealMax;
+  final double? targetFat; // % de grasa recomendado según objetivo
+  BodyAnalysis({
+    required this.scan, required this.fromScale, required this.bmi, required this.bmiRate, this.fatPct, this.fatKg, this.leanKg, this.ffmi, this.waterPct,
+    this.whtr, this.whr, this.muscleKg, this.boneKg, this.visceral, this.fatRate, this.whtrRate, this.whrRate, this.visceralRate, this.bmr, this.metabolicAge,
+    required this.idealMin, required this.idealMax, this.targetFat,
+  });
+}
+
+double _log10(double x) => log(x) / ln10;
+
+/// Grasa corporal estimada con el método de la Marina de EE. UU. (medidas en cm).
+double? navyBodyFat(String sex, int height, double? neck, double? waist, double? hip) {
+  if (neck == null || waist == null || height <= 0) return null;
+  if (sex == 'f') {
+    if (hip == null || waist + hip - neck <= 0) return null;
+    return 495 / (1.29579 - 0.35004 * _log10(waist + hip - neck) + 0.22100 * _log10(height.toDouble())) - 450;
+  }
+  if (waist - neck <= 0) return null;
+  return 495 / (1.0324 - 0.19077 * _log10(waist - neck) + 0.15456 * _log10(height.toDouble())) - 450;
+}
+
+Rated _fatRate(String sex, double f) {
+  final c = sex == 'f' ? [14.0, 21.0, 25.0, 32.0] : [6.0, 14.0, 18.0, 25.0];
+  if (f < c[0]) return const Rated('Muy bajo', 0);
+  if (f < c[1]) return const Rated('Atlético', 1);
+  if (f < c[2]) return const Rated('En forma', 1);
+  if (f < c[3]) return const Rated('Aceptable', 2);
+  return const Rated('Alto', 3);
+}
+
+Rated _bmiRate(double b) {
+  if (b < 18.5) return const Rated('Bajo peso', 0);
+  if (b < 25) return const Rated('Normal', 1);
+  if (b < 30) return const Rated('Sobrepeso', 2);
+  return const Rated('Obesidad', 3);
+}
+
+BodyAnalysis analyzeBody(Profile p, BodyScan s) {
+  final hm = s.height / 100;
+  final bmi = s.weight / (hm * hm);
+  final navy = navyBodyFat(p.sex, s.height, s.neck, s.waist, s.hip);
+  final fat = s.fatPct ?? navy;
+  final fatKg = fat == null ? null : s.weight * fat / 100;
+  final lean = fatKg == null ? null : s.weight - fatKg;
+  final ffmi = lean == null ? null : lean / (hm * hm) + 6.1 * (1.8 - hm);
+  // Agua corporal: báscula, o fórmula de Watson si no hay báscula
+  double? water = s.waterPct;
+  if (water == null && p.age > 0) {
+    final tbw = p.sex == 'f' ? -2.097 + 0.1069 * s.height + 0.2466 * s.weight : 2.447 - 0.09516 * p.age + 0.1074 * s.height + 0.3362 * s.weight;
+    water = tbw / s.weight * 100;
+  }
+  final whtr = s.waist == null ? null : s.waist! / s.height;
+  final whr = (s.waist == null || s.hip == null) ? null : s.waist! / s.hip!;
+  final bmr = s.bmr ?? (lean == null ? null : (370 + 21.6 * lean).round());
+  double? target;
+  if (fat != null) {
+    final base = p.sex == 'f' ? {'perder': 24.0, 'masa': 22.0, 'ganar': 25.0, 'mantener': 24.0} : {'perder': 16.0, 'masa': 14.0, 'ganar': 17.0, 'mantener': 16.0};
+    target = base[p.dietGoal] ?? (p.sex == 'f' ? 24.0 : 16.0);
+  }
+  return BodyAnalysis(
+    scan: s,
+    fromScale: s.fromScale,
+    bmi: bmi,
+    bmiRate: _bmiRate(bmi),
+    fatPct: fat,
+    fatKg: fatKg,
+    leanKg: lean,
+    ffmi: ffmi,
+    waterPct: water,
+    whtr: whtr,
+    whr: whr,
+    muscleKg: s.muscleKg,
+    boneKg: s.boneKg,
+    visceral: s.visceral,
+    fatRate: fat == null ? null : _fatRate(p.sex, fat),
+    whtrRate: whtr == null ? null : whtr < .5 ? const Rated('Saludable', 1) : whtr < .6 ? const Rated('Riesgo aumentado', 2) : const Rated('Riesgo alto', 3),
+    whrRate: whr == null ? null : (whr < (p.sex == 'f' ? .85 : .90) ? const Rated('Saludable', 1) : const Rated('Riesgo alto', 3)),
+    visceralRate: s.visceral == null ? null : s.visceral! < 10 ? const Rated('Saludable', 1) : s.visceral! < 15 ? const Rated('Alto', 2) : const Rated('Muy alto', 3),
+    bmr: bmr,
+    metabolicAge: s.metabolicAge,
+    idealMin: 18.5 * hm * hm,
+    idealMax: 24.9 * hm * hm,
+    targetFat: target,
+  );
+}
