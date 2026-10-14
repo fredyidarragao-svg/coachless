@@ -131,6 +131,14 @@ class Profile {
         equipment = equipment ?? [], watch = watch ?? WatchLink(), weights = weights ?? [], lastCheck = lastCheck ?? todayKey(), nearby = nearby ?? [], scans = scans ?? [];
 
   bool get isKid => age > 0 && age < 15;
+
+  /// Metabolismo basal diario (Mifflin-St Jeor). Sirve para separar las calorías activas
+  /// cuando el reloj solo envía calorías totales.
+  double get bmr {
+    final w = weight > 0 ? weight : 70.0, h = height > 0 ? height.toDouble() : 170.0, a = age > 0 ? age : 30;
+    if (isKid) return 900.0 + a * 50;
+    return 10 * w + 6.25 * h - 5 * a + (sex == 'f' ? -161 : 5);
+  }
   String get theme => isKid ? 'k' : (sex == 'f' ? 'f' : 'm');
   String get initials => '${firstName.isNotEmpty ? firstName[0] : '?'}${lastName.isNotEmpty ? lastName[0] : ''}';
   bool get complete => email.isNotEmpty && sex.isNotEmpty && age > 0 && weight > 0 && height > 0;

@@ -80,7 +80,7 @@ class AppState extends ChangeNotifier {
     if (p == null) return null;
     final w = p.watch;
     WatchData? d;
-    if (w.route == 'hc' || w.route == 'hk') d = await HealthService.today(w.model ?? '');
+    if (w.route == 'hc' || w.route == 'hk') d = await HealthService.today(w.model ?? '', bmr: p.bmr);
     d ??= (w.data != null && w.data!.date == todayKey()) ? w.data : null;
     if (d == null) return null;
     final sample = WatchSample(at: DateTime.now(), steps: d.steps, restingHr: d.restingHr, activeKcal: d.activeKcal, sleepHours: d.sleepHours, source: d.source.isNotEmpty ? d.source : (w.model ?? 'Ingreso manual'));

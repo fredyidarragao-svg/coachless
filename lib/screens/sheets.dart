@@ -225,7 +225,7 @@ class _WatchPickerState extends State<WatchPicker> {
         });
         return;
       }
-      data = await HealthService.today(model!);
+      data = await HealthService.today(model!, bmr: tg.bmr);
     }
     tg.watch = WatchLink(route: route, brand: w.brand, model: model, os: os, data: data ?? WatchData(source: model!));
     widget.onLinked();

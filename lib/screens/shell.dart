@@ -43,7 +43,7 @@ class _ShellState extends State<Shell> with WidgetsBindingObserver {
     final st = context.read<AppState>();
     final w = st.profile?.watch;
     if (w == null || !(w.route == 'hc' || w.route == 'hk')) return;
-    final d = await HealthService.today(w.model ?? '');
+    final d = await HealthService.today(w.model ?? '', bmr: st.profile!.bmr);
     if (d != null && mounted) st.update(() => w.data = d);
   }
 

@@ -1,22 +1,38 @@
+import 'dart:math';
+
 import 'package:flutter/foundation.dart' show TargetPlatform, defaultTargetPlatform;
 
 import 'package:health/health.dart';
 
 import '../core/models.dart';
+import 'health_report.dart';
 
 /// Lee los datos del reloj a través de Health Connect (Android) o Apple Salud (iPhone).
 /// Las apps de los fabricantes (Mi Fitness, Zepp, Samsung Health, Garmin Connect…)
 /// escriben ahí sus datos; Coachless solo los lee con permiso del usuario.
+///
+/// Cada fabricante escribe tipos distintos: por ejemplo Mi Fitness envía calorías TOTALES
+/// y pulso por muestras, pero no "calorías activas" ni "pulso en reposo". Por eso cada
+/// métrica tiene una alternativa calculada.
 class HealthService {
   static final Health _health = Health();
   static bool _configured = false;
+  static HealthReport? lastReport;
+
+  static bool get _ios => defaultTargetPlatform == TargetPlatform.iOS;
 
   static List<HealthDataType> get _types => [
         HealthDataType.STEPS,
         HealthDataType.HEART_RATE,
         HealthDataType.RESTING_HEART_RATE,
         HealthDataType.ACTIVE_ENERGY_BURNED,
-        (defaultTargetPlatform == TargetPlatform.iOS) ? HealthDataType.SLEEP_ASLEEP : HealthDataType.SLEEP_SESSION,
+        if (!_ios) HealthDataType.TOTAL_CALORIES_BURNED,
+        if (_ios) HealthDataType.SLEEP_ASLEEP,
+        if (!_ios) HealthDataType.SLEEP_SESSION,
+        if (!_ios) HealthDataType.SLEEP_ASLEEP,
+        HealthDataType.SLEEP_LIGHT,
+        HealthDataType.SLEEP_DEEP,
+        HealthDataType.SLEEP_REM,
         HealthDataType.WORKOUT,
         HealthDataType.WEIGHT,
         HealthDataType.BODY_FAT_PERCENTAGE,
@@ -32,7 +48,7 @@ class HealthService {
   static Future<bool> available() async {
     try {
       await _ensure();
-      if ((defaultTargetPlatform == TargetPlatform.android)) return await _health.isHealthConnectAvailable();
+      if (!_ios) return await _health.isHealthConnectAvailable();
       return true;
     } catch (_) {
       return false;
@@ -55,38 +71,109 @@ class HealthService {
     }
   }
 
+  /// Si falta algún permiso (por ejemplo tras una actualización que lee datos nuevos), lo vuelve a pedir.
+  static Future<bool> _ensurePermissions() async {
+    try {
+      final types = _types;
+      final has = await _health.hasPermissions(types, permissions: types.map((_) => HealthDataAccess.READ).toList());
+      if (has == true) return true;
+      // En iPhone Apple Salud nunca revela si hay permiso de lectura (devuelve null): se pide una vez y se sigue.
+      return await requestPermissions() || _ios;
+    } catch (_) {
+      return true;
+    }
+  }
+
+  /// Lee un tipo sin que un fallo en él dañe los demás.
+  static Future<List<HealthDataPoint>> _read(HealthDataType type, DateTime from, DateTime to) async {
+    try {
+      return await _health.getHealthDataFromTypes(types: [type], startTime: from, endTime: to);
+    } catch (_) {
+      return [];
+    }
+  }
+
+  static double _num(HealthDataPoint p) {
+    final v = p.value;
+    return v is NumericHealthValue ? v.numericValue.toDouble() : 0;
+  }
+
+  /// Suma la duración de intervalos de tiempo sin contar dos veces lo que se solapa
+  /// (varias apps pueden escribir el mismo sueño).
+  static int _mergedMinutes(Iterable<HealthDataPoint> pts) {
+    final iv = pts.map((p) => [p.dateFrom, p.dateTo]).where((x) => x[1].isAfter(x[0])).toList()..sort((a, b) => a[0].compareTo(b[0]));
+    var total = 0;
+    DateTime? s, e;
+    for (final x in iv) {
+      if (e == null || x[0].isAfter(e)) {
+        if (s != null) total += e!.difference(s).inMinutes;
+        s = x[0];
+        e = x[1];
+      } else if (x[1].isAfter(e)) {
+        e = x[1];
+      }
+    }
+    if (s != null) total += e!.difference(s).inMinutes;
+    return total;
+  }
+
   /// Resumen de hoy: pasos, pulso en reposo, calorías activas y horas de sueño de anoche.
-  static Future<WatchData?> today(String source) async {
+  /// [bmr] = metabolismo basal diario del usuario, para calcular calorías activas desde las totales.
+  static Future<WatchData?> today(String source, {double bmr = 1650}) async {
     try {
       await _ensure();
+      final perms = await _ensurePermissions();
       final now = DateTime.now();
       final midnight = DateTime(now.year, now.month, now.day);
-      final steps = await _health.getTotalStepsInInterval(midnight, now) ?? 0;
-      final points = await _health.getHealthDataFromTypes(
-        types: [HealthDataType.RESTING_HEART_RATE, HealthDataType.HEART_RATE, HealthDataType.ACTIVE_ENERGY_BURNED],
-        startTime: midnight,
-        endTime: now,
-      );
-      double kcal = 0, hrSum = 0;
-      int hrN = 0;
-      double? resting;
-      for (final p in points) {
-        final v = p.value;
-        if (v is! NumericHealthValue) continue;
-        final n = v.numericValue.toDouble();
-        if (p.type == HealthDataType.ACTIVE_ENERGY_BURNED) kcal += n;
-        if (p.type == HealthDataType.RESTING_HEART_RATE) resting = n;
-        if (p.type == HealthDataType.HEART_RATE) {
-          hrSum += n;
-          hrN++;
+
+      // Pasos
+      var steps = 0;
+      try {
+        steps = await _health.getTotalStepsInInterval(midnight, now) ?? 0;
+      } catch (_) {}
+      if (steps == 0) {
+        steps = (await _read(HealthDataType.STEPS, midnight, now)).fold<double>(0, (a, p) => a + _num(p)).round();
+      }
+
+      // Pulso en reposo: el dato del reloj si lo envía; si no, se estima con el 10 % más bajo
+      // de las mediciones de pulso de las últimas 24 horas (casi siempre durante el sueño).
+      double resting = 0;
+      final rhr = await _read(HealthDataType.RESTING_HEART_RATE, now.subtract(const Duration(days: 2)), now);
+      if (rhr.isNotEmpty) {
+        rhr.sort((a, b) => b.dateFrom.compareTo(a.dateFrom));
+        resting = _num(rhr.first);
+      }
+      if (resting <= 0) {
+        final hr = (await _read(HealthDataType.HEART_RATE, now.subtract(const Duration(hours: 24)), now)).map(_num).where((v) => v >= 30 && v <= 220).toList()..sort();
+        if (hr.isNotEmpty) {
+          final n = max(1, (hr.length * .1).round());
+          resting = hr.take(n).reduce((a, b) => a + b) / n;
         }
       }
-      final sleepType = (defaultTargetPlatform == TargetPlatform.iOS) ? HealthDataType.SLEEP_ASLEEP : HealthDataType.SLEEP_SESSION;
-      final sleep = await _health.getHealthDataFromTypes(types: [sleepType], startTime: midnight.subtract(const Duration(hours: 12)), endTime: now);
-      final sleepMin = sleep.fold<double>(0, (a, p) => a + p.dateTo.difference(p.dateFrom).inMinutes);
+
+      // Calorías activas: las del reloj; si solo envía totales, se resta el gasto basal de las horas transcurridas.
+      var kcal = (await _read(HealthDataType.ACTIVE_ENERGY_BURNED, midnight, now)).fold<double>(0, (a, p) => a + _num(p));
+      if (kcal <= 0 && !_ios) {
+        final hours = now.difference(midnight).inMinutes / 60;
+        final total = (await _read(HealthDataType.TOTAL_CALORIES_BURNED, midnight, now)).fold<double>(0, (a, p) => a + _num(p));
+        if (total > 0) kcal = max(0.0, total - bmr * hours / 24);
+      }
+
+      // Sueño de anoche: de las 6 p. m. de ayer a ahora. Primero la sesión completa; si el reloj
+      // solo envía etapas (ligero, profundo, REM), se suman sin solapes.
+      final from = midnight.subtract(const Duration(hours: 6));
+      var sleepPts = await _read(_ios ? HealthDataType.SLEEP_ASLEEP : HealthDataType.SLEEP_SESSION, from, now);
+      if (sleepPts.isEmpty) {
+        sleepPts = [
+          for (final t in [if (!_ios) HealthDataType.SLEEP_ASLEEP, HealthDataType.SLEEP_LIGHT, HealthDataType.SLEEP_DEEP, HealthDataType.SLEEP_REM]) ...await _read(t, from, now),
+        ];
+      }
+      final sleepMin = _mergedMinutes(sleepPts);
+
+      lastReport = HealthReport(steps: steps > 0, heart: resting > 0, calories: kcal > 0, sleep: sleepMin > 0, permissions: perms);
       return WatchData(
         steps: steps,
-        restingHr: (resting ?? (hrN > 0 ? hrSum / hrN : 0)).round(),
+        restingHr: resting.round(),
         activeKcal: kcal.round(),
         sleepHours: double.parse((sleepMin / 60).toStringAsFixed(1)),
         source: source,

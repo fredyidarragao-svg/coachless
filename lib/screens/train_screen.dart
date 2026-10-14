@@ -7,6 +7,7 @@ import '../core/i18n.dart';
 import '../core/models.dart';
 import '../core/theme.dart';
 import '../widgets/ui.dart';
+import '../services/health_service.dart';
 import 'sheets.dart';
 
 const _kidPhrases = ['¡Hoy vas a ser un súper héroe!', '¡Cada ejercicio te da una estrella!', '¡Vamos, campeón, tú puedes!', '¡Tus piernas son de cohete!', '¡Más fuerte que ayer!'];
@@ -367,6 +368,7 @@ class _WatchStatsState extends State<_WatchStats> {
           ]),
           Btn(busy ? t('Leyendo el reloj…') : t('Tomar muestra del reloj'), kind: BtnKind.primary, icon: Icons.sensors_rounded, expand: true, onTap: busy ? null : sample),
           Text(t('Tómala cuando termines de entrenar o al final del día, con la app de tu reloj sincronizada. Cada muestra queda guardada con su hora como evidencia en tu calendario.'), style: TextStyle(color: p.muted, fontSize: 12)),
+          if (HealthService.lastReport != null && !HealthService.lastReport!.complete) _MissingData(HealthService.lastReport!, onRetry: busy ? null : sample),
         ], 8),
       ),
     ], 8);
@@ -428,3 +430,33 @@ class MedalsView extends StatelessWidget {
   }
 }
 
+
+
+/// Explica qué datos no llegaron del reloj y cómo activarlos en la app del fabricante.
+class _MissingData extends StatelessWidget {
+  final HealthReport r;
+  final VoidCallback? onRetry;
+  const _MissingData(this.r, {this.onRetry});
+
+  @override
+  Widget build(BuildContext context) {
+    final p = Palette.of(context);
+    final miss = r.missing.map((m) => t(m)).join(', ');
+    return Box(
+      color: p.acc2.withValues(alpha: .12),
+      child: vgap([
+        Text(t('Tu reloj no envió: {m}', {'m': miss}), style: const TextStyle(fontWeight: FontWeight.w700)),
+        Text(
+          t('Abre la app de tu reloj (Mi Fitness, Zepp, Samsung Health…) › Perfil › Health Connect y activa pulso, calorías y sueño. Luego sincroniza el reloj y toma la muestra de nuevo. Si Coachless pide permisos, acéptalos todos.'),
+          style: TextStyle(color: p.muted, fontSize: 12),
+        ),
+        Btn(t('Revisar permisos y leer de nuevo'), icon: Icons.refresh_rounded, onTap: onRetry == null
+            ? null
+            : () async {
+                await HealthService.requestPermissions();
+                onRetry!();
+              }),
+      ], 6),
+    );
+  }
+}
