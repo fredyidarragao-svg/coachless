@@ -84,6 +84,47 @@ def gradle(txt: str) -> str:
     return txt
 
 
+SIGNING_IMPORTS = """import java.io.FileInputStream
+import java.util.Properties
+
+"""
+
+SIGNING_PROPS = """val keystoreProperties = Properties()
+val keystorePropertiesFile = rootProject.file("key.properties")
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+}
+
+android {"""
+
+SIGNING_BLOCK = """    signingConfigs {
+        create("release") {
+            if (keystorePropertiesFile.exists()) {
+                keyAlias = keystoreProperties["keyAlias"] as String
+                keyPassword = keystoreProperties["keyPassword"] as String
+                storeFile = file(keystoreProperties["storeFile"] as String)
+                storePassword = keystoreProperties["storePassword"] as String
+            }
+        }
+    }
+
+    buildTypes {"""
+
+
+def gradle_signing(txt: str) -> str:
+    """Firma fija: si existe android/key.properties (creado en GitHub Actions desde los secretos), el APK
+    se firma siempre con la misma clave y las actualizaciones se instalan encima conservando los datos."""
+    if "keystorePropertiesFile" in txt:
+        return txt
+    # En Kotlin DSL solo los imports pueden ir antes de plugins {}; las variables van antes de android {}.
+    txt = SIGNING_IMPORTS + txt
+    txt = re.sub(r"^android \{", SIGNING_PROPS, txt, count=1, flags=re.M)
+    txt = txt.replace("    buildTypes {", SIGNING_BLOCK, 1)
+    txt = re.sub(r'signingConfig\s*=\s*signingConfigs\.getByName\("debug"\)',
+                 'signingConfig = if (keystorePropertiesFile.exists()) signingConfigs.getByName("release") else signingConfigs.getByName("debug")', txt)
+    return txt
+
+
 def main_activity(txt: str) -> str:
     txt = txt.replace("io.flutter.embedding.android.FlutterActivity", "io.flutter.embedding.android.FlutterFragmentActivity")
     txt = re.sub(r"\bFlutterActivity\(\)", "FlutterFragmentActivity()", txt)
@@ -94,6 +135,7 @@ def main_activity(txt: str) -> str:
 patch_file(ROOT / "android/app/src/main/AndroidManifest.xml", manifest)
 for g in ["android/app/build.gradle.kts", "android/app/build.gradle"]:
     patch_file(ROOT / g, gradle)
+patch_file(ROOT / "android/app/build.gradle.kts", gradle_signing)
 for ma in (ROOT / "android/app/src/main").rglob("MainActivity.*"):
     patch_file(ma, main_activity)
 

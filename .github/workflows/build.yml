@@ -26,6 +26,18 @@ jobs:
         run: flutter create . --org app.coachless --project-name coachless --platforms android,ios
       - name: Aplicar permisos y ajustes de plataforma
         run: python3 tool/patch_platforms.py
+      - name: Firma fija del APK (para actualizar sin perder datos)
+        env:
+          KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        run: |
+          if [ -n "$KEYSTORE_B64" ] && [ -n "$KEYSTORE_PASSWORD" ]; then
+            echo "$KEYSTORE_B64" | tr -d ' \n\r' | base64 -d > android/app/upload.jks
+            printf "storePassword=%s\nkeyPassword=%s\nkeyAlias=coachless\nstoreFile=upload.jks\n" "$KEYSTORE_PASSWORD" "$KEYSTORE_PASSWORD" > android/key.properties
+            echo "::notice title=Firma::Firma fija aplicada"
+          else
+            echo "::warning title=Firma::Sin firma fija. Agrega los secretos ANDROID_KEYSTORE_BASE64 y ANDROID_KEYSTORE_PASSWORD."
+          fi
       - run: bash tool/ci_run.sh flutter pub get
       - name: Ícono de la app
         run: bash tool/ci_run.sh dart run flutter_launcher_icons
@@ -41,6 +53,10 @@ jobs:
           path: |
             build/app/outputs/flutter-apk/app-release.apk
             build/app/outputs/bundle/release/app-release.aab
+      - name: Verificar firma del APK
+        run: |
+          FP=$(keytool -printcert -jarfile build/app/outputs/flutter-apk/app-release.apk | grep -m1 "SHA256:" | sed 's/.*SHA256: //')
+          echo "::notice title=Huella de firma::$FP"
       - name: Preparar archivos de la versión
         run: |
           cp build/app/outputs/flutter-apk/app-release.apk Coachless.apk
