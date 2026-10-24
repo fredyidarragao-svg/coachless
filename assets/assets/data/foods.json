@@ -1,0 +1,4811 @@
+[
+{
+"id": "f1",
+"slot": "desayuno",
+"emoji": "🍳",
+"es": "Arepa con huevos pericos",
+"en": "Arepa with scrambled eggs, tomato and onion",
+"kcal": 380,
+"protein": 18,
+"carbs": 40,
+"fat": 16,
+"costCop": 3800,
+"tags": "pgmk",
+"minutes": 10,
+"ingredients": [
+"1 arepa de maíz mediana (80 g)",
+"2 huevos",
+"½ tomate picado",
+"1 tallo de cebolla larga",
+"1 cdta de aceite"
+],
+"steps": [
+"Sofríe tomate y cebolla en el aceite 2 minutos.",
+"Agrega los huevos batidos y revuelve a fuego bajo.",
+"Asa la arepa y sirve."
+],
+"shop": [
+[
+"Arepas",
+1.0,
+"u",
+"Panadería"
+],
+[
+"Huevos",
+2.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Tomate",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla larga",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Aceite",
+1.0,
+"cdta",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f2",
+"slot": "desayuno",
+"emoji": "🥣",
+"es": "Avena cocida con banano y canela",
+"en": "Oatmeal with banana and cinnamon",
+"kcal": 340,
+"protein": 14,
+"carbs": 52,
+"fat": 8,
+"costCop": 3000,
+"tags": "pgvk",
+"minutes": 8,
+"ingredients": [
+"50 g de hojuelas de avena",
+"250 ml de leche descremada",
+"½ banano",
+"Canela al gusto"
+],
+"steps": [
+"Cocina la avena en la leche 5 minutos revolviendo.",
+"Agrega la canela y el banano en rodajas."
+],
+"shop": [
+[
+"Avena en hojuelas",
+50.0,
+"g",
+"Granos y despensa"
+],
+[
+"Leche",
+250.0,
+"ml",
+"Lácteos y huevos"
+],
+[
+"Banano",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Canela",
+null,
+"u",
+"Condimentos"
+]
+]
+},
+{
+"id": "f3",
+"slot": "desayuno",
+"emoji": "🥚",
+"es": "Omelette de claras con espinaca y queso",
+"en": "Egg-white omelette with spinach and cheese",
+"kcal": 300,
+"protein": 30,
+"carbs": 18,
+"fat": 12,
+"costCop": 5200,
+"tags": "pmv",
+"minutes": 10,
+"ingredients": [
+"4 claras y 1 huevo entero",
+"1 taza de espinaca",
+"30 g de queso campesino",
+"1 tajada de pan integral"
+],
+"steps": [
+"Bate claras y huevo.",
+"Saltea la espinaca 1 minuto, agrega el huevo y el queso, y dobla.",
+"Acompaña con el pan tostado."
+],
+"shop": [
+[
+"Huevos",
+5.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Espinaca",
+1.0,
+"taza",
+"Frutas y verduras"
+],
+[
+"Queso campesino",
+30.0,
+"g",
+"Lácteos y huevos"
+],
+[
+"Pan integral",
+1.0,
+"tajada",
+"Panadería"
+]
+]
+},
+{
+"id": "f4",
+"slot": "desayuno",
+"emoji": "🍛",
+"es": "Calentado saludable con huevo",
+"en": "Healthy rice and beans with egg",
+"kcal": 520,
+"protein": 22,
+"carbs": 68,
+"fat": 18,
+"costCop": 4500,
+"tags": "gm",
+"minutes": 10,
+"ingredients": [
+"½ taza de arroz cocido",
+"½ taza de fríjoles cocidos",
+"1 huevo",
+"¼ de aguacate",
+"1 arepa pequeña"
+],
+"steps": [
+"Calienta arroz y fríjol juntos en sartén sin aceite extra.",
+"Cocina el huevo.",
+"Sirve con aguacate y arepa."
+],
+"shop": [
+[
+"Arroz",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Fríjoles",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Huevos",
+1.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Aguacate",
+0.25,
+"u",
+"Frutas y verduras"
+],
+[
+"Arepas",
+1.0,
+"u",
+"Panadería"
+]
+]
+},
+{
+"id": "f5",
+"slot": "desayuno",
+"emoji": "🍓",
+"es": "Yogur griego con granola y fresas",
+"en": "Greek yogurt with granola and strawberries",
+"kcal": 320,
+"protein": 20,
+"carbs": 36,
+"fat": 11,
+"costCop": 6500,
+"tags": "pmvk",
+"minutes": 3,
+"ingredients": [
+"170 g de yogur griego natural",
+"30 g de granola sin azúcar",
+"6 fresas"
+],
+"steps": [
+"Sirve el yogur.",
+"Agrega las fresas picadas y la granola al final."
+],
+"shop": [
+[
+"Yogur griego natural",
+170.0,
+"g",
+"Lácteos y huevos"
+],
+[
+"Granola sin azúcar",
+30.0,
+"g",
+"Granos y despensa"
+],
+[
+"Fresas",
+6.0,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f6",
+"slot": "desayuno",
+"emoji": "🥞",
+"es": "Pancakes de avena y banano",
+"en": "Oat and banana pancakes",
+"kcal": 450,
+"protein": 22,
+"carbs": 52,
+"fat": 17,
+"costCop": 4200,
+"tags": "gmvk",
+"minutes": 15,
+"ingredients": [
+"50 g de avena",
+"1 banano maduro",
+"2 huevos",
+"1 cda de mantequilla de maní"
+],
+"steps": [
+"Licúa avena, banano y huevos.",
+"Cocina porciones en sartén antiadherente 2 minutos por lado.",
+"Sirve con la mantequilla de maní."
+],
+"shop": [
+[
+"Avena en hojuelas",
+50.0,
+"g",
+"Granos y despensa"
+],
+[
+"Banano",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Huevos",
+2.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Mantequilla de maní",
+1.0,
+"cda",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f7",
+"slot": "desayuno",
+"emoji": "🥛",
+"es": "Changua con huevo",
+"en": "Changua, Andean milk and egg soup",
+"kcal": 310,
+"protein": 18,
+"carbs": 22,
+"fat": 17,
+"costCop": 3500,
+"tags": "pv",
+"minutes": 12,
+"ingredients": [
+"200 ml de leche descremada",
+"200 ml de agua",
+"2 huevos",
+"Cebolla larga y cilantro",
+"1 tajada de pan integral"
+],
+"steps": [
+"Hierve leche, agua y cebolla.",
+"Agrega los huevos sin revolver y cocina 3 minutos.",
+"Sirve con cilantro y el pan."
+],
+"shop": [
+[
+"Leche",
+200.0,
+"ml",
+"Lácteos y huevos"
+],
+[
+"Huevos",
+2.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Cebolla larga",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cilantro",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Pan integral",
+1.0,
+"tajada",
+"Panadería"
+]
+]
+},
+{
+"id": "f8",
+"slot": "desayuno",
+"emoji": "🥑",
+"es": "Tostadas con aguacate y huevo",
+"en": "Avocado and egg toast",
+"kcal": 420,
+"protein": 18,
+"carbs": 36,
+"fat": 23,
+"costCop": 5500,
+"tags": "pgmv",
+"minutes": 8,
+"ingredients": [
+"2 tajadas de pan integral",
+"⅓ de aguacate",
+"2 huevos",
+"Limón, sal y pimienta"
+],
+"steps": [
+"Tuesta el pan.",
+"Machaca el aguacate con limón y sal.",
+"Cubre con los huevos cocidos."
+],
+"shop": [
+[
+"Pan integral",
+2.0,
+"tajada",
+"Panadería"
+],
+[
+"Aguacate",
+0.333,
+"u",
+"Frutas y verduras"
+],
+[
+"Huevos",
+2.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Limones",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Sal",
+null,
+"u",
+"Condimentos"
+],
+[
+"Pimienta",
+null,
+"u",
+"Condimentos"
+]
+]
+},
+{
+"id": "f9",
+"slot": "desayuno",
+"emoji": "🌶️",
+"es": "Huevos rancheros ligeros",
+"en": "Light huevos rancheros",
+"kcal": 430,
+"protein": 22,
+"carbs": 40,
+"fat": 20,
+"costCop": 5000,
+"tags": "pmv",
+"minutes": 15,
+"ingredients": [
+"2 tortillas de maíz",
+"2 huevos",
+"½ taza de salsa de tomate y chile",
+"¼ taza de fríjoles refritos sin manteca"
+],
+"steps": [
+"Calienta las tortillas en comal.",
+"Cocina los huevos estrellados con poco aceite.",
+"Sirve sobre las tortillas con fríjoles y salsa."
+],
+"shop": [
+[
+"Tortillas de maíz",
+2.0,
+"u",
+"Panadería"
+],
+[
+"Huevos",
+2.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Salsa de tomate natural",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Fríjoles refritos",
+0.25,
+"taza",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f10",
+"slot": "desayuno",
+"emoji": "🫔",
+"es": "Chilaquiles verdes al horno con pollo",
+"en": "Baked green chilaquiles with chicken",
+"kcal": 480,
+"protein": 30,
+"carbs": 50,
+"fat": 18,
+"costCop": 7000,
+"tags": "gm",
+"minutes": 20,
+"ingredients": [
+"3 tortillas en triángulos",
+"1 taza de salsa verde",
+"80 g de pollo desmechado",
+"2 cdas de crema ligera",
+"Cebolla y cilantro"
+],
+"steps": [
+"Hornea los triángulos de tortilla 10 minutos hasta dorar.",
+"Calienta la salsa con el pollo.",
+"Mezcla con los totopos y sirve con crema, cebolla y cilantro."
+],
+"shop": [
+[
+"Tortillas de maíz",
+3.0,
+"u",
+"Panadería"
+],
+[
+"Salsa verde",
+1.0,
+"taza",
+"Granos y despensa"
+],
+[
+"Pechuga de pollo",
+80.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Crema de leche ligera",
+2.0,
+"cda",
+"Lácteos y huevos"
+],
+[
+"Cebolla",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cilantro",
+1,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f11",
+"slot": "desayuno",
+"emoji": "🍅",
+"es": "Pan con tomate y jamón serrano",
+"en": "Spanish tomato toast with serrano ham",
+"kcal": 380,
+"protein": 18,
+"carbs": 40,
+"fat": 16,
+"costCop": 6000,
+"tags": "p",
+"minutes": 5,
+"ingredients": [
+"2 rebanadas de pan rústico",
+"1 tomate maduro rallado",
+"30 g de jamón serrano",
+"1 cdta de aceite de oliva"
+],
+"steps": [
+"Tuesta el pan.",
+"Unta el tomate rallado con aceite y sal.",
+"Coloca el jamón encima."
+],
+"shop": [
+[
+"Pan rústico",
+2.0,
+"tajada",
+"Panadería"
+],
+[
+"Tomate",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Jamón serrano",
+30.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Aceite de oliva",
+1.0,
+"cdta",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f12",
+"slot": "desayuno",
+"emoji": "🫓",
+"es": "Tapioca con queso y huevo",
+"en": "Tapioca crepe with cheese and egg",
+"kcal": 400,
+"protein": 20,
+"carbs": 48,
+"fat": 14,
+"costCop": 4500,
+"tags": "gvk",
+"minutes": 10,
+"ingredients": [
+"60 g de goma de tapioca hidratada",
+"1 huevo revuelto",
+"30 g de queso mozzarella"
+],
+"steps": [
+"Esparce la tapioca en sartén caliente hasta que se pegue.",
+"Rellena con huevo y queso.",
+"Dobla y sirve."
+],
+"shop": [
+[
+"Goma de tapioca",
+60.0,
+"g",
+"Granos y despensa"
+],
+[
+"Huevos",
+1.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Queso mozzarella",
+30.0,
+"g",
+"Lácteos y huevos"
+]
+]
+},
+{
+"id": "f13",
+"slot": "desayuno",
+"emoji": "🫐",
+"es": "Bowl de açaí con banano y granola",
+"en": "Açaí bowl with banana and granola",
+"kcal": 420,
+"protein": 8,
+"carbs": 70,
+"fat": 12,
+"costCop": 9000,
+"tags": "gvk",
+"minutes": 5,
+"ingredients": [
+"100 g de pulpa de açaí congelada",
+"1 banano",
+"30 g de granola",
+"Fresas al gusto"
+],
+"steps": [
+"Licúa el açaí con medio banano.",
+"Sirve en un bowl.",
+"Decora con el resto del banano, fresas y granola."
+],
+"shop": [
+[
+"Pulpa de açaí",
+100.0,
+"g",
+"Frutas y verduras"
+],
+[
+"Banano",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Granola sin azúcar",
+30.0,
+"g",
+"Granos y despensa"
+],
+[
+"Fresas",
+1,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f14",
+"slot": "desayuno",
+"emoji": "🥤",
+"es": "Batido verde de proteína",
+"en": "Green protein smoothie",
+"kcal": 300,
+"protein": 28,
+"carbs": 30,
+"fat": 8,
+"costCop": 7000,
+"tags": "pmx",
+"minutes": 5,
+"ingredients": [
+"1 medida de proteína en polvo",
+"1 taza de espinaca",
+"½ manzana verde",
+"250 ml de agua o leche de almendras"
+],
+"steps": [
+"Licúa todo 40 segundos.",
+"Toma de inmediato."
+],
+"shop": [
+[
+"Proteína en polvo",
+1.0,
+"medida",
+"Granos y despensa"
+],
+[
+"Espinaca",
+1.0,
+"taza",
+"Frutas y verduras"
+],
+[
+"Manzana",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Leche de almendras",
+250.0,
+"ml",
+"Lácteos y huevos"
+]
+]
+},
+{
+"id": "f15",
+"slot": "desayuno",
+"emoji": "🍒",
+"es": "Smoothie bowl de frutos rojos",
+"en": "Berry smoothie bowl",
+"kcal": 350,
+"protein": 18,
+"carbs": 52,
+"fat": 8,
+"costCop": 8000,
+"tags": "pvk",
+"minutes": 5,
+"ingredients": [
+"1 taza de frutos rojos congelados",
+"150 g de yogur natural",
+"1 cda de semillas de chía",
+"20 g de granola"
+],
+"steps": [
+"Licúa frutos rojos y yogur hasta que quede espeso.",
+"Sirve y agrega chía y granola."
+],
+"shop": [
+[
+"Frutos rojos congelados",
+1.0,
+"taza",
+"Frutas y verduras"
+],
+[
+"Yogur natural",
+150.0,
+"g",
+"Lácteos y huevos"
+],
+[
+"Semillas de chía",
+1.0,
+"cda",
+"Granos y despensa"
+],
+[
+"Granola sin azúcar",
+20.0,
+"g",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f16",
+"slot": "desayuno",
+"emoji": "🍎",
+"es": "Quinua con leche y manzana",
+"en": "Quinoa porridge with apple",
+"kcal": 380,
+"protein": 14,
+"carbs": 62,
+"fat": 8,
+"costCop": 4800,
+"tags": "pgvk",
+"minutes": 15,
+"ingredients": [
+"½ taza de quinua cocida",
+"250 ml de leche",
+"½ manzana en cubos",
+"Canela"
+],
+"steps": [
+"Calienta la quinua en la leche 8 minutos.",
+"Agrega canela y la manzana."
+],
+"shop": [
+[
+"Quinua",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Leche",
+250.0,
+"ml",
+"Lácteos y huevos"
+],
+[
+"Manzana",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Canela",
+null,
+"u",
+"Condimentos"
+]
+]
+},
+{
+"id": "f17",
+"slot": "desayuno",
+"emoji": "🌯",
+"es": "Wrap de huevo y fríjol",
+"en": "Egg and bean breakfast wrap",
+"kcal": 450,
+"protein": 24,
+"carbs": 46,
+"fat": 19,
+"costCop": 5000,
+"tags": "gmv",
+"minutes": 10,
+"ingredients": [
+"1 tortilla integral",
+"2 huevos revueltos",
+"¼ taza de fríjoles",
+"Pico de gallo"
+],
+"steps": [
+"Revuelve los huevos.",
+"Calienta la tortilla.",
+"Rellena con huevo, fríjol y pico de gallo y enrolla."
+],
+"shop": [
+[
+"Tortillas integrales",
+1.0,
+"u",
+"Panadería"
+],
+[
+"Huevos",
+2.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Fríjoles",
+0.25,
+"taza",
+"Granos y despensa"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Cilantro",
+1,
+"atado",
+"Frutas y verduras"
+],
+[
+"Limones",
+1,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f18",
+"slot": "desayuno",
+"emoji": "🌽",
+"es": "Arepa de chócolo con queso",
+"en": "Sweet corn arepa with cheese",
+"kcal": 420,
+"protein": 14,
+"carbs": 52,
+"fat": 17,
+"costCop": 4000,
+"tags": "gvk",
+"minutes": 10,
+"ingredients": [
+"1 arepa de chócolo",
+"40 g de quesito fresco",
+"1 taza de café con leche descremada"
+],
+"steps": [
+"Asa la arepa por ambos lados.",
+"Sirve con el quesito encima."
+],
+"shop": [
+[
+"Arepa de chócolo",
+1.0,
+"u",
+"Panadería"
+],
+[
+"Quesito fresco",
+40.0,
+"g",
+"Lácteos y huevos"
+],
+[
+"Leche",
+1.0,
+"taza",
+"Lácteos y huevos"
+]
+]
+},
+{
+"id": "f19",
+"slot": "desayuno",
+"emoji": "🥭",
+"es": "Avena nocturna con chía y mango",
+"en": "Overnight oats with chia and mango",
+"kcal": 390,
+"protein": 16,
+"carbs": 58,
+"fat": 10,
+"costCop": 4500,
+"tags": "pgvk",
+"minutes": 5,
+"ingredients": [
+"50 g de avena",
+"150 ml de leche",
+"80 g de yogur",
+"1 cda de chía",
+"½ mango"
+],
+"steps": [
+"Mezcla avena, leche, yogur y chía en un frasco.",
+"Refrigera toda la noche.",
+"Agrega el mango en cubos al servir."
+],
+"shop": [
+[
+"Avena en hojuelas",
+50.0,
+"g",
+"Granos y despensa"
+],
+[
+"Leche",
+150.0,
+"ml",
+"Lácteos y huevos"
+],
+[
+"Yogur natural",
+80.0,
+"g",
+"Lácteos y huevos"
+],
+[
+"Semillas de chía",
+1.0,
+"cda",
+"Granos y despensa"
+],
+[
+"Mango",
+0.5,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f20",
+"slot": "desayuno",
+"emoji": "🍳",
+"es": "Shakshuka de huevos y tomate",
+"en": "Shakshuka",
+"kcal": 360,
+"protein": 22,
+"carbs": 20,
+"fat": 21,
+"costCop": 5500,
+"tags": "pmv",
+"minutes": 20,
+"ingredients": [
+"3 huevos",
+"1 taza de tomate triturado",
+"½ pimentón",
+"½ cebolla",
+"Comino y paprika"
+],
+"steps": [
+"Sofríe cebolla y pimentón 5 minutos.",
+"Agrega el tomate y las especias, cocina 5 minutos.",
+"Abre huecos, agrega los huevos y tapa 6 minutos."
+],
+"shop": [
+[
+"Huevos",
+3.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Tomate triturado",
+1.0,
+"taza",
+"Granos y despensa"
+],
+[
+"Pimentón",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Comino",
+null,
+"u",
+"Condimentos"
+],
+[
+"Paprika",
+null,
+"u",
+"Condimentos"
+]
+]
+},
+{
+"id": "f21",
+"slot": "desayuno",
+"emoji": "🧀",
+"es": "Crepes de avena con queso cottage",
+"en": "Oat crepes with cottage cheese",
+"kcal": 410,
+"protein": 28,
+"carbs": 40,
+"fat": 15,
+"costCop": 6000,
+"tags": "mv",
+"minutes": 15,
+"ingredients": [
+"40 g de avena molida",
+"2 huevos",
+"100 ml de leche",
+"100 g de queso cottage",
+"Fresas"
+],
+"steps": [
+"Licúa avena, huevos y leche.",
+"Cocina crepes delgados en sartén antiadherente.",
+"Rellena con cottage y fresas."
+],
+"shop": [
+[
+"Avena en hojuelas",
+40.0,
+"g",
+"Granos y despensa"
+],
+[
+"Huevos",
+2.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Leche",
+100.0,
+"ml",
+"Lácteos y huevos"
+],
+[
+"Queso cottage",
+100.0,
+"g",
+"Lácteos y huevos"
+],
+[
+"Fresas",
+1,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f22",
+"slot": "desayuno",
+"emoji": "🥜",
+"es": "Pan integral con mantequilla de maní y banano",
+"en": "Peanut butter and banana toast",
+"kcal": 460,
+"protein": 16,
+"carbs": 54,
+"fat": 20,
+"costCop": 3500,
+"tags": "gvk",
+"minutes": 5,
+"ingredients": [
+"2 tajadas de pan integral",
+"1½ cda de mantequilla de maní",
+"1 banano"
+],
+"steps": [
+"Tuesta el pan.",
+"Unta la mantequilla de maní.",
+"Cubre con rodajas de banano."
+],
+"shop": [
+[
+"Pan integral",
+2.0,
+"tajada",
+"Panadería"
+],
+[
+"Mantequilla de maní",
+1.0,
+"u",
+"Granos y despensa"
+],
+[
+"Banano",
+1.0,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f23",
+"slot": "snack",
+"emoji": "🍉",
+"es": "Fruta picada con queso campesino",
+"en": "Fresh fruit with farmer's cheese",
+"kcal": 180,
+"protein": 9,
+"carbs": 24,
+"fat": 5,
+"costCop": 3000,
+"tags": "pvk",
+"minutes": 5,
+"ingredients": [
+"1 taza de papaya o piña",
+"40 g de queso campesino"
+],
+"steps": [
+"Pica la fruta.",
+"Acompaña con el queso."
+],
+"shop": [
+[
+"Papaya o piña",
+1.0,
+"taza",
+"Frutas y verduras"
+],
+[
+"Queso campesino",
+40.0,
+"g",
+"Lácteos y huevos"
+]
+]
+},
+{
+"id": "f24",
+"slot": "snack",
+"emoji": "🥤",
+"es": "Batido de proteína con banano y avena",
+"en": "Protein shake with banana and oats",
+"kcal": 380,
+"protein": 30,
+"carbs": 48,
+"fat": 8,
+"costCop": 6000,
+"tags": "gmx",
+"minutes": 3,
+"ingredients": [
+"1 medida de proteína en polvo",
+"1 banano",
+"30 g de avena",
+"250 ml de leche"
+],
+"steps": [
+"Licúa todo 30 segundos.",
+"Tómalo después de entrenar."
+],
+"shop": [
+[
+"Proteína en polvo",
+1.0,
+"medida",
+"Granos y despensa"
+],
+[
+"Banano",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Avena en hojuelas",
+30.0,
+"g",
+"Granos y despensa"
+],
+[
+"Leche",
+250.0,
+"ml",
+"Lácteos y huevos"
+]
+]
+},
+{
+"id": "f25",
+"slot": "snack",
+"emoji": "🥜",
+"es": "Maní y uvas pasas",
+"en": "Peanuts and raisins",
+"kcal": 250,
+"protein": 8,
+"carbs": 24,
+"fat": 14,
+"costCop": 1800,
+"tags": "gvk",
+"minutes": 1,
+"ingredients": [
+"30 g de maní sin sal",
+"20 g de uvas pasas"
+],
+"steps": [
+"Mezcla y lleva en un recipiente."
+],
+"shop": [
+[
+"Maní sin sal",
+30.0,
+"g",
+"Granos y despensa"
+],
+[
+"Uvas pasas",
+20.0,
+"g",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f26",
+"slot": "snack",
+"emoji": "🥄",
+"es": "Yogur natural con chía",
+"en": "Plain yogurt with chia",
+"kcal": 160,
+"protein": 10,
+"carbs": 14,
+"fat": 7,
+"costCop": 2800,
+"tags": "pvk",
+"minutes": 10,
+"ingredients": [
+"150 g de yogur natural sin azúcar",
+"1 cda de semillas de chía"
+],
+"steps": [
+"Mezcla.",
+"Deja reposar 10 minutos para que la chía se hidrate."
+],
+"shop": [
+[
+"Yogur natural",
+150.0,
+"g",
+"Lácteos y huevos"
+],
+[
+"Semillas de chía",
+1.0,
+"cda",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f27",
+"slot": "snack",
+"emoji": "🍊",
+"es": "Mandarinas y almendras",
+"en": "Tangerines and almonds",
+"kcal": 170,
+"protein": 5,
+"carbs": 20,
+"fat": 8,
+"costCop": 3200,
+"tags": "pvk",
+"minutes": 1,
+"ingredients": [
+"2 mandarinas",
+"15 almendras"
+],
+"steps": [
+"Listo para llevar."
+],
+"shop": [
+[
+"Mandarinas",
+2.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Almendras",
+15.0,
+"u",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f28",
+"slot": "snack",
+"emoji": "🥚",
+"es": "Huevo duro y galletas integrales",
+"en": "Boiled egg and whole-grain crackers",
+"kcal": 200,
+"protein": 9,
+"carbs": 18,
+"fat": 10,
+"costCop": 1800,
+"tags": "pmvk",
+"minutes": 12,
+"ingredients": [
+"1 huevo",
+"4 galletas integrales"
+],
+"steps": [
+"Cocina el huevo 10 minutos.",
+"Enfría, pela y acompaña con las galletas."
+],
+"shop": [
+[
+"Huevos",
+1.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Galletas integrales",
+4.0,
+"u",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f29",
+"slot": "snack",
+"emoji": "🥪",
+"es": "Sándwich integral de pollo",
+"en": "Whole-grain chicken sandwich",
+"kcal": 350,
+"protein": 25,
+"carbs": 34,
+"fat": 13,
+"costCop": 6000,
+"tags": "mgk",
+"minutes": 5,
+"ingredients": [
+"2 tajadas de pan integral",
+"70 g de pechuga desmechada",
+"Lechuga y tomate",
+"1 cdta de mostaza"
+],
+"steps": [
+"Arma el sándwich.",
+"Tuéstalo 2 minutos si quieres."
+],
+"shop": [
+[
+"Pan integral",
+2.0,
+"tajada",
+"Panadería"
+],
+[
+"Pechuga de pollo",
+70.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Lechuga",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Mostaza",
+1.0,
+"cdta",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f30",
+"slot": "snack",
+"emoji": "🧀",
+"es": "Bocadillo con queso",
+"en": "Guava paste with white cheese",
+"kcal": 220,
+"protein": 7,
+"carbs": 32,
+"fat": 7,
+"costCop": 1800,
+"tags": "gvk",
+"minutes": 1,
+"ingredients": [
+"1 lonja de bocadillo de guayaba (40 g)",
+"40 g de queso blanco"
+],
+"steps": [
+"Sirve juntos."
+],
+"shop": [
+[
+"Bocadillo de guayaba",
+1.0,
+"lonja",
+"Granos y despensa"
+],
+[
+"Queso blanco",
+40.0,
+"g",
+"Lácteos y huevos"
+]
+]
+},
+{
+"id": "f31",
+"slot": "snack",
+"emoji": "🥕",
+"es": "Hummus con bastones de zanahoria",
+"en": "Hummus with carrot sticks",
+"kcal": 220,
+"protein": 8,
+"carbs": 24,
+"fat": 10,
+"costCop": 3500,
+"tags": "pvk",
+"minutes": 5,
+"ingredients": [
+"4 cdas de hummus",
+"1 zanahoria en bastones",
+"½ pepino"
+],
+"steps": [
+"Corta las verduras en bastones.",
+"Sirve con el hummus."
+],
+"shop": [
+[
+"Hummus",
+4.0,
+"cda",
+"Granos y despensa"
+],
+[
+"Zanahoria",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Pepino",
+0.5,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f32",
+"slot": "snack",
+"emoji": "🫛",
+"es": "Edamame al vapor",
+"en": "Steamed edamame",
+"kcal": 190,
+"protein": 17,
+"carbs": 14,
+"fat": 7,
+"costCop": 6000,
+"tags": "pmv",
+"minutes": 6,
+"ingredients": [
+"1 taza de edamame en vaina",
+"Sal en escamas"
+],
+"steps": [
+"Cocina al vapor 5 minutos.",
+"Espolvorea sal."
+],
+"shop": [
+[
+"Edamame",
+1.0,
+"taza",
+"Frutas y verduras"
+],
+[
+"Sal",
+null,
+"u",
+"Condimentos"
+]
+]
+},
+{
+"id": "f33",
+"slot": "snack",
+"emoji": "🍍",
+"es": "Queso cottage con piña",
+"en": "Cottage cheese with pineapple",
+"kcal": 180,
+"protein": 20,
+"carbs": 16,
+"fat": 4,
+"costCop": 5000,
+"tags": "pmvk",
+"minutes": 3,
+"ingredients": [
+"150 g de queso cottage",
+"½ taza de piña en cubos"
+],
+"steps": [
+"Sirve el cottage con la piña encima."
+],
+"shop": [
+[
+"Queso cottage",
+150.0,
+"g",
+"Lácteos y huevos"
+],
+[
+"Piña",
+0.5,
+"taza",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f34",
+"slot": "snack",
+"emoji": "🍪",
+"es": "Barritas caseras de avena y maní",
+"en": "Homemade oat and peanut bars",
+"kcal": 280,
+"protein": 10,
+"carbs": 32,
+"fat": 12,
+"costCop": 2500,
+"tags": "gvk",
+"minutes": 25,
+"ingredients": [
+"60 g de avena",
+"1 cda de mantequilla de maní",
+"1 cda de miel",
+"1 cda de maní picado"
+],
+"steps": [
+"Mezcla todo.",
+"Presiona en un molde y hornea 15 minutos a 180 °C.",
+"Deja enfriar y corta."
+],
+"shop": [
+[
+"Avena en hojuelas",
+60.0,
+"g",
+"Granos y despensa"
+],
+[
+"Mantequilla de maní",
+1.0,
+"cda",
+"Granos y despensa"
+],
+[
+"Miel",
+1.0,
+"cda",
+"Granos y despensa"
+],
+[
+"Maní sin sal",
+1.0,
+"cda",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f35",
+"slot": "snack",
+"emoji": "🍏",
+"es": "Manzana con mantequilla de maní",
+"en": "Apple with peanut butter",
+"kcal": 260,
+"protein": 7,
+"carbs": 30,
+"fat": 12,
+"costCop": 2800,
+"tags": "gvk",
+"minutes": 2,
+"ingredients": [
+"1 manzana",
+"1 cda de mantequilla de maní"
+],
+"steps": [
+"Corta la manzana en gajos.",
+"Úntalos con la mantequilla de maní."
+],
+"shop": [
+[
+"Manzana",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Mantequilla de maní",
+1.0,
+"cda",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f36",
+"slot": "snack",
+"emoji": "🧆",
+"es": "Rollitos de pavo y queso",
+"en": "Turkey and cheese roll-ups",
+"kcal": 190,
+"protein": 18,
+"carbs": 4,
+"fat": 11,
+"costCop": 5500,
+"tags": "pmk",
+"minutes": 3,
+"ingredients": [
+"4 lonjas de pechuga de pavo",
+"2 lonjas de queso",
+"Hojas de lechuga"
+],
+"steps": [
+"Coloca queso y lechuga sobre cada lonja.",
+"Enrolla y fija con un palillo."
+],
+"shop": [
+[
+"Pechuga de pavo en lonjas",
+4.0,
+"lonja",
+"Carnes y pescados"
+],
+[
+"Queso",
+2.0,
+"lonja",
+"Lácteos y huevos"
+],
+[
+"Lechuga",
+1,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f37",
+"slot": "snack",
+"emoji": "🍿",
+"es": "Palomitas de maíz caseras",
+"en": "Homemade air-popped popcorn",
+"kcal": 150,
+"protein": 5,
+"carbs": 30,
+"fat": 2,
+"costCop": 1200,
+"tags": "pvk",
+"minutes": 6,
+"ingredients": [
+"40 g de maíz pira",
+"1 cdta de aceite",
+"Sal"
+],
+"steps": [
+"Calienta el maíz en olla tapada con el aceite.",
+"Mueve hasta que deje de reventar.",
+"Agrega sal."
+],
+"shop": [
+[
+"Maíz pira",
+40.0,
+"g",
+"Granos y despensa"
+],
+[
+"Aceite",
+1.0,
+"cdta",
+"Granos y despensa"
+],
+[
+"Sal",
+null,
+"u",
+"Condimentos"
+]
+]
+},
+{
+"id": "f38",
+"slot": "snack",
+"emoji": "🥑",
+"es": "Guacamole con totopos horneados",
+"en": "Guacamole with baked tortilla chips",
+"kcal": 260,
+"protein": 5,
+"carbs": 26,
+"fat": 15,
+"costCop": 4500,
+"tags": "pv",
+"minutes": 10,
+"ingredients": [
+"½ aguacate",
+"Tomate, cebolla y cilantro",
+"Limón",
+"1 tortilla en triángulos horneados"
+],
+"steps": [
+"Machaca el aguacate con limón.",
+"Agrega tomate, cebolla y cilantro picados.",
+"Sirve con los totopos horneados."
+],
+"shop": [
+[
+"Aguacate",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cilantro",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Limones",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Tortillas de maíz",
+1.0,
+"u",
+"Panadería"
+]
+]
+},
+{
+"id": "f39",
+"slot": "snack",
+"emoji": "🍶",
+"es": "Kéfir con fruta",
+"en": "Kefir with fruit",
+"kcal": 200,
+"protein": 9,
+"carbs": 30,
+"fat": 5,
+"costCop": 3500,
+"tags": "pvk",
+"minutes": 2,
+"ingredients": [
+"200 ml de kéfir o kumis sin azúcar",
+"½ taza de fruta picada"
+],
+"steps": [
+"Sirve el kéfir con la fruta."
+],
+"shop": [
+[
+"Kéfir o kumis",
+200.0,
+"ml",
+"Lácteos y huevos"
+],
+[
+"Fruta picada",
+0.5,
+"taza",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f40",
+"slot": "snack",
+"emoji": "🍌",
+"es": "Batido de banano y leche",
+"en": "Banana milk shake",
+"kcal": 280,
+"protein": 12,
+"carbs": 44,
+"fat": 6,
+"costCop": 2500,
+"tags": "gvk",
+"minutes": 3,
+"ingredients": [
+"1 banano",
+"250 ml de leche",
+"Canela"
+],
+"steps": [
+"Licúa y sirve frío."
+],
+"shop": [
+[
+"Banano",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Leche",
+250.0,
+"ml",
+"Lácteos y huevos"
+],
+[
+"Canela",
+null,
+"u",
+"Condimentos"
+]
+]
+},
+{
+"id": "f41",
+"slot": "snack",
+"emoji": "🥚",
+"es": "Huevos de codorniz",
+"en": "Quail eggs",
+"kcal": 140,
+"protein": 11,
+"carbs": 1,
+"fat": 10,
+"costCop": 3000,
+"tags": "pmk",
+"minutes": 5,
+"ingredients": [
+"8 huevos de codorniz cocidos",
+"Sal y pimienta"
+],
+"steps": [
+"Cocina 4 minutos.",
+"Pela y sazona."
+],
+"shop": [
+[
+"Huevos de codorniz",
+8.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Sal",
+null,
+"u",
+"Condimentos"
+],
+[
+"Pimienta",
+null,
+"u",
+"Condimentos"
+]
+]
+},
+{
+"id": "f42",
+"slot": "snack",
+"emoji": "🍘",
+"es": "Galletas de arroz con atún",
+"en": "Rice cakes with tuna",
+"kcal": 200,
+"protein": 20,
+"carbs": 20,
+"fat": 4,
+"costCop": 4500,
+"tags": "pm",
+"minutes": 3,
+"ingredients": [
+"2 galletas de arroz",
+"½ lata de atún en agua",
+"Limón y tomate"
+],
+"steps": [
+"Mezcla el atún con limón y tomate picado.",
+"Sirve sobre las galletas."
+],
+"shop": [
+[
+"Galletas de arroz",
+2.0,
+"u",
+"Granos y despensa"
+],
+[
+"Atún en agua (lata)",
+0.5,
+"lata",
+"Carnes y pescados"
+],
+[
+"Limones",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f43",
+"slot": "snack",
+"emoji": "🌰",
+"es": "Mezcla de frutos secos",
+"en": "Trail mix",
+"kcal": 300,
+"protein": 9,
+"carbs": 22,
+"fat": 20,
+"costCop": 4500,
+"tags": "gv",
+"minutes": 1,
+"ingredients": [
+"15 g de almendras",
+"15 g de nueces",
+"15 g de arándanos deshidratados"
+],
+"steps": [
+"Mezcla y porciona."
+],
+"shop": [
+[
+"Almendras",
+15.0,
+"g",
+"Granos y despensa"
+],
+[
+"Nueces",
+15.0,
+"g",
+"Granos y despensa"
+],
+[
+"Arándanos deshidratados",
+15.0,
+"g",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f44",
+"slot": "snack",
+"emoji": "🍮",
+"es": "Gelatina con yogur",
+"en": "Yogurt jelly cup",
+"kcal": 120,
+"protein": 8,
+"carbs": 18,
+"fat": 2,
+"costCop": 2200,
+"tags": "pvk",
+"minutes": 5,
+"ingredients": [
+"1 gelatina sin azúcar preparada",
+"100 g de yogur natural"
+],
+"steps": [
+"Sirve la gelatina en un vaso.",
+"Cubre con el yogur."
+],
+"shop": [
+[
+"Gelatina sin azúcar",
+1.0,
+"u",
+"Granos y despensa"
+],
+[
+"Yogur natural",
+100.0,
+"g",
+"Lácteos y huevos"
+]
+]
+},
+{
+"id": "f45",
+"slot": "almuerzo",
+"emoji": "🍗",
+"es": "Pechuga a la plancha, arroz integral y ensalada",
+"en": "Grilled chicken, brown rice and salad",
+"kcal": 520,
+"protein": 42,
+"carbs": 48,
+"fat": 18,
+"costCop": 9500,
+"tags": "pmk",
+"minutes": 25,
+"ingredients": [
+"150 g de pechuga",
+"¾ taza de arroz integral cocido",
+"Lechuga, tomate y pepino",
+"1 cdta de aceite de oliva"
+],
+"steps": [
+"Adoba la pechuga con ajo, sal y limón.",
+"Cocina a la plancha 5–6 minutos por lado.",
+"Sirve con arroz y la ensalada aliñada."
+],
+"shop": [
+[
+"Pechuga de pollo",
+150.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Arroz integral",
+0.75,
+"taza",
+"Granos y despensa"
+],
+[
+"Lechuga",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Pepino",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Aceite de oliva",
+1.0,
+"cdta",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f46",
+"slot": "almuerzo",
+"emoji": "🍲",
+"es": "Sudado de pollo con papa y arroz",
+"en": "Colombian chicken stew with potato and rice",
+"kcal": 620,
+"protein": 38,
+"carbs": 70,
+"fat": 21,
+"costCop": 9000,
+"tags": "gmk",
+"minutes": 35,
+"ingredients": [
+"1 presa de pollo sin piel (180 g)",
+"1 papa mediana",
+"½ taza de arroz",
+"Tomate, cebolla y ajo"
+],
+"steps": [
+"Sofríe tomate, cebolla y ajo.",
+"Agrega pollo, papa y 1 taza de agua.",
+"tapa y cocina 25 minutos.",
+"Sirve con el arroz."
+],
+"shop": [
+[
+"Pechuga de pollo",
+1.0,
+"presa",
+"Carnes y pescados"
+],
+[
+"Papa",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Arroz",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Ajo",
+1,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f47",
+"slot": "almuerzo",
+"emoji": "🥘",
+"es": "Lentejas con arroz y maduro asado",
+"en": "Lentils with rice and roasted plantain",
+"kcal": 580,
+"protein": 22,
+"carbs": 98,
+"fat": 11,
+"costCop": 4800,
+"tags": "pgvk",
+"minutes": 30,
+"ingredients": [
+"1 taza de lentejas cocidas",
+"½ taza de arroz",
+"½ plátano maduro",
+"Hogao"
+],
+"steps": [
+"Cocina las lentejas con hogao 20 minutos.",
+"Asa el maduro en horno o sartén sin aceite.",
+"Sirve con el arroz."
+],
+"shop": [
+[
+"Lentejas",
+1.0,
+"taza",
+"Granos y despensa"
+],
+[
+"Arroz",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Plátano maduro",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla larga",
+1,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f48",
+"slot": "almuerzo",
+"emoji": "🐟",
+"es": "Tilapia al horno con patacón asado",
+"en": "Baked tilapia with roasted plantain",
+"kcal": 500,
+"protein": 38,
+"carbs": 50,
+"fat": 16,
+"costCop": 12000,
+"tags": "pm",
+"minutes": 30,
+"ingredients": [
+"1 filete de tilapia (180 g)",
+"½ plátano verde",
+"Ensalada verde",
+"Limón y ajo"
+],
+"steps": [
+"Adoba la tilapia con ajo y limón.",
+"hornea 15 minutos a 200 °C.",
+"Aplasta el plátano y ásalo en horno 15 minutos.",
+"Sirve con la ensalada."
+],
+"shop": [
+[
+"Filete de tilapia",
+1.0,
+"filete",
+"Carnes y pescados"
+],
+[
+"Plátano verde",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Lechuga",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Limones",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Ajo",
+1,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f49",
+"slot": "almuerzo",
+"emoji": "🥩",
+"es": "Carne molida magra con quinua y verduras",
+"en": "Lean ground beef with quinoa and vegetables",
+"kcal": 560,
+"protein": 36,
+"carbs": 50,
+"fat": 24,
+"costCop": 11000,
+"tags": "m",
+"minutes": 25,
+"ingredients": [
+"120 g de carne molida magra",
+"¾ taza de quinua cocida",
+"Zanahoria, habichuela y pimentón"
+],
+"steps": [
+"Cocina la quinua 15 minutos.",
+"Sofríe la carne y agrega las verduras picadas 5 minutos.",
+"Sirve junto."
+],
+"shop": [
+[
+"Carne molida magra",
+120.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Quinua",
+0.75,
+"taza",
+"Granos y despensa"
+],
+[
+"Zanahoria",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Habichuela",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Pimentón",
+1,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f50",
+"slot": "almuerzo",
+"emoji": "🥣",
+"es": "Ajiaco ligero con pollo",
+"en": "Light ajiaco, chicken and potato soup",
+"kcal": 480,
+"protein": 32,
+"carbs": 56,
+"fat": 14,
+"costCop": 9500,
+"tags": "pmk",
+"minutes": 45,
+"ingredients": [
+"120 g de pechuga",
+"1 papa sabanera y 1 criolla",
+"½ mazorca",
+"Guascas",
+"1 cdta de alcaparras"
+],
+"steps": [
+"Cocina pollo, papas y mazorca en 1 litro de agua con guascas 35 minutos.",
+"Desmecha el pollo y regrésalo a la sopa.",
+"Sirve con alcaparras, sin crema en la versión ligera."
+],
+"shop": [
+[
+"Pechuga de pollo",
+120.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Papa sabanera",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Mazorca",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Guascas",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Alcaparras",
+1.0,
+"cdta",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f51",
+"slot": "almuerzo",
+"emoji": "🫘",
+"es": "Fríjoles con arroz, huevo y aguacate",
+"en": "Beans with rice, egg and avocado",
+"kcal": 680,
+"protein": 26,
+"carbs": 90,
+"fat": 24,
+"costCop": 5500,
+"tags": "gk",
+"minutes": 20,
+"ingredients": [
+"1 taza de fríjoles cocidos",
+"¾ taza de arroz",
+"1 huevo",
+"¼ de aguacate",
+"Hogao"
+],
+"steps": [
+"Calienta los fríjoles con hogao.",
+"Cocina el huevo.",
+"Sirve con arroz y aguacate."
+],
+"shop": [
+[
+"Fríjoles",
+1.0,
+"taza",
+"Granos y despensa"
+],
+[
+"Arroz",
+0.75,
+"taza",
+"Granos y despensa"
+],
+[
+"Huevos",
+1.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Aguacate",
+0.25,
+"u",
+"Frutas y verduras"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla larga",
+1,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f52",
+"slot": "almuerzo",
+"emoji": "🍱",
+"es": "Bowl de atún, arroz y vegetales",
+"en": "Tuna, rice and vegetable bowl",
+"kcal": 520,
+"protein": 35,
+"carbs": 62,
+"fat": 15,
+"costCop": 8500,
+"tags": "pm",
+"minutes": 10,
+"ingredients": [
+"1 lata de atún en agua",
+"¾ taza de arroz",
+"½ pepino",
+"1 zanahoria rallada",
+"Maíz tierno y limón"
+],
+"steps": [
+"Escurre el atún.",
+"Arma el bowl con arroz en la base y vegetales encima.",
+"Aliña con limón y una cdta de aceite."
+],
+"shop": [
+[
+"Atún en agua (lata)",
+1.0,
+"lata",
+"Carnes y pescados"
+],
+[
+"Arroz",
+0.75,
+"taza",
+"Granos y despensa"
+],
+[
+"Pepino",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Zanahoria",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Maíz tierno",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Limones",
+1,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f53",
+"slot": "almuerzo",
+"emoji": "🍝",
+"es": "Pasta integral con pollo y tomate",
+"en": "Whole-wheat pasta with chicken and tomato",
+"kcal": 650,
+"protein": 40,
+"carbs": 78,
+"fat": 20,
+"costCop": 8500,
+"tags": "gmk",
+"minutes": 25,
+"ingredients": [
+"90 g de pasta integral",
+"130 g de pechuga en cubos",
+"1 taza de salsa de tomate natural",
+"Albahaca"
+],
+"steps": [
+"Cocina la pasta al dente.",
+"Saltea el pollo 6 minutos y agrega la salsa.",
+"Mezcla con la pasta."
+],
+"shop": [
+[
+"Pasta integral",
+90.0,
+"g",
+"Granos y despensa"
+],
+[
+"Pechuga de pollo",
+130.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Salsa de tomate natural",
+1.0,
+"taza",
+"Granos y despensa"
+],
+[
+"Albahaca",
+1,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f54",
+"slot": "almuerzo",
+"emoji": "🍽️",
+"es": "Hígado encebollado con arroz y ensalada",
+"en": "Liver and onions with rice and salad",
+"kcal": 520,
+"protein": 34,
+"carbs": 52,
+"fat": 20,
+"costCop": 6500,
+"tags": "mgx",
+"minutes": 20,
+"ingredients": [
+"150 g de hígado de res",
+"1 cebolla en plumas",
+"½ taza de arroz",
+"Ensalada verde"
+],
+"steps": [
+"Sella el hígado 3 minutos por lado.",
+"Agrega la cebolla y cocina 5 minutos.",
+"Sirve con arroz y ensalada."
+],
+"shop": [
+[
+"Hígado de res",
+150.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Cebolla",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Arroz",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Lechuga",
+1,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f55",
+"slot": "almuerzo",
+"emoji": "🍖",
+"es": "Bandeja paisa ligera",
+"en": "Light bandeja paisa",
+"kcal": 750,
+"protein": 45,
+"carbs": 80,
+"fat": 28,
+"costCop": 14000,
+"tags": "g",
+"minutes": 40,
+"ingredients": [
+"100 g de carne molida magra",
+"½ taza de fríjoles",
+"½ taza de arroz",
+"1 huevo",
+"¼ aguacate",
+"½ maduro asado"
+],
+"steps": [
+"Cocina los fríjoles con hogao.",
+"Sofríe la carne sin aceite extra.",
+"Sirve con arroz, huevo, aguacate y maduro asado."
+],
+"shop": [
+[
+"Carne molida magra",
+100.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Fríjoles",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Arroz",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Huevos",
+1.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Aguacate",
+0.25,
+"u",
+"Frutas y verduras"
+],
+[
+"Plátano maduro",
+0.5,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f56",
+"slot": "almuerzo",
+"emoji": "🍛",
+"es": "Pollo al curry con arroz basmati",
+"en": "Chicken curry with basmati rice",
+"kcal": 600,
+"protein": 40,
+"carbs": 62,
+"fat": 21,
+"costCop": 11000,
+"tags": "gm",
+"minutes": 30,
+"ingredients": [
+"150 g de pechuga en cubos",
+"½ taza de leche de coco ligera",
+"1 cda de curry",
+"¾ taza de arroz basmati cocido",
+"Cebolla y ajo"
+],
+"steps": [
+"Sofríe cebolla y ajo con el curry.",
+"Agrega el pollo y dora 5 minutos.",
+"Añade la leche de coco y cocina 10 minutos.",
+"sirve con arroz."
+],
+"shop": [
+[
+"Pechuga de pollo",
+150.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Leche de coco ligera",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Curry en polvo",
+1.0,
+"cda",
+"Condimentos"
+],
+[
+"Arroz basmati",
+0.75,
+"taza",
+"Granos y despensa"
+],
+[
+"Cebolla",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Ajo",
+1,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f57",
+"slot": "almuerzo",
+"emoji": "🥢",
+"es": "Salteado de res con vegetales al wok",
+"en": "Beef and vegetable stir-fry",
+"kcal": 540,
+"protein": 38,
+"carbs": 48,
+"fat": 22,
+"costCop": 13000,
+"tags": "m",
+"minutes": 20,
+"ingredients": [
+"140 g de lomo de res en tiras",
+"Brócoli, pimentón y zanahoria",
+"1 cda de salsa de soya baja en sodio",
+"½ taza de arroz"
+],
+"steps": [
+"Saltea la carne a fuego alto 3 minutos.",
+"Agrega las verduras y la soya 4 minutos.",
+"Sirve sobre el arroz."
+],
+"shop": [
+[
+"Lomo de res",
+140.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Brócoli",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Pimentón",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Zanahoria",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Salsa de soya baja en sodio",
+1.0,
+"cda",
+"Granos y despensa"
+],
+[
+"Arroz",
+0.5,
+"taza",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f58",
+"slot": "almuerzo",
+"emoji": "🌮",
+"es": "Tacos de pescado con repollo",
+"en": "Fish tacos with cabbage slaw",
+"kcal": 520,
+"protein": 34,
+"carbs": 52,
+"fat": 20,
+"costCop": 12000,
+"tags": "pm",
+"minutes": 20,
+"ingredients": [
+"150 g de pescado blanco",
+"3 tortillas de maíz",
+"Repollo morado rallado",
+"Limón y yogur natural"
+],
+"steps": [
+"Sazona y cocina el pescado a la plancha 3 minutos por lado.",
+"Mezcla el repollo con limón y yogur.",
+"Arma los tacos."
+],
+"shop": [
+[
+"Pescado blanco",
+150.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Tortillas de maíz",
+3.0,
+"u",
+"Panadería"
+],
+[
+"Pechuga de pollo",
+1,
+"u",
+"Carnes y pescados"
+],
+[
+"Limones",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Yogur natural",
+1,
+"u",
+"Lácteos y huevos"
+]
+]
+},
+{
+"id": "f59",
+"slot": "almuerzo",
+"emoji": "🥗",
+"es": "Burrito bowl de pollo",
+"en": "Chicken burrito bowl",
+"kcal": 620,
+"protein": 42,
+"carbs": 66,
+"fat": 21,
+"costCop": 10500,
+"tags": "gm",
+"minutes": 20,
+"ingredients": [
+"130 g de pollo a la plancha",
+"½ taza de arroz",
+"½ taza de fríjol negro",
+"Maíz, pico de gallo y ¼ aguacate"
+],
+"steps": [
+"Cocina y corta el pollo.",
+"Arma el bowl con arroz y fríjol.",
+"Agrega pollo, maíz, pico de gallo y aguacate."
+],
+"shop": [
+[
+"Pechuga de pollo",
+130.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Arroz",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Fríjol negro",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Maíz tierno",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Cilantro",
+1,
+"atado",
+"Frutas y verduras"
+],
+[
+"Limones",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Aguacate",
+0.25,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f60",
+"slot": "almuerzo",
+"emoji": "🥘",
+"es": "Paella de mariscos ligera",
+"en": "Light seafood paella",
+"kcal": 580,
+"protein": 34,
+"carbs": 70,
+"fat": 18,
+"costCop": 16000,
+"tags": "m",
+"minutes": 40,
+"ingredients": [
+"¾ taza de arroz",
+"150 g de mariscos mixtos",
+"Pimentón y arveja",
+"Azafrán o color",
+"Caldo de pescado"
+],
+"steps": [
+"Sofríe el pimentón y agrega el arroz.",
+"Añade el caldo con azafrán y cocina 15 minutos.",
+"Agrega los mariscos y la arveja 5 minutos más."
+],
+"shop": [
+[
+"Arroz",
+0.75,
+"taza",
+"Granos y despensa"
+],
+[
+"Mariscos mixtos",
+150.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Pimentón",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Arveja",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Azafrán o color",
+null,
+"u",
+"Condimentos"
+],
+[
+"Azafrán o color",
+null,
+"u",
+"Condimentos"
+],
+[
+"Caldo de pescado",
+1,
+"u",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f61",
+"slot": "almuerzo",
+"emoji": "🍲",
+"es": "Feijoada ligera",
+"en": "Light Brazilian black bean stew",
+"kcal": 650,
+"protein": 40,
+"carbs": 60,
+"fat": 28,
+"costCop": 12000,
+"tags": "g",
+"minutes": 60,
+"ingredients": [
+"1 taza de fríjol negro cocido",
+"100 g de lomo de cerdo magro",
+"50 g de chorizo bajo en grasa",
+"½ taza de arroz",
+"Naranja en gajos"
+],
+"steps": [
+"Dora el cerdo y el chorizo.",
+"Agrega el fríjol y cocina 30 minutos.",
+"Sirve con arroz y naranja."
+],
+"shop": [
+[
+"Fríjol negro",
+1.0,
+"taza",
+"Granos y despensa"
+],
+[
+"Lomo de cerdo",
+100.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Chorizo bajo en grasa",
+50.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Arroz",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Naranja",
+1,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f62",
+"slot": "almuerzo",
+"emoji": "🐠",
+"es": "Ceviche de pescado con chips de plátano",
+"en": "Fish ceviche with plantain chips",
+"kcal": 420,
+"protein": 34,
+"carbs": 36,
+"fat": 16,
+"costCop": 13000,
+"tags": "p",
+"minutes": 25,
+"ingredients": [
+"150 g de pescado blanco en cubos",
+"Jugo de 4 limones",
+"Cebolla morada y cilantro",
+"½ plátano verde en láminas horneadas"
+],
+"steps": [
+"Marina el pescado en limón 15 minutos.",
+"Agrega cebolla y cilantro.",
+"Sirve con los chips de plátano horneados."
+],
+"shop": [
+[
+"Pescado blanco",
+150.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Limones",
+4.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla morada",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cilantro",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Plátano verde",
+0.5,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f63",
+"slot": "almuerzo",
+"emoji": "🥩",
+"es": "Lomo saltado",
+"en": "Peruvian beef stir-fry",
+"kcal": 620,
+"protein": 38,
+"carbs": 58,
+"fat": 26,
+"costCop": 15000,
+"tags": "gm",
+"minutes": 25,
+"ingredients": [
+"140 g de lomo en tiras",
+"1 tomate y ½ cebolla en gajos",
+"1 papa al horno en bastones",
+"½ taza de arroz",
+"Salsa de soya"
+],
+"steps": [
+"Saltea la carne a fuego alto.",
+"Agrega cebolla, tomate y soya 2 minutos.",
+"Sirve con la papa al horno y el arroz."
+],
+"shop": [
+[
+"Lomo de res",
+140.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Tomate",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Papa",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Arroz",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Salsa de soya baja en sodio",
+1,
+"u",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f64",
+"slot": "almuerzo",
+"emoji": "🍆",
+"es": "Lasaña de berenjena con carne magra",
+"en": "Eggplant and lean beef lasagna",
+"kcal": 480,
+"protein": 36,
+"carbs": 24,
+"fat": 27,
+"costCop": 11000,
+"tags": "pm",
+"minutes": 45,
+"ingredients": [
+"1 berenjena en láminas",
+"120 g de carne molida magra",
+"1 taza de salsa de tomate",
+"40 g de mozzarella"
+],
+"steps": [
+"Asa las láminas de berenjena.",
+"Alterna capas de berenjena, carne en salsa y queso.",
+"Hornea 20 minutos a 190 °C."
+],
+"shop": [
+[
+"Berenjena",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Carne molida magra",
+120.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Salsa de tomate natural",
+1.0,
+"taza",
+"Granos y despensa"
+],
+[
+"Queso mozzarella",
+40.0,
+"g",
+"Lácteos y huevos"
+]
+]
+},
+{
+"id": "f65",
+"slot": "almuerzo",
+"emoji": "🍣",
+"es": "Poke de salmón",
+"en": "Salmon poke bowl",
+"kcal": 600,
+"protein": 34,
+"carbs": 60,
+"fat": 25,
+"costCop": 22000,
+"tags": "m",
+"minutes": 15,
+"ingredients": [
+"120 g de salmón fresco en cubos",
+"¾ taza de arroz",
+"Edamame, pepino y zanahoria",
+"1 cdta de ajonjolí",
+"Salsa de soya"
+],
+"steps": [
+"Marina el salmón en soya 5 minutos.",
+"Arma el bowl con arroz y vegetales.",
+"Agrega el salmón y el ajonjolí."
+],
+"shop": [
+[
+"Salmón",
+120.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Arroz",
+0.75,
+"taza",
+"Granos y despensa"
+],
+[
+"Edamame",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Pepino",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Zanahoria",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Ajonjolí",
+1.0,
+"cdta",
+"Granos y despensa"
+],
+[
+"Salsa de soya baja en sodio",
+1,
+"u",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f66",
+"slot": "almuerzo",
+"emoji": "🫘",
+"es": "Garbanzos guisados con espinaca",
+"en": "Chickpea and spinach stew",
+"kcal": 480,
+"protein": 20,
+"carbs": 62,
+"fat": 17,
+"costCop": 4500,
+"tags": "pgv",
+"minutes": 25,
+"ingredients": [
+"1 taza de garbanzos cocidos",
+"2 tazas de espinaca",
+"Tomate, cebolla y comino",
+"½ taza de arroz"
+],
+"steps": [
+"Sofríe cebolla y tomate con comino.",
+"Agrega garbanzos y ½ taza de agua 10 minutos.",
+"Incorpora la espinaca y sirve con arroz."
+],
+"shop": [
+[
+"Garbanzos",
+1.0,
+"taza",
+"Granos y despensa"
+],
+[
+"Espinaca",
+2.0,
+"taza",
+"Frutas y verduras"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Comino",
+null,
+"u",
+"Condimentos"
+],
+[
+"Arroz",
+0.5,
+"taza",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f67",
+"slot": "almuerzo",
+"emoji": "🐟",
+"es": "Sancocho de pescado ligero",
+"en": "Light fish sancocho",
+"kcal": 520,
+"protein": 36,
+"carbs": 56,
+"fat": 17,
+"costCop": 12000,
+"tags": "pm",
+"minutes": 40,
+"ingredients": [
+"180 g de pescado en postas",
+"½ plátano verde",
+"1 trozo de yuca",
+"Cilantro y cebolla",
+"½ taza de arroz"
+],
+"steps": [
+"Cocina plátano y yuca 20 minutos con cebolla.",
+"Agrega el pescado 10 minutos.",
+"Sirve con cilantro y arroz."
+],
+"shop": [
+[
+"Pescado en postas",
+180.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Plátano verde",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Yuca",
+1.0,
+"trozo",
+"Frutas y verduras"
+],
+[
+"Cilantro",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Arroz",
+0.5,
+"taza",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f68",
+"slot": "almuerzo",
+"emoji": "🍝",
+"es": "Albóndigas de pavo en salsa de tomate",
+"en": "Turkey meatballs in tomato sauce",
+"kcal": 560,
+"protein": 40,
+"carbs": 56,
+"fat": 20,
+"costCop": 11000,
+"tags": "gmk",
+"minutes": 35,
+"ingredients": [
+"150 g de pavo molido",
+"1 huevo",
+"1 taza de salsa de tomate",
+"½ taza de arroz o pasta"
+],
+"steps": [
+"Mezcla pavo y huevo y forma albóndigas.",
+"Dóralas y cocina en la salsa 15 minutos.",
+"Sirve con arroz o pasta."
+],
+"shop": [
+[
+"Pavo molido",
+150.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Huevos",
+1.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Salsa de tomate natural",
+1.0,
+"taza",
+"Granos y despensa"
+],
+[
+"Arroz",
+0.5,
+"taza",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f69",
+"slot": "cena",
+"emoji": "🎃",
+"es": "Crema de ahuyama con pollo desmechado",
+"en": "Pumpkin soup with shredded chicken",
+"kcal": 380,
+"protein": 28,
+"carbs": 38,
+"fat": 13,
+"costCop": 6500,
+"tags": "pk",
+"minutes": 25,
+"ingredients": [
+"300 g de ahuyama",
+"½ cebolla",
+"100 g de pollo desmechado",
+"200 ml de caldo"
+],
+"steps": [
+"Cocina la ahuyama con la cebolla en el caldo 15 minutos.",
+"Licúa.",
+"Sirve con el pollo encima."
+],
+"shop": [
+[
+"Ahuyama",
+300.0,
+"g",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Pechuga de pollo",
+100.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Caldo (pollo o verduras)",
+200.0,
+"ml",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f70",
+"slot": "cena",
+"emoji": "🥗",
+"es": "Ensalada de pollo con aguacate",
+"en": "Chicken and avocado salad",
+"kcal": 400,
+"protein": 32,
+"carbs": 14,
+"fat": 24,
+"costCop": 9000,
+"tags": "pm",
+"minutes": 15,
+"ingredients": [
+"120 g de pechuga a la plancha",
+"Lechugas mixtas",
+"¼ de aguacate",
+"Tomates cherry",
+"1 cdta de aceite de oliva"
+],
+"steps": [
+"Corta todo en trozos.",
+"Aliña con aceite, limón y sal."
+],
+"shop": [
+[
+"Pechuga de pollo",
+120.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Lechuga",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Aguacate",
+0.25,
+"u",
+"Frutas y verduras"
+],
+[
+"Tomates cherry",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Aceite de oliva",
+1.0,
+"cdta",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f71",
+"slot": "cena",
+"emoji": "🌯",
+"es": "Wrap integral de pollo y vegetales",
+"en": "Whole-wheat chicken and vegetable wrap",
+"kcal": 450,
+"protein": 30,
+"carbs": 42,
+"fat": 18,
+"costCop": 7800,
+"tags": "mgk",
+"minutes": 15,
+"ingredients": [
+"1 tortilla integral",
+"100 g de pollo",
+"Pimentón y cebolla salteados",
+"2 cdas de yogur natural"
+],
+"steps": [
+"Saltea el pollo y los vegetales.",
+"Rellena la tortilla, agrega el yogur y enrolla."
+],
+"shop": [
+[
+"Tortillas integrales",
+1.0,
+"u",
+"Panadería"
+],
+[
+"Pechuga de pollo",
+100.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Pimentón",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Yogur natural",
+2.0,
+"cda",
+"Lácteos y huevos"
+]
+]
+},
+{
+"id": "f72",
+"slot": "cena",
+"emoji": "🍳",
+"es": "Huevos revueltos con verduras y arepa",
+"en": "Scrambled eggs with vegetables and arepa",
+"kcal": 360,
+"protein": 20,
+"carbs": 30,
+"fat": 18,
+"costCop": 3500,
+"tags": "pvk",
+"minutes": 10,
+"ingredients": [
+"2 huevos",
+"½ taza de tomate, cebolla y pimentón",
+"1 arepa pequeña"
+],
+"steps": [
+"Saltea las verduras 2 minutos.",
+"Agrega los huevos y revuelve.",
+"Sirve con la arepa asada."
+],
+"shop": [
+[
+"Huevos",
+2.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Tomate",
+0.5,
+"taza",
+"Frutas y verduras"
+],
+[
+"Arepas",
+1.0,
+"u",
+"Panadería"
+]
+]
+},
+{
+"id": "f73",
+"slot": "cena",
+"emoji": "🐟",
+"es": "Trucha a la plancha con verduras salteadas",
+"en": "Grilled trout with sautéed vegetables",
+"kcal": 420,
+"protein": 36,
+"carbs": 16,
+"fat": 24,
+"costCop": 15000,
+"tags": "pm",
+"minutes": 20,
+"ingredients": [
+"1 filete de trucha (180 g)",
+"Brócoli, zanahoria y calabacín",
+"Limón y ajo"
+],
+"steps": [
+"Cocina la trucha 4 minutos por lado.",
+"Saltea las verduras 5 minutos.",
+"Sirve con limón."
+],
+"shop": [
+[
+"Filete de trucha",
+1.0,
+"filete",
+"Carnes y pescados"
+],
+[
+"Brócoli",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Zanahoria",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Calabacín",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Limones",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Ajo",
+1,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f74",
+"slot": "cena",
+"emoji": "🍚",
+"es": "Arroz con pollo casero",
+"en": "Homemade chicken and rice",
+"kcal": 600,
+"protein": 32,
+"carbs": 80,
+"fat": 17,
+"costCop": 7000,
+"tags": "gmk",
+"minutes": 30,
+"ingredients": [
+"¾ taza de arroz",
+"120 g de pollo desmechado",
+"Arveja, zanahoria y pimentón",
+"Caldo de pollo"
+],
+"steps": [
+"Sofríe las verduras, agrega el arroz y el caldo.",
+"Cocina 18 minutos a fuego bajo.",
+"Incorpora el pollo al final."
+],
+"shop": [
+[
+"Arroz",
+0.75,
+"taza",
+"Granos y despensa"
+],
+[
+"Pechuga de pollo",
+120.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Arveja",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Zanahoria",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Pimentón",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Pechuga de pollo",
+1,
+"u",
+"Carnes y pescados"
+]
+]
+},
+{
+"id": "f75",
+"slot": "cena",
+"emoji": "🥔",
+"es": "Tortilla de papa y verduras",
+"en": "Potato and vegetable omelette",
+"kcal": 450,
+"protein": 20,
+"carbs": 40,
+"fat": 23,
+"costCop": 4200,
+"tags": "gvk",
+"minutes": 25,
+"ingredients": [
+"3 huevos",
+"1 papa mediana en láminas",
+"Cebolla y espinaca",
+"1 cdta de aceite"
+],
+"steps": [
+"Cocina la papa en láminas 10 minutos en sartén tapada.",
+"Agrega verduras y huevo batido.",
+"Voltea y dora 3 minutos."
+],
+"shop": [
+[
+"Huevos",
+3.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Papa",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Espinaca",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Aceite",
+1.0,
+"cdta",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f76",
+"slot": "cena",
+"emoji": "🍵",
+"es": "Sopa de verduras con garbanzos",
+"en": "Vegetable soup with chickpeas",
+"kcal": 380,
+"protein": 18,
+"carbs": 54,
+"fat": 10,
+"costCop": 4000,
+"tags": "pvk",
+"minutes": 25,
+"ingredients": [
+"½ taza de garbanzos cocidos",
+"Zanahoria, ahuyama, habichuela y apio",
+"Caldo natural"
+],
+"steps": [
+"Cocina las verduras en el caldo 15 minutos.",
+"Agrega los garbanzos y cocina 5 minutos más."
+],
+"shop": [
+[
+"Garbanzos",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Zanahoria",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Ahuyama",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Habichuela",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Apio",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Caldo (pollo o verduras)",
+1,
+"u",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f77",
+"slot": "cena",
+"emoji": "🐟",
+"es": "Salmón al horno con espárragos",
+"en": "Baked salmon with asparagus",
+"kcal": 480,
+"protein": 38,
+"carbs": 10,
+"fat": 32,
+"costCop": 24000,
+"tags": "pm",
+"minutes": 20,
+"ingredients": [
+"150 g de salmón",
+"1 atado de espárragos",
+"Limón, ajo y eneldo",
+"1 cdta de aceite de oliva"
+],
+"steps": [
+"Coloca salmón y espárragos en una bandeja con aceite y ajo.",
+"Hornea 15 minutos a 200 °C.",
+"Termina con limón y eneldo."
+],
+"shop": [
+[
+"Salmón",
+150.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Espárragos",
+1.0,
+"atado",
+"Frutas y verduras"
+],
+[
+"Limones",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Ajo",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Eneldo",
+null,
+"u",
+"Condimentos"
+],
+[
+"Aceite de oliva",
+1.0,
+"cdta",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f78",
+"slot": "cena",
+"emoji": "🫑",
+"es": "Pimentones rellenos de carne y arroz",
+"en": "Stuffed bell peppers",
+"kcal": 450,
+"protein": 30,
+"carbs": 40,
+"fat": 19,
+"costCop": 9000,
+"tags": "pm",
+"minutes": 40,
+"ingredients": [
+"2 pimentones",
+"100 g de carne molida magra",
+"⅓ taza de arroz cocido",
+"Salsa de tomate",
+"20 g de queso"
+],
+"steps": [
+"Vacía los pimentones.",
+"Rellena con carne sofrita, arroz y salsa.",
+"Cubre con queso y hornea 25 minutos."
+],
+"shop": [
+[
+"Pimentón",
+2.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Carne molida magra",
+100.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Arroz",
+0.333,
+"taza",
+"Granos y despensa"
+],
+[
+"Salsa de tomate natural",
+1,
+"u",
+"Granos y despensa"
+],
+[
+"Queso",
+20.0,
+"g",
+"Lácteos y huevos"
+]
+]
+},
+{
+"id": "f79",
+"slot": "cena",
+"emoji": "🫓",
+"es": "Quesadillas integrales de pollo",
+"en": "Whole-wheat chicken quesadillas",
+"kcal": 480,
+"protein": 34,
+"carbs": 40,
+"fat": 20,
+"costCop": 8000,
+"tags": "gmk",
+"minutes": 15,
+"ingredients": [
+"2 tortillas integrales",
+"90 g de pollo desmechado",
+"30 g de queso mozzarella",
+"Pico de gallo"
+],
+"steps": [
+"Rellena las tortillas con pollo y queso.",
+"Dora en sartén 2 minutos por lado.",
+"Sirve con pico de gallo."
+],
+"shop": [
+[
+"Tortillas integrales",
+2.0,
+"u",
+"Panadería"
+],
+[
+"Pechuga de pollo",
+90.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Queso mozzarella",
+30.0,
+"g",
+"Lácteos y huevos"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Cilantro",
+1,
+"atado",
+"Frutas y verduras"
+],
+[
+"Limones",
+1,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f80",
+"slot": "cena",
+"emoji": "🥣",
+"es": "Sopa de lentejas rojas",
+"en": "Red lentil soup",
+"kcal": 360,
+"protein": 20,
+"carbs": 52,
+"fat": 8,
+"costCop": 3500,
+"tags": "pvk",
+"minutes": 25,
+"ingredients": [
+"½ taza de lentejas rojas",
+"Zanahoria y cebolla",
+"Comino",
+"Caldo de verduras"
+],
+"steps": [
+"Sofríe cebolla y zanahoria.",
+"Agrega lentejas, comino y caldo y cocina 18 minutos.",
+"Licúa a medias y sirve."
+],
+"shop": [
+[
+"Lentejas rojas",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Zanahoria",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Comino",
+null,
+"u",
+"Condimentos"
+],
+[
+"Caldo (pollo o verduras)",
+1,
+"u",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f81",
+"slot": "cena",
+"emoji": "🥗",
+"es": "Ensalada griega con garbanzos",
+"en": "Greek salad with chickpeas",
+"kcal": 400,
+"protein": 16,
+"carbs": 32,
+"fat": 23,
+"costCop": 7000,
+"tags": "pv",
+"minutes": 10,
+"ingredients": [
+"½ taza de garbanzos",
+"Pepino, tomate y cebolla morada",
+"30 g de queso feta",
+"Aceitunas",
+"1 cdta de aceite de oliva"
+],
+"steps": [
+"Corta las verduras en cubos.",
+"Mezcla con garbanzos, feta y aceitunas.",
+"Aliña con aceite, limón y orégano."
+],
+"shop": [
+[
+"Garbanzos",
+0.5,
+"taza",
+"Granos y despensa"
+],
+[
+"Pepino",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla morada",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Queso feta",
+30.0,
+"g",
+"Lácteos y huevos"
+],
+[
+"Aceitunas",
+1,
+"u",
+"Granos y despensa"
+],
+[
+"Aceite de oliva",
+1.0,
+"cdta",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f82",
+"slot": "cena",
+"emoji": "🍗",
+"es": "Pollo teriyaki con brócoli",
+"en": "Teriyaki chicken with broccoli",
+"kcal": 450,
+"protein": 40,
+"carbs": 30,
+"fat": 19,
+"costCop": 9500,
+"tags": "pmk",
+"minutes": 20,
+"ingredients": [
+"150 g de muslo de pollo sin piel",
+"1 taza de brócoli",
+"2 cdas de salsa teriyaki ligera",
+"Ajonjolí"
+],
+"steps": [
+"Dora el pollo 6 minutos por lado.",
+"Agrega la salsa y reduce 2 minutos.",
+"Sirve con el brócoli al vapor y ajonjolí."
+],
+"shop": [
+[
+"Muslo de pollo",
+150.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Brócoli",
+1.0,
+"taza",
+"Frutas y verduras"
+],
+[
+"Salsa teriyaki ligera",
+2.0,
+"cda",
+"Granos y despensa"
+],
+[
+"Ajonjolí",
+1,
+"u",
+"Granos y despensa"
+]
+]
+},
+{
+"id": "f83",
+"slot": "cena",
+"emoji": "🥒",
+"es": "Calabacines rellenos de atún",
+"en": "Tuna-stuffed zucchini",
+"kcal": 320,
+"protein": 30,
+"carbs": 14,
+"fat": 16,
+"costCop": 7500,
+"tags": "p",
+"minutes": 30,
+"ingredients": [
+"2 calabacines",
+"1 lata de atún",
+"Tomate y cebolla",
+"20 g de queso rallado"
+],
+"steps": [
+"Parte los calabacines a lo largo y vacía.",
+"Rellena con atún sofrito con tomate y cebolla.",
+"Cubre con queso y hornea 15 minutos."
+],
+"shop": [
+[
+"Calabacín",
+2.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Atún en agua (lata)",
+1.0,
+"lata",
+"Carnes y pescados"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Queso rallado",
+20.0,
+"g",
+"Lácteos y huevos"
+]
+]
+},
+{
+"id": "f84",
+"slot": "cena",
+"emoji": "🫓",
+"es": "Arepa rellena de pollo y aguacate",
+"en": "Arepa stuffed with chicken and avocado",
+"kcal": 480,
+"protein": 30,
+"carbs": 46,
+"fat": 20,
+"costCop": 7000,
+"tags": "gmk",
+"minutes": 15,
+"ingredients": [
+"1 arepa mediana",
+"80 g de pollo desmechado",
+"¼ de aguacate",
+"Limón y cilantro"
+],
+"steps": [
+"Asa la arepa y ábrela.",
+"Mezcla el pollo con el aguacate, limón y cilantro.",
+"Rellena y sirve."
+],
+"shop": [
+[
+"Arepas",
+1.0,
+"u",
+"Panadería"
+],
+[
+"Pechuga de pollo",
+80.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Aguacate",
+0.25,
+"u",
+"Frutas y verduras"
+],
+[
+"Limones",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cilantro",
+1,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f85",
+"slot": "cena",
+"emoji": "🍲",
+"es": "Caldo de costilla ligero",
+"en": "Light beef rib broth",
+"kcal": 380,
+"protein": 26,
+"carbs": 30,
+"fat": 17,
+"costCop": 8000,
+"tags": "g",
+"minutes": 50,
+"ingredients": [
+"150 g de costilla de res desgrasada",
+"1 papa",
+"Cebolla larga y cilantro"
+],
+"steps": [
+"Cocina la costilla en agua 40 minutos retirando la grasa.",
+"Agrega la papa 15 minutos.",
+"Sirve con cilantro."
+],
+"shop": [
+[
+"Costilla de res",
+150.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Papa",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Cebolla larga",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Cilantro",
+1,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f86",
+"slot": "cena",
+"emoji": "🍔",
+"es": "Hamburguesa casera de lentejas",
+"en": "Homemade lentil burger",
+"kcal": 460,
+"protein": 22,
+"carbs": 56,
+"fat": 16,
+"costCop": 5000,
+"tags": "pvk",
+"minutes": 30,
+"ingredients": [
+"1 taza de lentejas cocidas",
+"3 cdas de avena",
+"1 pan integral",
+"Lechuga y tomate"
+],
+"steps": [
+"Tritura las lentejas con la avena y condimentos.",
+"Forma la torta y dórala 4 minutos por lado.",
+"Arma la hamburguesa."
+],
+"shop": [
+[
+"Lentejas",
+1.0,
+"taza",
+"Granos y despensa"
+],
+[
+"Avena en hojuelas",
+3.0,
+"cda",
+"Granos y despensa"
+],
+[
+"Pan integral",
+1.0,
+"u",
+"Panadería"
+],
+[
+"Lechuga",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Tomate",
+1,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f87",
+"slot": "cena",
+"emoji": "🍄",
+"es": "Omelette de champiñones y queso",
+"en": "Mushroom and cheese omelette",
+"kcal": 340,
+"protein": 24,
+"carbs": 8,
+"fat": 24,
+"costCop": 5500,
+"tags": "pmv",
+"minutes": 10,
+"ingredients": [
+"3 huevos",
+"1 taza de champiñones",
+"30 g de queso mozzarella"
+],
+"steps": [
+"Saltea los champiñones 4 minutos.",
+"Agrega los huevos batidos y el queso.",
+"Dobla y sirve."
+],
+"shop": [
+[
+"Huevos",
+3.0,
+"u",
+"Lácteos y huevos"
+],
+[
+"Champiñones",
+1.0,
+"taza",
+"Frutas y verduras"
+],
+[
+"Queso mozzarella",
+30.0,
+"g",
+"Lácteos y huevos"
+]
+]
+},
+{
+"id": "f88",
+"slot": "cena",
+"emoji": "🥡",
+"es": "Tofu salteado con vegetales",
+"en": "Tofu and vegetable stir-fry",
+"kcal": 380,
+"protein": 24,
+"carbs": 26,
+"fat": 20,
+"costCop": 7000,
+"tags": "pmv",
+"minutes": 20,
+"ingredients": [
+"150 g de tofu firme",
+"Brócoli, pimentón y zanahoria",
+"1 cda de salsa de soya",
+"Jengibre"
+],
+"steps": [
+"Dora el tofu en cubos.",
+"Agrega los vegetales y el jengibre 4 minutos.",
+"Termina con la soya."
+],
+"shop": [
+[
+"Tofu firme",
+150.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Brócoli",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Pimentón",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Zanahoria",
+1,
+"u",
+"Frutas y verduras"
+],
+[
+"Salsa de soya baja en sodio",
+1.0,
+"cda",
+"Granos y despensa"
+],
+[
+"Jengibre",
+1,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f89",
+"slot": "cena",
+"emoji": "🍕",
+"es": "Pizza integral casera de pollo",
+"en": "Homemade whole-wheat chicken pizza",
+"kcal": 560,
+"protein": 36,
+"carbs": 58,
+"fat": 20,
+"costCop": 9000,
+"tags": "gk",
+"minutes": 25,
+"ingredients": [
+"1 base de pizza integral pequeña",
+"80 g de pollo",
+"40 g de mozzarella",
+"Salsa de tomate y vegetales"
+],
+"steps": [
+"Unta la salsa sobre la base.",
+"Agrega pollo, vegetales y queso.",
+"Hornea 12 minutos a 220 °C."
+],
+"shop": [
+[
+"Base de pizza integral",
+1.0,
+"base",
+"Panadería"
+],
+[
+"Pechuga de pollo",
+80.0,
+"g",
+"Carnes y pescados"
+],
+[
+"Queso mozzarella",
+40.0,
+"g",
+"Lácteos y huevos"
+],
+[
+"Salsa de tomate natural",
+1,
+"u",
+"Granos y despensa"
+],
+[
+"Verduras surtidas",
+1,
+"u",
+"Frutas y verduras"
+]
+]
+},
+{
+"id": "f90",
+"slot": "cena",
+"emoji": "🥦",
+"es": "Crema de brócoli con huevo duro",
+"en": "Broccoli soup with boiled egg",
+"kcal": 300,
+"protein": 18,
+"carbs": 20,
+"fat": 16,
+"costCop": 4500,
+"tags": "pv",
+"minutes": 20,
+"ingredients": [
+"2 tazas de brócoli",
+"½ cebolla",
+"1 papa pequeña",
+"1 huevo duro"
+],
+"steps": [
+"Cocina brócoli, cebolla y papa en caldo 12 minutos.",
+"Licúa.",
+"Sirve con el huevo picado."
+],
+"shop": [
+[
+"Brócoli",
+2.0,
+"taza",
+"Frutas y verduras"
+],
+[
+"Cebolla",
+0.5,
+"u",
+"Frutas y verduras"
+],
+[
+"Papa",
+1.0,
+"u",
+"Frutas y verduras"
+],
+[
+"Huevos",
+1.0,
+"u",
+"Lácteos y huevos"
+]
+]
+}
+]
