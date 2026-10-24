@@ -32,8 +32,17 @@ jobs:
           KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
         run: |
           if [ -n "$KEYSTORE_B64" ] && [ -n "$KEYSTORE_PASSWORD" ]; then
-            echo "$KEYSTORE_B64" | tr -d ' \n\r' | base64 -d > android/app/upload.jks
-            printf "storePassword=%s\nkeyPassword=%s\nkeyAlias=coachless\nstoreFile=upload.jks\n" "$KEYSTORE_PASSWORD" "$KEYSTORE_PASSWORD" > android/key.properties
+            # Si se pegó el archivo completo, se toma solo la línea larga de la clave.
+            B64=$(printf '%s\n' "$KEYSTORE_B64" | tr -d '\r' | tr ' ' '\n' | awk 'length > 500' | head -1)
+            [ -z "$B64" ] && B64=$(printf '%s' "$KEYSTORE_B64" | tr -d ' \n\r')
+            PASS=$(printf '%s' "$KEYSTORE_PASSWORD" | tr -d '\r' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+            if ! printf '%s' "$B64" | base64 -d > android/app/upload.jks 2>/dev/null; then
+              echo "::error title=Firma::El secreto ANDROID_KEYSTORE_BASE64 no es válido. Debe contener solo la línea larga del archivo de firma."; exit 1
+            fi
+            if ! keytool -list -keystore android/app/upload.jks -storepass "$PASS" -alias coachless >/dev/null 2>&1; then
+              echo "::error title=Firma::La contraseña ANDROID_KEYSTORE_PASSWORD no abre la clave. Debe contener solo la línea corta de la contraseña."; exit 1
+            fi
+            printf "storePassword=%s\nkeyPassword=%s\nkeyAlias=coachless\nstoreFile=upload.jks\n" "$PASS" "$PASS" > android/key.properties
             echo "::notice title=Firma::Firma fija aplicada"
           else
             echo "::warning title=Firma::Sin firma fija. Agrega los secretos ANDROID_KEYSTORE_BASE64 y ANDROID_KEYSTORE_PASSWORD."
